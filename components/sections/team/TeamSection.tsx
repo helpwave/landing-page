@@ -1,6 +1,6 @@
-import type { ProfileProps } from '@helpwave/hightide'
 import TeamGroup from '@/components/TeamGroup'
 import { SectionBase } from '@/components/sections/SectionBase'
+import type { ProfileProps } from '@/components/Profile'
 
 const imageUrl = (key: string) => `https://cdn.helpwave.de/profile/${key}.png`
 

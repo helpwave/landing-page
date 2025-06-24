@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { HelpwaveBadge } from '@helpwave/hightide'
 import Link from 'next/link'
@@ -16,7 +16,7 @@ type TasksDemoSectionTranslation = {
   feature4: string,
 }
 
-const defaultTasksDemoSectionTranslation: Record<Languages, TasksDemoSectionTranslation> = {
+const defaultTasksDemoSectionTranslation: Translation<TasksDemoSectionTranslation> = {
   en: {
     helpwaveTasks: 'helpwave tasks',
     workflowManagement: 'The user-centered management tool, designed to simplify workflows and ensure high quality patient care.',

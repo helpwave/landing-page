@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import Image from 'next/image'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import Link from 'next/link'
@@ -15,7 +15,7 @@ type CreditsPageTranslation = {
   createdBy: (name: string, author: string) => string,
 }
 
-const defaultCreditsPageTranslation: Record<Languages, CreditsPageTranslation> = {
+const defaultCreditsPageTranslation: Translation<CreditsPageTranslation> = {
   en: {
     title: 'Credits',
     text: 'To credit our use of stock-footage from other websites, we are pleased to list them on this page.',

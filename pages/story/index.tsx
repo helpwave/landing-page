@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import StoryHeader from '@/components/sections/story/StoryHeader'
 import { Page } from '@/components/Page'
@@ -9,7 +9,7 @@ type StoryTranslation = {
   title: string,
 }
 
-const defaultStoryTranslation: Record<Languages, StoryTranslation> = {
+const defaultStoryTranslation: Translation<StoryTranslation> = {
   en: {
     title: 'Story',
   },

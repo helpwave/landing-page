@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import type { TextImageProps } from '@helpwave/hightide'
@@ -21,7 +21,7 @@ type StepsToDigitalizationSectionTranslation = {
   step3Description: string,
 }
 
-const defaultStepsToDigitalizationSectionTranslation: Record<Languages, StepsToDigitalizationSectionTranslation> = {
+const defaultStepsToDigitalizationSectionTranslation: Translation<StepsToDigitalizationSectionTranslation> = {
   en: {
     title: '\\primary{Digital excellence} in\\newline 3 simple steps',
     description: 'Our approach is to implement more efficient and fun\\newline processes in a simple yet powerful way.',
@@ -111,17 +111,17 @@ export const StepsToDigitalizationSection = () => {
         ))}
       </Carousel>
       <Modal
-        id="stepsToDigitizationModal"
         isOpen={modalValue !== undefined}
-        titleText={modalValue?.titleText}
-        description={(
-          <Scrollbars autoHeightMax={500} autoHeight={true}>
-            {modalValue?.description}
-          </Scrollbars>
-        )}
-        onBackgroundClick={() => setModalValue(undefined)}
-        onCloseClick={() => setModalValue(undefined)}
-        modalClassName="max-w-[600px] max-tablet:max-w-[90%] w-full"
+        headerProps={{
+          titleText: modalValue?.titleText,
+          description: (
+              <Scrollbars autoHeightMax={500} autoHeight={true}>
+                {modalValue?.description}
+              </Scrollbars>
+          )
+        }}
+        onClose={() => setModalValue(undefined)}
+        className="max-w-[600px] max-tablet:max-w-[90%] w-full"
       />
     </SectionBase>
   )

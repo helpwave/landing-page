@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
@@ -12,7 +12,7 @@ type MediQuuInformationTranslation = {
   subTitle3: ReactNode,
 }
 
-const defaultMediQuuInformationTranslation: Record<Languages, MediQuuInformationTranslation> = {
+const defaultMediQuuInformationTranslation: Translation<MediQuuInformationTranslation> = {
   en: {
     title: 'Information on the acquisition',
     subTitle1: 'helpwave, a young and innovative team, has developed process-oriented solutions for stationary care ' +

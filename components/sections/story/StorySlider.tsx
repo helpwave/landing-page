@@ -1,5 +1,5 @@
 
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import type { TextImageProps } from '@helpwave/hightide'
 import { TextImage } from '@helpwave/hightide'
@@ -19,7 +19,7 @@ type StoriesSliderSectionTranslation = {
   step3Description: string,
 }
 
-const defaultStoriesSliderSectionTranslation: Record<Languages, StoriesSliderSectionTranslation> = {
+const defaultStoriesSliderSectionTranslation: Translation<StoriesSliderSectionTranslation> = {
   en: {
     step: 'Step',
     step1Title: 'Define the mission',
@@ -96,17 +96,17 @@ export const StoriesSliderSection = () => {
         ))}
       </Carousel>
       <Modal
-        id="storySliderModal"
         isOpen={modalValue !== undefined}
-        titleText={modalValue?.titleText}
-        description={(
-          <Scrollbars autoHeightMax={500} autoHeight={true}>
-            {modalValue?.description}
-          </Scrollbars>
-        )}
-        onBackgroundClick={() => setModalValue(undefined)}
-        onCloseClick={() => setModalValue(undefined)}
-        modalClassName="max-w-[600px] max-tablet:max-w-[90%] w-full"
+        headerProps={{
+          titleText: modalValue?.titleText,
+          description: (
+              <Scrollbars autoHeightMax={500} autoHeight={true}>
+                {modalValue?.description}
+              </Scrollbars>
+          )
+        }}
+        onClose={() => setModalValue(undefined)}
+        className="max-w-[600px] max-tablet:max-w-[90%] w-full"
       />
     </SectionBase>
   )

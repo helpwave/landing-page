@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { MarkdownInterpreter } from '@helpwave/hightide'
@@ -13,7 +13,7 @@ type StartSectionTranslation = {
   text: string,
 }
 
-const defaultStartSectionTranslation: Record<Languages, StartSectionTranslation> = {
+const defaultStartSectionTranslation: Translation<StartSectionTranslation> = {
   en: {
     title: 'The first open source team management platform for healthcare professionals',
     text: 'Patient care is teamwork. \\b{helpwave tasks} increases the \\primary{productivity} in your clinical team. Ditch the printed ward list and coordinate the teamwork in a modern Kanban interface that has been inspired by industry \\primary{best practices} from lean project management.'

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { RadialRings } from '@helpwave/hightide'
 import { useEffect, useState } from 'react'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import type { NewsLetterFormType } from '@/components/NewsLetterForm'
 import { NewsLetterForm } from '@/components/NewsLetterForm'
@@ -44,7 +44,7 @@ type NewsLetterTranslation = {
   title: string,
 }
 
-const defaultNewsLetterTranslation: Record<Languages, NewsLetterTranslation> = {
+const defaultNewsLetterTranslation: Translation<NewsLetterTranslation> = {
   en: {
     title: 'Join Newsletter',
   },

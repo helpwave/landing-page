@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -8,7 +8,7 @@ type StoryInUseAtSectionTranslation = {
   title: string,
 }
 
-const defaultStoryInUseAtSectionTranslation: Record<Languages, StoryInUseAtSectionTranslation> = {
+const defaultStoryInUseAtSectionTranslation: Translation<StoryInUseAtSectionTranslation> = {
   en: {
     title: 'In use at'
   },

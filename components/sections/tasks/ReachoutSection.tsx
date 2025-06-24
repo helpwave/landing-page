@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { MarkdownInterpreter } from '@helpwave/hightide'
@@ -13,7 +13,7 @@ type ReachoutSectionTranslation = {
   hospitalManagerText: string,
 }
 
-const defaultReachoutSectionTranslation: Record<Languages, ReachoutSectionTranslation> = {
+const defaultReachoutSectionTranslation: Translation<ReachoutSectionTranslation> = {
   en: {
     medicalHeroTitle: `You're a medical hero?`,
     medicalHeroSubtitle: 'How \\helpwave \\primary{tasks} aims to aid you in your daily work!',

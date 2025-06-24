@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import Image from 'next/image'
@@ -7,7 +7,7 @@ type MediQuuBadgeTranslation = {
   previously: string,
 }
 
-const defaultMediQuuBadgeTranslation: Record<Languages, MediQuuBadgeTranslation> = {
+const defaultMediQuuBadgeTranslation: Translation<MediQuuBadgeTranslation> = {
   en: {
     previously: 'previously'
   },

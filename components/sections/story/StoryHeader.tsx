@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import Image from 'next/image'
@@ -9,7 +9,7 @@ type StoryHeaderTranslation = {
   foundingStoryDescription: string,
 }
 
-const defaultStoryHeaderTranslation: Record<Languages, StoryHeaderTranslation> = {
+const defaultStoryHeaderTranslation: Translation<StoryHeaderTranslation> = {
   en: {
     foundingStory: 'Founding Story',
     foundingStoryDescription: 'In 2022, the founders of helpwave came together at a hackathon, driven by a shared passion to transform the digital health space. Inspired by our shared vision, we created helpwave - an innovative open source platform designed to revolutionize healthcare. Our first product, helpwave tasks, ushers in a new era of streamlined and accessible healthcare solutions.',

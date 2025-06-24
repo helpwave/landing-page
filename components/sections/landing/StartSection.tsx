@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -10,7 +10,7 @@ type LandingPageTranslation = {
     description: string,
 }
 
-const defaultLandingPageTranslation: Record<Languages, LandingPageTranslation> = {
+const defaultLandingPageTranslation: Translation<LandingPageTranslation> = {
     en: {
         title: 'helpwave - the Operating System for Hospitals',
         description: 'empowering \\primary{medical heroes}, united in \\positive{technology}'

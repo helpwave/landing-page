@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { useState } from 'react'
@@ -21,7 +21,7 @@ type ContactSectionTranslation = {
   error: string,
 }
 
-const defaultContactSectionTranslation: Record<Languages, ContactSectionTranslation> = {
+const defaultContactSectionTranslation: Translation<ContactSectionTranslation> = {
   en: {
     contact: 'Contact',
     contactDescription: 'We are available to answer any questions you may have at short notice.',
@@ -132,22 +132,22 @@ export const ContactSection = ({
         <Input
           value={contactForm.firstname}
           placeholder={translation.firstname}
-          onChange={firstname => setContactForm(prevState => ({ ...prevState, firstname, hasSend: false, hasError: false }))}
+          onChangeText={firstname => setContactForm(prevState => ({ ...prevState, firstname, hasSend: false, hasError: false }))}
         />
         <Input
           value={contactForm.lastname}
           placeholder={translation.lastname}
-          onChange={lastname => setContactForm(prevState => ({ ...prevState, lastname, hasSend: false, hasError: false }))}
+          onChangeText={lastname => setContactForm(prevState => ({ ...prevState, lastname, hasSend: false, hasError: false }))}
         />
         <Input
           value={contactForm.email}
           placeholder={translation.email}
-          onChange={email => setContactForm(prevState => ({ ...prevState, email, hasSend: false, hasError: false }))}
+          onChangeText={email => setContactForm(prevState => ({ ...prevState, email, hasSend: false, hasError: false }))}
         />
         <Textarea
           value={contactForm.message}
           placeholder={translation.message}
-          onChange={message => setContactForm(prevState => ({ ...prevState, message, hasSend: false, hasError: false }))}
+          onChangeText={message => setContactForm(prevState => ({ ...prevState, message, hasSend: false, hasError: false }))}
         />
         {contactForm.hasError && (<span className="text-negative font-semibold my-1">{translation.error}</span>)}
         <LoadingButton

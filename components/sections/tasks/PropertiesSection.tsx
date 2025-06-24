@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
@@ -12,7 +12,7 @@ type PropertiesSectionTranslation = {
   properties: string,
 }
 
-const defaultPropertiesSectionTranslation: Record<Languages, PropertiesSectionTranslation> = {
+const defaultPropertiesSectionTranslation: Translation<PropertiesSectionTranslation> = {
   en: {
     title: 'Everything you need at a glance',
     description: 'Tired of searching for allergy records? Keep track of the facts.',

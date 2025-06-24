@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -17,7 +17,7 @@ type ConnectOrganizationFeatureSectionTranslation = {
   feature6: string,
 }
 
-const defaultConnectOrganizationFeatureSectionTranslation: Record<Languages, ConnectOrganizationFeatureSectionTranslation> = {
+const defaultConnectOrganizationFeatureSectionTranslation: Translation<ConnectOrganizationFeatureSectionTranslation> = {
   en: {
     title: 'Connect your organization in one tool',
     description: 'Use \\b{helpwave tasks} to experience a user-centered management tool, designed to simplify workflows and ensure high quality patient care.',

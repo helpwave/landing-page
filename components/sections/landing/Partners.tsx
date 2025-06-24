@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 import type { Partner } from '@/components/PartnerList'
@@ -8,7 +8,7 @@ type PartnerSectionTranslation = {
   title: string,
 }
 
-const defaultPartnerSectionTranslation: Record<Languages, PartnerSectionTranslation> = {
+const defaultPartnerSectionTranslation: Translation<PartnerSectionTranslation> = {
   en: {
     title: 'Our partners'
   },

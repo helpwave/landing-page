@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { HelpwaveBadge } from '@helpwave/hightide'
@@ -10,7 +10,7 @@ type MediQuuHeaderTranslation = {
   subTitle: string,
 }
 
-const defaultMediQuuPageTranslation: Record<Languages, MediQuuHeaderTranslation> = {
+const defaultMediQuuPageTranslation: Translation<MediQuuHeaderTranslation> = {
   en: {
     title: 'mediQuu becomes helpwave',
     subTitle: 'helpwave becomes the new operator of the mediQuu platform and will continue to develop the digital ' +

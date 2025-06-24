@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { FAQSection } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -9,7 +9,7 @@ type MediQuuFAQTranslation = {
   faqs: { question: string, answer: string }[],
 }
 
-const defaultMediQuuFAQTranslation: Record<Languages, MediQuuFAQTranslation> = {
+const defaultMediQuuFAQTranslation: Translation<MediQuuFAQTranslation> = {
   en: {
     title: 'FAQ',
     subTitle: 'We are available to answer any questions you may have at short notice.',

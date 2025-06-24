@@ -1,4 +1,4 @@
-import { type Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
@@ -14,7 +14,7 @@ type RoadmapTranslation = {
   roadmap: RoadmapItem[],
 }
 
-const defaultRoadmapTranslation: Record<Languages, RoadmapTranslation> = {
+const defaultRoadmapTranslation: Translation<RoadmapTranslation> = {
   en: {
     title: 'What\'s next?',
     description: 'Dive into how helpwave pursues the mediQuu vision.',

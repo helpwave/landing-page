@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
 type TalksTranslation = {
@@ -11,7 +11,7 @@ type TalksTranslation = {
 
 }
 
-const defaultTaskTranslation: Record<Languages, TalksTranslation> = {
+const defaultTaskTranslation: Translation<TalksTranslation> = {
   en: {
     fusionOfHealthcareAndComputerScience: 'Fusion of healthcare and computer science. Interviews. Retrospectives. Foundation.',
   },

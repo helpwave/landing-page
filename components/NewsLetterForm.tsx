@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { Input } from '@helpwave/hightide'
@@ -23,7 +23,7 @@ type NewsLetterFormTranslation = {
   thankYou: string,
 }
 
-const defaultNewsLetterFormTranslation: Record<Languages, NewsLetterFormTranslation> = {
+const defaultNewsLetterFormTranslation: Translation<NewsLetterFormTranslation> = {
   en: {
     title: 'Stay Connected',
     subtitle: 'Become part of our vision and never miss updates or releases',
@@ -125,7 +125,7 @@ export const NewsLetterForm = ({
             id="email"
             value={formState.email}
             label={{ name: `${translation.email}*` }}
-            onChange={text => setFormState(prevState => ({
+            onChangeText={text => setFormState(prevState => ({
               ...prevState,
               email: text
             }))}
@@ -142,7 +142,7 @@ export const NewsLetterForm = ({
               id="firstname"
               value={formState.firstname}
               label={{ name: translation.firstname }}
-              onChange={text => setFormState(prevState => ({
+              onChangeText={text => setFormState(prevState => ({
                 ...prevState,
                 firstname: text
               }))}
@@ -156,7 +156,7 @@ export const NewsLetterForm = ({
               id="lastname"
               value={formState.lastname}
               label={{ name: `${translation.lastname}*` }}
-              onChange={text => setFormState(prevState => ({
+              onChangeText={text => setFormState(prevState => ({
                 ...prevState,
                 lastname: text
               }))}
@@ -173,7 +173,7 @@ export const NewsLetterForm = ({
               id="company"
               value={formState.company}
               label={{ name: translation.company }}
-              onChange={text => setFormState(prevState => ({
+              onChangeText={text => setFormState(prevState => ({
                 ...prevState,
                 company: text
               }))}
