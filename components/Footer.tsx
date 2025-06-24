@@ -2,33 +2,32 @@ import { useEffect } from 'react'
 import { useTranslation } from '@helpwave/hightide'
 import * as CookieConsent from 'vanilla-cookieconsent'
 import { Helpwave } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
 import { useLanguage } from '@helpwave/hightide'
 import { Select } from '@helpwave/hightide'
 import pluginConfig from '../utils/CookieConsentConfig'
 import FooterLinkGroup from './FooterLinkGroup'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
-import type { ThemeType, ThemeTypeTranslation } from '@helpwave/hightide'
-import { defaultThemeTypeTranslation } from '@helpwave/hightide'
+import type { ThemeType, ThemeTypeTranslation , Translation , Language } from '@helpwave/hightide'
+import { ThemeUtil } from '@helpwave/hightide'
 import { useTheme } from '@helpwave/hightide'
 
 type Categories = 'socials' | 'general' | 'products' | 'development'
 type FooterTranslation = { [key in Categories]: string } & ThemeTypeTranslation
 
-const defaultFooterTranslation: Record<Languages, FooterTranslation> = {
+const defaultFooterTranslation: Translation<FooterTranslation> = {
   en: {
     socials: 'socials',
     general: 'general',
     products: 'products',
     development: 'development',
-    ...defaultThemeTypeTranslation.en,
+    ...ThemeUtil.translation.en,
   },
   de: {
     socials: 'social',
     general: 'allgemein',
     products: 'produkte',
     development: 'entwicklung',
-    ...defaultThemeTypeTranslation.de,
+    ...ThemeUtil.translation.de,
   }
 }
 
@@ -103,7 +102,7 @@ const Footer = () => {
             ))}
             {index === 2 && (
               <>
-                <Select<Languages>
+                <Select<Language>
                   value={language}
                   onChange={(language) => setLanguage(language)}
                   options={[
@@ -124,8 +123,7 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <div
-        className="row w-full h-[128px] items-center justify-center mx-auto font-space">
+      <div className="row w-full h-[128px] items-center justify-center mx-auto font-space">
         <Helpwave color="white" size={128} />
         <span className="textstyle-title-normal">&copy; {year} helpwave</span>
       </div>

@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsWithChildren } from 'react'
 import Image from 'next/image'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -28,7 +28,7 @@ type MarketStatsSectionTranslation = {
   gdp: string,
 }
 
-const defaultExpansionTranslation: Record<Languages, MarketStatsSectionTranslation> = {
+const defaultExpansionTranslation: Translation<MarketStatsSectionTranslation> = {
   en: {
     germanyHealthcareSystem: 'Germany\'s Healthcare System',
     marketPotential: 'Market Potential',

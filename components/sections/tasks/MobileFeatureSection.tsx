@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -14,7 +14,7 @@ type MobileFeatureSectionTranslation = {
   trademarkAppstore: string,
 }
 
-const defaultMobileFeatureSectionTranslation: Record<Languages, MobileFeatureSectionTranslation> = {
+const defaultMobileFeatureSectionTranslation: Translation<MobileFeatureSectionTranslation> = {
   en: {
     title: 'Seamless mobile experience',
     description: 'You don\'t have time to log in to a desk workspace to complete or assign tasks? Use the mobile app and never forget a task again.',

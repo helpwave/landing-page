@@ -4,14 +4,14 @@ import { LoadingAnimation } from '@helpwave/hightide'
 import { useQuery } from '@tanstack/react-query'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
 type EpisodeSectionTranslation = {
   allEpisodes: string,
 }
 
-const defaultEpisodeTranslation: Record<Languages, EpisodeSectionTranslation> = {
+const defaultEpisodeTranslation: Translation<EpisodeSectionTranslation> = {
   en: {
     allEpisodes: 'All episodes...'
   },

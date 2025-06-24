@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { Tile } from '@helpwave/hightide'
 import Image from 'next/image'
@@ -12,7 +12,7 @@ type MediQuuBrandDescriptionTranslation = {
   aboutHelpwaveDescription: string,
 }
 
-const defaultMediQuuBrandDescriptionTranslation: Record<Languages, MediQuuBrandDescriptionTranslation> = {
+const defaultMediQuuBrandDescriptionTranslation: Translation<MediQuuBrandDescriptionTranslation> = {
   en: {
     aboutMediQuuTitle: 'About mediQuu',
     aboutHelpwaveTitle: 'About helpwave',

@@ -1,5 +1,5 @@
 import { Popcorn } from 'lucide-react'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -14,7 +14,7 @@ type StoryStartSectionTranslation = {
   futureText: string,
 }
 
-const defaultStoryStartSectionTranslation: Record<Languages, StoryStartSectionTranslation> = {
+const defaultStoryStartSectionTranslation: Translation<StoryStartSectionTranslation> = {
   en: {
     ourStory: 'Our Story',
     identifyingTheProblemTitle: 'Identifying the Problem',

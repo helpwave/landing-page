@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
@@ -12,7 +12,7 @@ type PatientSectionTranslation = {
   patients: string,
 }
 
-const defaultPatientSectionTranslation: Record<Languages, PatientSectionTranslation> = {
+const defaultPatientSectionTranslation: Translation<PatientSectionTranslation> = {
   en: {
     title: 'Ditch the printed patient list',
     description: 'Use the patient list to keep track of what’s going on in your ward and never have an outdated version again.',

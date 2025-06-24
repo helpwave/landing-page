@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -40,7 +40,7 @@ type StoryTranslation = {
   missionDescription: string,
 }
 
-const defaultStoryTranslation: Record<Languages, StoryTranslation> = {
+const defaultStoryTranslation: Translation<StoryTranslation> = {
   en: {
     innovation: 'Open Innovation',
     innovationHeader: 'Providing healthcare solutions',

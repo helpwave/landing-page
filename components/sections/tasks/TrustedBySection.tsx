@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { VerticalDivider } from '@helpwave/hightide'
 import { DividerInserter } from '@helpwave/hightide'
@@ -10,7 +10,7 @@ type TrustedBySectionTranslation = {
   title: string,
 }
 
-const defaultTrustedBySectionTranslation: Record<Languages, TrustedBySectionTranslation> = {
+const defaultTrustedBySectionTranslation: Translation<TrustedBySectionTranslation> = {
   en: {
     title: 'Trusted by'
   },

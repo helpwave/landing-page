@@ -2,7 +2,7 @@ import { Menu as MenuIcon, X } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
 import { Helpwave, MarkdownInterpreter, Menu, MenuItem, useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 const homeURL = '/'
 
 type LinkNames = 'products' | 'mediquu' | 'story' | 'support' | 'team' | 'talks' | 'tasks' | 'appzumdoc' | 'netzmanager'
@@ -65,7 +65,7 @@ type HeaderTranslation = {
   contact: string,
 } & { [key in LinkNames]: string }
 
-const defaultHeaderTranslation: Record<Languages, HeaderTranslation> = {
+const defaultHeaderTranslation: Translation<HeaderTranslation> = {
   en: {
     products: 'Products',
     mediquu: 'mediQuu',

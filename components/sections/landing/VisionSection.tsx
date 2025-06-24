@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { Chip } from '@helpwave/hightide'
 import { MarkdownInterpreter } from '@helpwave/hightide'
@@ -12,7 +12,7 @@ type VisionSectionTranslation = {
   description: string,
 }
 
-const defaultVisionSectionTranslation: Record<Languages, VisionSectionTranslation> = {
+const defaultVisionSectionTranslation: Translation<VisionSectionTranslation> = {
   en: {
     ourVision: 'Our Vision',
     title: 'Support health care workers with data',

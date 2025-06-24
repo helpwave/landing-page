@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -54,7 +54,7 @@ type FeatureSectionTranslation = {
   patientsText: string,
 }
 
-const defaultFeatureSectionTranslation: Record<Languages, FeatureSectionTranslation> = {
+const defaultFeatureSectionTranslation: Translation<FeatureSectionTranslation> = {
   en: {
     taskTemplatesTitle: 'Task Templates',
     taskTemplatesText: 'Save repetitive tasks as templates. Standardize your workflows, share them with your team.',

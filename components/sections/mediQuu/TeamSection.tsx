@@ -1,15 +1,16 @@
-import { useLanguage, type Languages } from '@helpwave/hightide'
-import type { ProfileProps } from '@helpwave/hightide'
-import { Profile } from '@helpwave/hightide'
+import { useLanguage } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { HelpwaveBadge } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import clsx from 'clsx'
 import { MediQuuBadge } from '@/components/sections/mediQuu/MediQuuBadge'
 import { SectionBase } from '@/components/sections/SectionBase'
+import type { ProfileProps } from '@/components/Profile'
+import { Profile } from '@/components/Profile'
 
 const imageUrl = (key: string) => `https://cdn.helpwave.de/profile/${key}.png`
 
-const contactsHelpwave: (ProfileProps & { translatedInfo?: Record<Languages, string> })[] = [
+const contactsHelpwave: (ProfileProps & { translatedInfo?: Translation<string> })[] = [
   {
     name: 'Felix Evers',
     roleBadge: 'CEO',
@@ -69,7 +70,7 @@ const contactsHelpwave: (ProfileProps & { translatedInfo?: Record<Languages, str
   },
 ]
 
-const contactsMediquu: (ProfileProps & { translatedInfo?: Record<Languages, string> })[] = [
+const contactsMediquu: (ProfileProps & { translatedInfo?: Translation<string> })[] = [
   {
     name: 'Christian Remfert',
     roleBadge: 'Advisor',
@@ -106,7 +107,7 @@ type TeamSectionTranslation = {
   subTitle: string,
 }
 
-const defaultTeamSectionTranslation: Record<Languages, TeamSectionTranslation> = {
+const defaultTeamSectionTranslation: Translation<TeamSectionTranslation> = {
   en: {
     title: 'Contacts',
     subTitle: 'We are available to answer any questions you may have at short notice.',

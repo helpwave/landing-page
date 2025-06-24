@@ -2,7 +2,7 @@ import { Helpwave } from '@helpwave/hightide'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 import { Page } from '@/components/Page'
@@ -13,7 +13,7 @@ type NotFoundTranslation = {
   toHomePage: (link: ReactNode) => ReactNode,
 }
 
-const defaultNotFoundTranslation: Record<Languages, NotFoundTranslation> = {
+const defaultNotFoundTranslation: Translation<NotFoundTranslation> = {
   en: {
     notFound: 'Not Found',
     description: 'This is definitely not the site you&\'re looking for.',

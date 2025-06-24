@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
@@ -12,7 +12,7 @@ type TasksTemplatesSectionTranslation = {
   taskTemplates: string,
 }
 
-const defaultTasksTemplatesSectionTranslation: Record<Languages, TasksTemplatesSectionTranslation> = {
+const defaultTasksTemplatesSectionTranslation: Translation<TasksTemplatesSectionTranslation> = {
   en: {
     title: 'Quality management and time efficiency',
     description: 'Save recurring tasks as templates. Standardize your workflows and share them with your team.',

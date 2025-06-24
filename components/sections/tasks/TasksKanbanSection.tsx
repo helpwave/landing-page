@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
@@ -12,7 +12,7 @@ type TasksKanbanSectionTranslation = {
   tasks: string,
 }
 
-const defaultTasksKanbanSectionTranslation: Record<Languages, TasksKanbanSectionTranslation> = {
+const defaultTasksKanbanSectionTranslation: Translation<TasksKanbanSectionTranslation> = {
   en: {
     title: 'Effective teamwork',
     description: 'Are you part of the treatment team? See the progress without having to ask.',
