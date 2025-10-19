@@ -11,7 +11,7 @@ export type PageProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * An addition to the page title used to differentiate subpages
    */
-  pageTitleAddition: string | undefined,
+  pageTitle?: string | undefined,
   outerClassName?: string,
 }
 
@@ -22,7 +22,7 @@ export const Page = ({
   children,
   header = (<Header/>),
   footer = (<Footer/>),
-  pageTitleAddition,
+  pageTitle,
   className,
   outerClassName,
   ...restProps
@@ -32,7 +32,7 @@ export const Page = ({
          className={clsx('w-screen h-screen relative overflow-x-hidden bg-background text-on-background', outerClassName)}>
       {header}
       <Head>
-        <title>{titleWrapper(pageTitleAddition)}</title>
+        <title>{titleWrapper(pageTitle)}</title>
       </Head>
       <main className={clsx('w-full pt-16', className)}>
         {children}

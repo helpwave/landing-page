@@ -37,7 +37,7 @@ const defaultNotFoundTranslation: Record<Languages, NotFoundTranslation> = {
 const NotFound: NextPage = () => {
   const translation = useTranslation(defaultNotFoundTranslation)
   return (
-    <Page className="h-screen" pageTitleAddition={translation.notFound}>
+    <Page className="h-screen" pageTitle={translation.notFound}>
       <SectionBase className="col h-full items-center justify-center text-center" outerClassName="h-full">
         <Helpwave className="w-full left-1/2" size={256} animate="bounce"/>
         <h1 className="text-9xl max-tablet:text-6xl font-space mb-8">{`404 ${translation.notFound}`}</h1>

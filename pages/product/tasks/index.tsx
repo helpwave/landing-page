@@ -11,23 +11,23 @@ import { TasksTemplatesSection } from '@/components/sections/tasks/TasksTemplate
 import { PropertiesSection } from '@/components/sections/tasks/PropertiesSection'
 
 const Tasks: NextPage = () => {
-  return (
-    <Page pageTitleAddition="tasks">
-      <StartSection/>
-      {/*
+    return (
+        <Page pageTitle="helpwave tasks">
+            <StartSection />
+            {/*
         Waiting for approval of UKM
         <TrustedBySection/>
       */}
-      <ConnectOrganizationFeatureSection/>
-      <MobileFeatureSection/>
-      <PatientSection/>
-      <TasksKanbanSection/>
-      <TasksTemplatesSection/>
-      <PropertiesSection/>
-      <Divider/>
-      <DemoSection/>
-    </Page>
-  )
+            <ConnectOrganizationFeatureSection />
+            <MobileFeatureSection />
+            <PatientSection />
+            <TasksKanbanSection />
+            <TasksTemplatesSection />
+            <PropertiesSection />
+            <Divider />
+            <DemoSection />
+        </Page>
+    )
 }
 
 export default Tasks
