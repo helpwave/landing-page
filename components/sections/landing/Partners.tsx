@@ -32,7 +32,7 @@ const images: Partner[] = [
     },
     {
         name: 'Collective Incubator',
-        url: 'https://cdn.helpwave.de/partners/collective_incubator_black.svg'
+        url: 'https://cdn.helpwave.de/partners/collective_incubator_black.png'
     },
     {
         name: 'mediQuu',
