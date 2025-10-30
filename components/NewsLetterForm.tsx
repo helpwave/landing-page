@@ -117,8 +117,8 @@ export const NewsLetterForm = ({
   return (
     <div className="rounded-lg py-2 px-4 w-full bg-[#FFFFFFEE] border border-2">
       <div className="col">
-        <span className="textstyle-title-md">{translation.title}</span>
-        <span className="textstyle-form-description">{translation.subtitle}</span>
+        <span className="typography-title-md">{translation.title}</span>
+        <span className="text-description">{translation.subtitle}</span>
         <div className="col my-2 gap-y-1">
         <form>
           <Input

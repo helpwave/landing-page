@@ -99,7 +99,7 @@ const contacts: Contact[] = [
 export const ContactSection = ({
   overwriteTranslation,
 }: PropsForTranslation<ContactSectionTranslation>) => {
-  const translation = useTranslation(defaultContactSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultContactSectionTranslation], overwriteTranslation)
   const [contactForm, setContactForm] = useState<ContactForm>({
     firstname: '',
     lastname: '',
@@ -115,8 +115,8 @@ export const ContactSection = ({
   return (
     <SectionBase className="max-tablet:col tablet:row tablet:justify-between w-full gap-8" >
       <div className="col gap-y-1 tablet:w-2/5 desktop:w-1/2">
-        <span className="textstyle-title-xl text-primary">{translation.contact}</span>
-        <span>{translation.contactDescription}</span>
+        <span className="textstyle-title-xl text-primary">{translation('contact')}</span>
+        <span>{translation('contactDescription')}</span>
         {contacts.length > 0 && (
           <div className="col gap-y-6 mt-6">
             {contacts.map((contact, index) => (
@@ -131,25 +131,25 @@ export const ContactSection = ({
       <div className="col gap-y-2 tablet:w-3/5 desktop:w-1/2">
         <Input
           value={contactForm.firstname}
-          placeholder={translation.firstname}
+          placeholder={translation('firstname')}
           onChangeText={firstname => setContactForm(prevState => ({ ...prevState, firstname, hasSend: false, hasError: false }))}
         />
         <Input
           value={contactForm.lastname}
-          placeholder={translation.lastname}
+          placeholder={translation('lastname')}
           onChangeText={lastname => setContactForm(prevState => ({ ...prevState, lastname, hasSend: false, hasError: false }))}
         />
         <Input
           value={contactForm.email}
-          placeholder={translation.email}
+          placeholder={translation('email')}
           onChangeText={email => setContactForm(prevState => ({ ...prevState, email, hasSend: false, hasError: false }))}
         />
         <Textarea
           value={contactForm.message}
-          placeholder={translation.message}
+          placeholder={translation('message')}
           onChangeText={message => setContactForm(prevState => ({ ...prevState, message, hasSend: false, hasError: false }))}
         />
-        {contactForm.hasError && (<span className="text-negative font-semibold my-1">{translation.error}</span>)}
+        {contactForm.hasError && (<span className="text-negative font-semibold my-1">{translation('error')}</span>)}
         <LoadingButton
           color="primary"
           onClick={() => {
@@ -179,9 +179,9 @@ export const ContactSection = ({
           className="py-4 w-full"
           isLoading={isSending}
         >
-          {translation.send}
+          {translation('send')}
         </LoadingButton>
-        {contactForm.hasSend && (<span className="text-secondary font-bold text-xl text-center">{translation.thankYou}</span>)}
+        {contactForm.hasSend && (<span className="text-secondary font-bold text-xl text-center">{translation('thankYou')}</span>)}
       </div>
     </SectionBase>
   )

@@ -36,8 +36,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             </Head>
             <QueryClientProvider client={queryClient}>
                 <ThemeProvider>
-                    <LanguageProvider initialLanguage={defaultLanguage}>
-                        <Component {...pageProps} />
+                    <LanguageProvider language={defaultLanguage}>
+                        <Component {...pageProps}/>
                         <Toaster/>
                     </LanguageProvider>
                 </ThemeProvider>

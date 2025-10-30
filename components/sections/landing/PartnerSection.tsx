@@ -1,8 +1,8 @@
 import type { Translation } from '@helpwave/hightide'
+import { Carousel } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
-import type { Partner } from '@/components/PartnerList'
-import { PartnerList } from '@/components/PartnerList'
+import Image from 'next/image'
 
 type PartnerSectionTranslation = {
   title: string,
@@ -15,6 +15,11 @@ const defaultPartnerSectionTranslation: Translation<PartnerSectionTranslation> =
   de: {
     title: 'Unsere Partner'
   }
+}
+
+export type Partner = {
+  name: string,
+  url: string,
 }
 
 const images: Partner[] = [
@@ -61,11 +66,37 @@ const images: Partner[] = [
 ]
 
 const PartnerSection = () => {
-  const translation = useTranslation(defaultPartnerSectionTranslation)
+  const translation = useTranslation([defaultPartnerSectionTranslation])
 
   return (
-    <SectionBase className="gap-16 select-none justify-between items-center w-full" >
-      <PartnerList title={translation.title} partners={images}/>
+    <SectionBase
+      className="gap-16 select-none justify-between items-center w-full"
+      outerClassName="px-0"
+    >
+      <div className="flex-col-4 items-center w-full">
+        <h2 className="typography-title-lg">{translation('title')}</h2>
+        <Carousel
+          hintNext={true} isLooping={true} isAutoPlaying={true}
+          heightClassName="h-[8rem]"
+          widthClassName="w-1/2 tablet:w-3/10"
+        >
+          {images.map(partner => (
+            <div
+              key={partner.name}
+              className="flex-col-2 h-full items-center justify-center rounded-lg mx-2 dark:bg-white border-4 border-transparent group-focus-within/slide:border-primary"
+            >
+              <Image
+                key={partner.name}
+                width={0}
+                height={0}
+                src={partner.url}
+                alt={partner.name}
+                className="w-auto max-h-[100px] p-4"
+              />
+            </div>
+          ))}
+        </Carousel>
+      </div>
     </SectionBase>
   )
 }

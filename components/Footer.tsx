@@ -1,18 +1,17 @@
-import { useEffect } from 'react'
-import { useTranslation } from '@helpwave/hightide'
+import { useEffect, useState } from 'react'
+import type { Translation } from '@helpwave/hightide'
+import { HelpwaveLogo } from '@helpwave/hightide'
+import { LanguageDialog, SolidButton, ThemeDialog, useTranslation } from '@helpwave/hightide'
 import * as CookieConsent from 'vanilla-cookieconsent'
-import { Helpwave } from '@helpwave/hightide'
-import { useLanguage } from '@helpwave/hightide'
-import { Select } from '@helpwave/hightide'
 import pluginConfig from '../utils/CookieConsentConfig'
 import FooterLinkGroup from './FooterLinkGroup'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
-import type { ThemeType, ThemeTypeTranslation , Translation , Language } from '@helpwave/hightide'
-import { ThemeUtil } from '@helpwave/hightide'
-import { useTheme } from '@helpwave/hightide'
 
 type Categories = 'socials' | 'general' | 'products' | 'development'
-type FooterTranslation = { [key in Categories]: string } & ThemeTypeTranslation
+type FooterTranslation = { [key in Categories]: string } & {
+  changeTheme: string,
+  changeLanguage: string,
+}
 
 const defaultFooterTranslation: Translation<FooterTranslation> = {
   en: {
@@ -20,14 +19,16 @@ const defaultFooterTranslation: Translation<FooterTranslation> = {
     general: 'general',
     products: 'products',
     development: 'development',
-    ...ThemeUtil.translation.en,
+    changeLanguage: 'Change Language',
+    changeTheme: 'Change Theme',
   },
   de: {
     socials: 'social',
     general: 'allgemein',
     products: 'produkte',
     development: 'entwicklung',
-    ...ThemeUtil.translation.de,
+    changeLanguage: 'Sprache ändern',
+    changeTheme: 'Farbschema ändern',
   }
 }
 
@@ -84,50 +85,48 @@ const grouping: (Categories[])[] = [
 
 const Footer = () => {
   const year = new Date().getFullYear()
-  const { language, setLanguage } = useLanguage()
-  const { theme, setTheme } = useTheme()
-  const translation = useTranslation(defaultFooterTranslation, {})
+  const translation = useTranslation([defaultFooterTranslation], {})
+  const [isThemeDialogOpen, setIsThemeDialogOpen] = useState<boolean>(false)
+  const [isLanguageDialogOpen, setIsLanguageDialogOpen] = useState<boolean>(false)
 
   useEffect(() => {
     CookieConsent.run(pluginConfig)
   }, [])
 
   return (
-    <div className="w-screen bg-black text-white py-8 col items-center justify-center">
+    <footer className="w-screen bg-black text-white py-8 col items-center justify-center">
+      <ThemeDialog
+        isOpen={isThemeDialogOpen}
+        onClose={() => setIsThemeDialogOpen(false)}
+      />
+      <LanguageDialog
+        isOpen={isLanguageDialogOpen}
+        onClose={() => setIsLanguageDialogOpen(false)}
+      />
       <div className="flex flex-wrap w-full max-w-[900px] max-tablet:px-6 tablet:px-24 desktop:px-24 mx-auto justify-between">
         {grouping.map((groups, index) => (
           <div key={index} className="col max-tablet:w-full w-[192px] max-tablet:text-center max-tablet:items-center">
             {groups.map((category) => (
-              <FooterLinkGroup key={category} title={translation[category]} links={linkGroups[category]} />
+              <FooterLinkGroup key={category} title={translation(category)} links={linkGroups[category]} />
             ))}
             {index === 2 && (
               <>
-                <Select<Language>
-                  value={language}
-                  onChange={(language) => setLanguage(language)}
-                  options={[
-                    { value: 'de', label: 'Deutsch' },
-                    { value: 'en', label: 'English' }
-                  ]}>
-                </Select>
-                <Select<ThemeType>
-                  value={theme}
-                  onChange={(theme) => setTheme(theme)}
-                  options={[
-                    { value: 'light', label: translation.light },
-                    { value: 'dark', label: translation.dark }
-                  ]}>
-                </Select>
+                <SolidButton onClick={() => setIsLanguageDialogOpen(true)} size="small">
+                  {translation('changeLanguage')}
+                </SolidButton>
+                <SolidButton onClick={() => setIsThemeDialogOpen(true)} size="small">
+                  {translation('changeTheme')}
+                </SolidButton>
               </>
             )}
           </div>
         ))}
       </div>
       <div className="row w-full h-[128px] items-center justify-center mx-auto font-space">
-        <Helpwave color="white" size={128} />
-        <span className="textstyle-title-normal">&copy; {year} helpwave</span>
+        <HelpwaveLogo color="white" className="w-32 h-32" />
+        <span className="typography-title-md">&copy; {year} helpwave</span>
       </div>
-    </div>
+    </footer>
   )
 }
 

@@ -1,13 +1,9 @@
-import type { Translation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import { MarkdownInterpreter } from '@helpwave/hightide'
-import type { TextImageProps } from '@helpwave/hightide'
-import { TextImage } from '@helpwave/hightide'
-import { Carousel } from '@helpwave/hightide'
+import type { TextImageProps, Translation } from '@helpwave/hightide'
+import { Carousel, Dialog, MarkdownInterpreter, useTranslation } from '@helpwave/hightide'
 import { useState } from 'react'
-import { Modal } from '@helpwave/hightide'
 import Scrollbars from 'react-custom-scrollbars-2'
 import { SectionBase } from '@/components/sections/SectionBase'
+import { TextImage } from '@/components/TextImage'
 
 type StepsToDigitalizationSectionTranslation = {
   title: string,
@@ -50,79 +46,88 @@ const defaultStepsToDigitalizationSectionTranslation: Translation<StepsToDigital
  * A Section for showing steps need for Digitalization
  */
 export const StepsToDigitalizationSection = () => {
-  const translation = useTranslation(defaultStepsToDigitalizationSectionTranslation)
+  const translation = useTranslation([defaultStepsToDigitalizationSectionTranslation])
   const [modalValue, setModalValue] = useState<{ titleText: string, description: string }>()
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   const items: TextImageProps[] = [
     {
-      badge: `${translation.step} #1`,
-      title: translation.step1Title,
-      description: translation.step1Description,
+      badge: `${translation('step')} #1`,
+      title: translation('step1Title'),
+      description: translation('step1Description'),
       // make attribution https://www.freepik.com/free-photo/doctors-looking-laptop-while-sitting_5480800.htm#fromView=search&page=1&position=38&uuid=4c39262c-c1b1-4f11-a15e-7446ad1974d3
       imageUrl: 'https://cdn.helpwave.de/landing_page/doctors_discussing.jpg',
       color: 'primary',
       onShowMoreClicked: () => setModalValue({
-        titleText: translation.step1Title,
-        description: translation.step1Description
+        titleText: translation('step1Title'),
+        description: translation('step1Description')
       })
     },
     {
-      badge: `${translation.step} #2`,
-      title: translation.step2Title,
-      description: translation.step2Description,
+      badge: `${translation('step')} #2`,
+      title: translation('step2Title'),
+      description: translation('step2Description'),
       // make attribution https://www.freepik.com/free-photo/wide-shot-huge-tree-trunk-near-lake-surrounded-by-trees-blue-sky_7841618.htm#fromView=search&page=1&position=0&uuid=0752105f-3120-4f34-b3b7-48dd4a616223
       imageUrl: 'https://cdn.helpwave.de/landing_page/lake.jpg',
       color: 'secondary',
       onShowMoreClicked: () => setModalValue({
-        titleText: translation.step2Title,
-        description: translation.step2Description
+        titleText: translation('step2Title'),
+        description: translation('step2Description')
       })
     },
     {
-      badge: `${translation.step} #3`,
-      title: translation.step3Title,
-      description: translation.step3Description,
+      badge: `${translation('step')} #3`,
+      title: translation('step3Title'),
+      description: translation('step3Description'),
       // make attribution https://www.freepik.com/free-vector/infographic-dashboard-element-set_6209714.htm#fromView=search&page=1&position=45&uuid=12db1ee2-bec5-40ce-a317-5d240ad56f12
       imageUrl: 'https://cdn.helpwave.de/landing_page/dashboard.jpg',
       color: 'dark',
       onShowMoreClicked: () => setModalValue({
-        titleText: translation.step3Title,
-        description: translation.step3Description
+        titleText: translation('step3Title'),
+        description: translation('step3Description')
       })
     },
   ]
 
   return (
-    <SectionBase className="col gap-y-8 w-full !max-w-[1600px]" outerClassName="!px-0">
-      <div className="col items-center text-center">
-        <h2 className="textstyle-title-xl"><MarkdownInterpreter text={translation.title}/></h2>
-        <span className="textstyle-title-sm"><MarkdownInterpreter text={translation.description}/></span>
+    <SectionBase className="flex-col-8 w-full !max-w-[1600px]" outerClassName="!px-0">
+      <div className="flex-col-2 items-center text-center">
+        <h2 className="typography-title-lg"><MarkdownInterpreter text={translation('title')}/></h2>
+        <span className="typography-title-sm"><MarkdownInterpreter text={translation('description')}/></span>
       </div>
       <Carousel
-        hintNext={true} isLooping={true} isAutoLooping={true}
+        hintNext={true}
+        isLooping={true}
+        isAutoPlaying={true}
         heightClassName="h-[24rem] tablet:max-desktop:h-[19rem]"
         widthClassName="w-1/2 max-tablet:w-[75%]"
         blurColor="from-background"
+        onSlideChanged={setCurrentIndex}
       >
         {items.map((value, index) => (
-          <div key={index} className="px-[2.5%] h-full">
-            <TextImage {...value} className="h-full overflow-hidden"/>
+          <div
+            key={index}
+            className="mx-[2.5%] h-full border-4 rounded-2xl border-transparent group-focus-within/slide:border-black group-focus-within/slide:dark:border-white"
+          >
+            <TextImage
+              {...value}
+              disableMoreClick={currentIndex !== index}
+              className="h-full overflow-hidden"
+            />
           </div>
         ))}
       </Carousel>
-      <Modal
+      <Dialog
         isOpen={modalValue !== undefined}
-        headerProps={{
-          titleText: modalValue?.titleText,
-          description: (
-              <Scrollbars autoHeightMax={500} autoHeight={true}>
-                {modalValue?.description}
-              </Scrollbars>
-          )
-        }}
+        titleElement={modalValue?.titleText}
+        description={null}
         onClose={() => setModalValue(undefined)}
-        className="max-w-[600px] max-tablet:max-w-[90%] w-full"
-      />
+        className="max-w-64"
+      >
+        <Scrollbars autoHeightMax={500} autoHeight={true}>
+          {modalValue?.description}
+        </Scrollbars>
+      </Dialog>
     </SectionBase>
   )
 }

@@ -101,12 +101,12 @@ export const Profile = ({
                 )}
             </div>
             {prefix && <span className="font-semibold">{prefix}</span>}
-            <h2 id={name} className="textstyle-title-md">{name}</h2>
+            <h2 id={name} className="typography-title-md">{name}</h2>
             {suffix && <span className="text-sm mb-1">{suffix}</span>}
             {role && <span className="font-space font-bold text-sm">{role}</span>}
             {tags && (
                 <div className="flex flex-wrap mx-4 mt-2 gap-x-2 justify-center">
-                    {tags.map((tag, index) => <span key={index} className="textstyle-description text-sm">{`#${tag}`}</span>)}
+                    {tags.map((tag, index) => <span key={index} className="text-description text-sm">{`#${tag}`}</span>)}
                 </div>
             )}
             {info && <span className="mt-2 text-sm">{info}</span>}

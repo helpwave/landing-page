@@ -1,6 +1,5 @@
 import type { Translation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import { HelpwaveBadge } from '@helpwave/hightide'
+import { HelpwaveBadge, useTranslation } from '@helpwave/hightide'
 import Link from 'next/link'
 import Image from 'next/image'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -41,7 +40,7 @@ const defaultTasksDemoSectionTranslation: Translation<TasksDemoSectionTranslatio
  * A Section for showing helpwave tasks features and information about the demo
  */
 export const TasksDemoSection = () => {
-  const translation = useTranslation(defaultTasksDemoSectionTranslation)
+  const translation = useTranslation([defaultTasksDemoSectionTranslation])
 
   const demoURL = 'https://tasks.helpwave.de'
   const imageURL = 'https://cdn.helpwave.de/products/tasks_preview.png'
@@ -52,25 +51,26 @@ export const TasksDemoSection = () => {
     >
       <div className="col desktop:flex-row w-full items-end justify-between gap-x-16 gap-y-8">
         <div className="col gap-y-4 desktop:max-w-[70%]">
-          <HelpwaveBadge className="text-primary bg-purple-100 !w-fit" title={translation.helpwaveTasks} />
-          <span className="textstyle-title-lg">{translation.workflowManagement}</span>
+          <HelpwaveBadge className="text-primary bg-purple-100 !w-fit" title={translation('helpwaveTasks')}/>
+          <span className="typography-title-lg">{translation('workflowManagement')}</span>
           <div className="grid grid-cols-1 gap-x-6 gap-y-4 overflow-x-auto mt-2">
-            {[translation.feature1, translation.feature2, translation.feature3, translation.feature4].map((feature, index) => (
-              <div key={index} className="row items-center">
-                <div
-                  className="col justify-center items-center bg-primary text-white rounded-full min-w-[24px] min-h-[24px]">
-                  <Check size={18} strokeWidth={2.5} />
+            {[translation('feature1'), translation('feature2'), translation('feature3'), translation('feature4')]
+              .map((feature, index) => (
+                <div key={index} className="row items-center">
+                  <div
+                    className="col justify-center items-center bg-primary text-white rounded-full min-w-[24px] min-h-[24px]">
+                    <Check size={18} strokeWidth={2.5}/>
+                  </div>
+                  <span>{feature}</span>
                 </div>
-                <span>{feature}</span>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
         <Link
           href={demoURL}
           className="btn-md hover:brightness-[98%] bg-on-primary text-primary font-bold text-lg whitespace-nowrap"
         >
-          {translation.tryDemo}
+          {translation('tryDemo')}
         </Link>
       </div>
       <Image

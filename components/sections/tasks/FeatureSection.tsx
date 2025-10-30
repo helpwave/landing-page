@@ -37,7 +37,7 @@ const FeatureItem = ({
         <span className="textstyle-title-2xl">
           {title}
         </span>
-        <span className="textstyle-description text-gray-600">
+        <span className="text-description text-gray-600">
           {description}
         </span>
       </div>

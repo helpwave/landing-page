@@ -106,7 +106,7 @@ const CreditsPage: NextPage = ({ overwriteTranslation }: PropsForTranslation<Cre
       </SectionBase>
 
       <SectionBase  className="w-full">
-        <h2 className="textstyle-title-normal">Freepik</h2>
+        <h2 className="typography-title-md">Freepik</h2>
         <div className="grow col items-center min-w-50 items-center gap-y-4">
           {
             freepikCredits.map((credit) => (
@@ -121,7 +121,7 @@ const CreditsPage: NextPage = ({ overwriteTranslation }: PropsForTranslation<Cre
       </SectionBase>
 
       <SectionBase backgroundColor="variant" className="col gap-y-2 w-full">
-        <h2 className="textstyle-title-md">{translation.flaticon}</h2>
+        <h2 className="typography-title-md">{translation.flaticon}</h2>
         {flaticonCredits.map(({ name, author, link }) => (
           <Link key={name + author} href={link} title={name} className="underline" target="_blank">
             {translation.createdBy(name, author)}

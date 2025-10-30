@@ -31,7 +31,7 @@ const TrustedBySection = () => {
 
   return (
     <SectionBase className="col gap-y-8 select-none justify-between items-center w-full" >
-      <span className="textstyle-title-lg">{translation.title}</span>
+      <span className="typography-title-lg">{translation.title}</span>
       <DividerInserter
         className="row gap-x-6 items-center justify-center w-full"
         divider={index => (<VerticalDivider key={index} height={128}/>)}

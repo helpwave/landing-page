@@ -22,7 +22,7 @@ const defaultLandingPageTranslation: Translation<LandingPageTranslation> = {
 }
 
 const StartSection = ({ overwriteTranslation }: PropsForTranslation<LandingPageTranslation>) => {
-    const translation = useTranslation(defaultLandingPageTranslation, overwriteTranslation)
+    const translation = useTranslation([defaultLandingPageTranslation], overwriteTranslation)
     return (
         <SectionBase
             className="flex row flex-wrap-reverse w-full max-w-full gap-8 justify-between max-tablet:justify-center items-center"
@@ -30,8 +30,8 @@ const StartSection = ({ overwriteTranslation }: PropsForTranslation<LandingPageT
         >
             <div className="col items-center flex-1">
                 <div className="col gap-y-2 max-w-[600px]">
-                    <h1 className="textstyle-title-2xl">{translation.title}</h1>
-                    <span className="textstyle-title-lg"><MarkdownInterpreter text={translation.description}/></span>
+                    <h1 className="typography-headline-lg">{translation('title')}</h1>
+                    <span className="typography-headline-md"><MarkdownInterpreter text={translation('description')}/></span>
                 </div>
             </div>
             <Image
