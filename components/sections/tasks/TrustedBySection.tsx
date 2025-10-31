@@ -1,16 +1,16 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { VerticalDivider } from '@helpwave/hightide'
 import { DividerInserter } from '@helpwave/hightide'
 import Image from 'next/image'
 import { SectionBase } from '@/components/sections/SectionBase'
-import type { Partner } from '@/components/PartnerList'
+import type { Partner } from '@/components/sections/landing/PartnerSection'
 
 type TrustedBySectionTranslation = {
   title: string,
 }
 
-const defaultTrustedBySectionTranslation: Record<Languages, TrustedBySectionTranslation> = {
+const defaultTrustedBySectionTranslation: Translation<TrustedBySectionTranslation> = {
   en: {
     title: 'Trusted by'
   },
@@ -27,11 +27,11 @@ const images: Partner[] = [
 ]
 
 const TrustedBySection = () => {
-  const translation = useTranslation(defaultTrustedBySectionTranslation)
+  const translation = useTranslation([defaultTrustedBySectionTranslation])
 
   return (
     <SectionBase className="col gap-y-8 select-none justify-between items-center w-full" >
-      <span className="textstyle-title-lg">{translation.title}</span>
+      <span className="typography-title-lg">{translation('title')}</span>
       <DividerInserter
         className="row gap-x-6 items-center justify-center w-full"
         divider={index => (<VerticalDivider key={index} height={128}/>)}

@@ -1,6 +1,27 @@
-import type { ProfileProps } from '@helpwave/hightide'
-import TeamGroup from '@/components/TeamGroup'
 import { SectionBase } from '@/components/sections/SectionBase'
+import type { ProfileProps } from '@/components/Profile'
+import { Profile } from '@/components/Profile'
+import type { Translation } from '@helpwave/hightide'
+import { useTranslation } from '@helpwave/hightide'
+
+type TeamGroupProps = {
+  name: string,
+  members: ProfileProps[],
+}
+
+const TeamGroup = ({
+                     name,
+                     members,
+                   }: TeamGroupProps) => {
+  return (
+    <div className="mb-8 flex flex-wrap text-center justify-center gap-8">
+      <h2 className="w-full text-6xl underline my-8">{name}</h2>
+      {members.map(member => (
+        <Profile key={member.name} {...member}/>
+      ))}
+    </div>
+  )
+}
 
 const imageUrl = (key: string) => `https://cdn.helpwave.de/profile/${key}.png`
 
@@ -104,14 +125,30 @@ const teamData: Record<string, ProfileProps[]> = {
     ],
 }
 
+type TeamSectionTranslationType = {
+  team: string,
+}
+
+const defaultTeamSectionTranslation: Translation<TeamSectionTranslationType> = {
+  de: {
+    team: 'Team',
+  },
+  en: {
+    team: 'Team',
+  }
+}
+
 const TeamSection = () => {
-    return (
-        <SectionBase>
-            {Object.entries(teamData).map(([name, members]) => (
-                <TeamGroup key={name} name={name} members={members} />
-            ))}
-        </SectionBase>
-    )
+  const translation = useTranslation([defaultTeamSectionTranslation])
+
+  return (
+    <SectionBase>
+      <h1 className="sr-only">{translation('team')}</h1>
+      {Object.entries(teamData).map(([name, members]) => (
+        <TeamGroup key={name} name={name} members={members} />
+      ))}
+    </SectionBase>
+  )
 }
 
 export default TeamSection

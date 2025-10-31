@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { Chip } from '@helpwave/hightide'
 import { MarkdownInterpreter } from '@helpwave/hightide'
@@ -12,7 +12,7 @@ type VisionSectionTranslation = {
   description: string,
 }
 
-const defaultVisionSectionTranslation: Record<Languages, VisionSectionTranslation> = {
+const defaultVisionSectionTranslation: Translation<VisionSectionTranslation> = {
   en: {
     ourVision: 'Our Vision',
     title: 'Support health care workers with data',
@@ -26,18 +26,18 @@ const defaultVisionSectionTranslation: Record<Languages, VisionSectionTranslatio
 }
 
 const StartSection = ({ overwriteTranslation }: PropsForTranslation<VisionSectionTranslation>) => {
-  const translation = useTranslation(defaultVisionSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultVisionSectionTranslation], overwriteTranslation)
   const imageURL = 'https://cdn.helpwave.de/landing_page/process.png'
   return (
     <SectionBase
-      className="flex max-tablet:flex-col-reverse tablet:row tablet:gap-x-8 gap-y-8 items-center justify-center w-full"
+      className="flex-col-8 max-tablet:flex-col-reverse tablet:flex-row-8 items-center justify-center w-full"
       outerClassName="py-24"
       backgroundColor="variant"
     >
-      <div className="col w-1/2 max-tablet:w-full gap-y-2">
-        <Chip color="blue" className="font-semibold px-4">{translation.ourVision}</Chip>
-        <h2 className="textstyle-title-xl">{translation.title}</h2>
-        <span className="font-inter font-semibold"><MarkdownInterpreter text={translation.description}/></span>
+      <div className="flex-col-2 w-1/2 max-tablet:w-full">
+        <Chip color="blue" className="font-semibold px-4"><h2>{translation('ourVision')}</h2></Chip>
+        <span className="typography-title-lg">{translation('title')}</span>
+        <span className="font-inter font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
       </div>
       <Image src={imageURL} alt="" width={0} height={0} className="max-tablet:w-full max-tablet:max-w-[500px] w-1/2 py-4 px-8 rounded-2xl dark:bg-white"/>
     </SectionBase>

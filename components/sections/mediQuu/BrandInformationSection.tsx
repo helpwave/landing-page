@@ -1,8 +1,7 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
+import { HelpwaveLogo } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import { Tile } from '@helpwave/hightide'
 import Image from 'next/image'
-import { HelpwaveBadge } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
 type MediQuuBrandDescriptionTranslation = {
@@ -10,9 +9,10 @@ type MediQuuBrandDescriptionTranslation = {
   aboutHelpwaveTitle: string,
   aboutMediQuuDescription: string,
   aboutHelpwaveDescription: string,
+  brandDescriptions: string,
 }
 
-const defaultMediQuuBrandDescriptionTranslation: Record<Languages, MediQuuBrandDescriptionTranslation> = {
+const defaultMediQuuBrandDescriptionTranslation: Translation<MediQuuBrandDescriptionTranslation> = {
   en: {
     aboutMediQuuTitle: 'About mediQuu',
     aboutHelpwaveTitle: 'About helpwave',
@@ -28,6 +28,7 @@ const defaultMediQuuBrandDescriptionTranslation: Record<Languages, MediQuuBrandD
       helpwave positions itself with a process-oriented development strategy as the leading alternative in the healthcare market,
       ensuring optimal digital healthcare delivery.
     `,
+    brandDescriptions: 'Brand Descriptions',
   },
   de: {
     aboutMediQuuTitle: 'Über mediQuu',
@@ -44,33 +45,45 @@ const defaultMediQuuBrandDescriptionTranslation: Record<Languages, MediQuuBrandD
       mit Auswirkungen im ambulanten Bereich positioniert sich helpwave mit einer prozessorientierten Entwicklungsstrategie als
       führende Alternative im Gesundheitsmarkt, um eine optimale digitale Versorgung zu gewährleisten.
     `,
+    brandDescriptions: 'Marken Beschreibungen',
   }
 }
 export const BrandDescriptionsSection = () => {
-  const translation = useTranslation(defaultMediQuuBrandDescriptionTranslation)
+  const translation = useTranslation([defaultMediQuuBrandDescriptionTranslation])
   return (
-    <SectionBase className="col gap-8 justify-center" >
-      <Tile
-        title={{ value: translation.aboutMediQuuTitle, className: 'textstyle-title-lg' }}
-        description={{ value: translation.aboutMediQuuDescription, className: '' }}
-        prefix={(
-          <Image src="https://cdn.helpwave.de/mediquu/logo_2021.png" alt="" width={220} height={64} className="p-4 rounded-lg dark:bg-white"/>
-        )}
-        className="bg-surface text-on-surface rounded-3xl px-6 max-tablet:py-6 tablet:py-12 desktop:py-16 !gap-6 !w-fit shadow-md max-tablet:col tablet:col"
-      />
-      <Tile
-        title={{ value: translation.aboutHelpwaveTitle, className: 'textstyle-title-lg' }}
-        description={{ value: translation.aboutHelpwaveDescription, className: '' }}
-        prefix={(
-          <div className="min-w-[220px]">
-            <HelpwaveBadge
-              size="large"
-              className="bg-secondary !gap-x-2 !w-fit"
-            />
-          </div>
-        )}
-        className="text-on-secondary bg-secondary rounded-3xl px-6 max-tablet:py-6 tablet:py-12 desktop:py-16 !gap-6 !w-fit shadow-md max-tablet:col tablet:col"
-      />
+    <SectionBase className="flex-col-8 justify-center">
+      <h2 className="sr-only">{translation('brandDescriptions')}</h2>
+      <div
+        className="flex-col-8 tablet:flex-row-8 bg-surface text-on-surface rounded-3xl px-6 max-tablet:py-6 tablet:py-12 desktop:py-16 shadow-md"
+      >
+        <div className="flex-row-0 items-center justify-center min-w-56 p-4 rounded-lg dark:bg-white">
+          <Image src="https://cdn.helpwave.de/mediquu/logo_2021.png" alt="" width={220} height={64} className=""/>
+        </div>
+        <div className="flex-col-2">
+          <span className="typography-title-lg">
+          {translation('aboutMediQuuTitle')}
+        </span>
+          <span>
+          {translation('aboutMediQuuDescription')}
+        </span>
+        </div>
+      </div>
+      <div
+        className="flex-col-8 tablet:flex-row-8 text-on-secondary bg-secondary rounded-3xl px-6 max-tablet:py-6 tablet:py-12 desktop:py-16 shadow-md"
+      >
+        <div className="flex-row-2 items-center justify-center min-w-56">
+          <HelpwaveLogo size="lg"/>
+          <span className="typography-title-lg">{'helpwave'}</span>
+        </div>
+        <div className="flex-col-2">
+          <span className="typography-title-lg">
+          {translation('aboutHelpwaveTitle')}
+        </span>
+          <span>
+          {translation('aboutHelpwaveDescription')}
+        </span>
+        </div>
+      </div>
     </SectionBase>
   )
 }

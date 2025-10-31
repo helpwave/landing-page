@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -17,7 +17,7 @@ type ConnectOrganizationFeatureSectionTranslation = {
   feature6: string,
 }
 
-const defaultConnectOrganizationFeatureSectionTranslation: Record<Languages, ConnectOrganizationFeatureSectionTranslation> = {
+const defaultConnectOrganizationFeatureSectionTranslation: Translation<ConnectOrganizationFeatureSectionTranslation> = {
   en: {
     title: 'Connect your organization in one tool',
     description: 'Use \\b{helpwave tasks} to experience a user-centered management tool, designed to simplify workflows and ensure high quality patient care.',
@@ -41,11 +41,11 @@ const defaultConnectOrganizationFeatureSectionTranslation: Record<Languages, Con
 }
 
 export const ConnectOrganizationFeatureSection = ({ overwriteTranslation }: PropsForTranslation<ConnectOrganizationFeatureSectionTranslation>) => {
-  const translation = useTranslation(defaultConnectOrganizationFeatureSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultConnectOrganizationFeatureSectionTranslation], overwriteTranslation)
   const imageUrl = 'https://cdn.helpwave.de/products/tasks_ward_overview.png'
 
-  const features = [translation.feature1, translation.feature2, translation.feature3,
-    translation.feature4, translation.feature5, translation.feature6]
+  const features = [translation('feature1'), translation('feature2'), translation('feature3'),
+    translation('feature4'), translation('feature5'), translation('feature6')]
   const featureStyle = 'font-semibold'
 
   return (
@@ -54,10 +54,10 @@ export const ConnectOrganizationFeatureSection = ({ overwriteTranslation }: Prop
 
       outerClassName="!pr-0"
     >
-      <div className="col items-center max-tablet:items-start flex-1 max-tablet:pr-6">
-        <div className="col gap-y-2 max-w-[500px] max-tablet:max-w-full">
-          <h1 className="textstyle-title-2xl">{translation.title}</h1>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation.description}/></span>
+      <div className="flex-col-2 items-start tablet:items-center pr-6 tablet:pr-0">
+        <div className="flex-col-2 max-w-[500px] max-tablet:max-w-full">
+          <h2 className="typography-title-lg">{translation('title')}</h2>
+          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
           <div className="grid grid-cols-2 gap-x-6 gap-y-4 overflow-x-auto mt-2">
             {features.map((feature, index) => (
               <div key={index}  className="row items-center">

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -34,10 +34,10 @@ const FeatureItem = ({
       </div>
 
       <div className="col w-1/3 max-tablet:!w-full">
-        <span className="textstyle-title-2xl">
+        <h2 className="typography-title-lg">
           {title}
-        </span>
-        <span className="textstyle-description text-gray-600">
+        </h2>
+        <span className="text-description">
           {description}
         </span>
       </div>
@@ -54,7 +54,7 @@ type FeatureSectionTranslation = {
   patientsText: string,
 }
 
-const defaultFeatureSectionTranslation: Record<Languages, FeatureSectionTranslation> = {
+const defaultFeatureSectionTranslation: Translation<FeatureSectionTranslation> = {
   en: {
     taskTemplatesTitle: 'Task Templates',
     taskTemplatesText: 'Save repetitive tasks as templates. Standardize your workflows, share them with your team.',
@@ -74,7 +74,7 @@ const defaultFeatureSectionTranslation: Record<Languages, FeatureSectionTranslat
 }
 
 const FeatureSection = ({ overwriteTranslation }: PropsForTranslation<FeatureSectionTranslation>) => {
-  const translation = useTranslation(defaultFeatureSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultFeatureSectionTranslation], overwriteTranslation)
   const screenshotTemplates = 'https://cdn.helpwave.de/screenshots/tasks_2.png'
   const screenshotCollab = 'https://cdn.helpwave.de/screenshots/tasks_3.png'
   const screenshotPatients = 'https://cdn.helpwave.de/screenshots/tasks_4.png'
@@ -85,23 +85,23 @@ const FeatureSection = ({ overwriteTranslation }: PropsForTranslation<FeatureSec
       <FeatureItem
         imageUrl={screenshotTemplates}
         size={size}
-        title={translation.taskTemplatesTitle}
-        description={translation.taskTemplatesText}
+        title={translation('taskTemplatesTitle')}
+        description={translation('taskTemplatesText')}
       />
 
       <FeatureItem
         imageUrl={screenshotCollab}
         size={size}
-        title={translation.collaborateTitle}
-        description={translation.collaborateText}
+        title={translation('collaborateTitle')}
+        description={translation('collaborateText')}
         reverse={true}
       />
 
       <FeatureItem
         imageUrl={screenshotPatients}
         size={size}
-        title={translation.patientsTitle}
-        description={translation.patientsText}
+        title={translation('patientsTitle')}
+        description={translation('patientsText')}
       />
     </SectionBase>
   )

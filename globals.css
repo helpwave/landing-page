@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '@helpwave/hightide/css/uncompiled/globals.css';
+@import '@helpwave/hightide/style/uncompiled/globals.css';
 
 @source "./node_modules/@helpwave/hightide";
 
@@ -19,5 +19,11 @@
     --color-section-on-variant: #FFF;
     --color-section-dark: #2A2A2A;
     --color-section-on-dark: #FFF;
+  }
+}
+
+@layer components {
+  a {
+    @apply rounded-md;
   }
 }

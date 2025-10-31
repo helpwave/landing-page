@@ -1,5 +1,5 @@
 import { Popcorn } from 'lucide-react'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -14,7 +14,7 @@ type StoryStartSectionTranslation = {
   futureText: string,
 }
 
-const defaultStoryStartSectionTranslation: Record<Languages, StoryStartSectionTranslation> = {
+const defaultStoryStartSectionTranslation: Translation<StoryStartSectionTranslation> = {
   en: {
     ourStory: 'Our Story',
     identifyingTheProblemTitle: 'Identifying the Problem',
@@ -72,40 +72,40 @@ const defaultStoryStartSectionTranslation: Record<Languages, StoryStartSectionTr
 }
 
 const StoryStartSection = ({ overwriteTranslation }: PropsForTranslation<StoryStartSectionTranslation>) => {
-  const translation = useTranslation(defaultStoryStartSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultStoryStartSectionTranslation], overwriteTranslation)
 
   return (
     <SectionBase className="col gap-y-8">
       <div
         className="col tablet:row max-tablet:text-center gap-8 text-6xl text-negative items-center">
         <Popcorn size="128" color="#A54F5C" className="inline max-tablet:w-full"/>
-        {translation.ourStory}
+        {translation('ourStory')}
       </div>
 
       <div>
         <h2 className="font-space text-4xl font-light">
-          1. {translation.identifyingTheProblemTitle}
+          1. {translation('identifyingTheProblemTitle')}
         </h2>
         <p className="mt-2 text-justify">
-          {translation.identifyingTheProblemText}
+          {translation('identifyingTheProblemText')}
         </p>
       </div>
 
       <div>
         <h2 className="font-space text-4xl font-light">
-          2. {translation.tasksAndOpenInnovationTitle}
+          2. {translation('tasksAndOpenInnovationTitle')}
         </h2>
         <p className="mt-2 text-justify">
-          {translation.tasksAndOpenInnovationText}
+          {translation('tasksAndOpenInnovationText')}
         </p>
       </div>
 
       <div>
         <h2 className="font-space text-4xl font-light">
-          3. {translation.futureTitle}
+          3. {translation('futureTitle')}
         </h2>
         <p className="mt-2 text-justify">
-          {translation.futureText}
+          {translation('futureText')}
         </p>
       </div>
     </SectionBase>

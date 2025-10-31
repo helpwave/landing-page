@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import Image from 'next/image'
@@ -9,7 +9,7 @@ type StoryHeaderTranslation = {
   foundingStoryDescription: string,
 }
 
-const defaultStoryHeaderTranslation: Record<Languages, StoryHeaderTranslation> = {
+const defaultStoryHeaderTranslation: Translation<StoryHeaderTranslation> = {
   en: {
     foundingStory: 'Founding Story',
     foundingStoryDescription: 'In 2022, the founders of helpwave came together at a hackathon, driven by a shared passion to transform the digital health space. Inspired by our shared vision, we created helpwave - an innovative open source platform designed to revolutionize healthcare. Our first product, helpwave tasks, ushers in a new era of streamlined and accessible healthcare solutions.',
@@ -21,14 +21,14 @@ const defaultStoryHeaderTranslation: Record<Languages, StoryHeaderTranslation> =
 }
 
 const StoryHeader = ({ overwriteTranslation }: PropsForTranslation<StoryHeaderTranslation>) => {
-  const translation = useTranslation(defaultStoryHeaderTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultStoryHeaderTranslation], overwriteTranslation)
 
   return (
     <SectionBase backgroundColor="dark">
-      <div className="col items-center desktop:!flex-row gap-x-16 gap-y-8 justify-between">
-        <div className="col gap-y-2">
-          <span className="textstyle-title-xl">{translation.foundingStory}</span>
-          <span>{translation.foundingStoryDescription}</span>
+      <div className="flex-col-8 items-center desktop:!flex-row gap-x-16 justify-between">
+        <div className="flex-col-2">
+          <span className="typography-title-lg">{translation('foundingStory')}</span>
+          <span>{translation('foundingStoryDescription')}</span>
         </div>
         <Image src="https://cdn.helpwave.de/story/audience_award_mshack.png" alt="" width={0} height={0} className="w-full desktop:max-w-[60%]"/>
       </div>

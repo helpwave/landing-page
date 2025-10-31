@@ -1,8 +1,7 @@
-import { Helpwave } from '@helpwave/hightide'
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import type { ReactNode } from 'react'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
+import { HelpwaveLogo } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 import { Page } from '@/components/Page'
@@ -10,40 +9,33 @@ import { Page } from '@/components/Page'
 type NotFoundTranslation = {
   notFound: string,
   description: string,
-  toHomePage: (link: ReactNode) => ReactNode,
+  toHomePage: string,
 }
 
-const defaultNotFoundTranslation: Record<Languages, NotFoundTranslation> = {
+const defaultNotFoundTranslation: Translation<NotFoundTranslation> = {
   en: {
     notFound: 'Not Found',
     description: 'This is definitely not the site you&\'re looking for.',
-    toHomePage: link => (
-      <>
-        Let me take you to the {link}.
-      </>
-    )
+    toHomePage: 'Let me take you to the',
   },
   de: {
     notFound: 'Nicht Gefunden',
     description: 'Das ist definitv nicht die Seite nach der Ihr gesucht habt.',
-    toHomePage: link => (
-      <>
-        Lass mich dich zur {link} zurückbringen.
-      </>
-    )
+    toHomePage: 'Lass mich dich zurückbringen zur',
   }
 }
 
 const NotFound: NextPage = () => {
-  const translation = useTranslation(defaultNotFoundTranslation)
+  const translation = useTranslation([defaultNotFoundTranslation])
   return (
-    <Page className="h-screen" pageTitle={translation.notFound}>
+    <Page className="h-screen" pageTitle={translation('notFound')}>
       <SectionBase className="col h-full items-center justify-center text-center" outerClassName="h-full">
-        <Helpwave className="w-full left-1/2" size={256} animate="bounce"/>
-        <h1 className="text-9xl max-tablet:text-6xl font-space mb-8">{`404 ${translation.notFound}`}</h1>
-        <p className="text-4xl max-tablet:text-xl font-inter">{translation.description}</p>
+        <HelpwaveLogo className="w-64 h-64 left-1/2" animate="bounce"/>
+        <h1 className="text-9xl max-tablet:text-6xl font-space mb-8">{`404 ${translation('notFound')}`}</h1>
+        <p className="text-4xl max-tablet:text-xl font-inter">{translation('description')}</p>
         <p className="text-4xl max-tablet:text-xl font-inter">
-          {translation.toHomePage(<Link className="underline text-cyan-900" href="/">home page</Link>)}
+          {translation('toHomePage') + ' '}
+          <Link className="underline text-primary" href="/">home page</Link>
         </p>
       </SectionBase>
     </Page>

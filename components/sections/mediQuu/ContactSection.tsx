@@ -1,4 +1,4 @@
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { useState } from 'react'
@@ -21,7 +21,7 @@ type ContactSectionTranslation = {
   error: string,
 }
 
-const defaultContactSectionTranslation: Record<Languages, ContactSectionTranslation> = {
+const defaultContactSectionTranslation: Translation<ContactSectionTranslation> = {
   en: {
     contact: 'Contact',
     contactDescription: 'We are available to answer any questions you may have at short notice.',
@@ -99,7 +99,7 @@ const contacts: Contact[] = [
 export const ContactSection = ({
   overwriteTranslation,
 }: PropsForTranslation<ContactSectionTranslation>) => {
-  const translation = useTranslation(defaultContactSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultContactSectionTranslation], overwriteTranslation)
   const [contactForm, setContactForm] = useState<ContactForm>({
     firstname: '',
     lastname: '',
@@ -113,14 +113,14 @@ export const ContactSection = ({
   const isValid = !!contactForm.firstname && !!contactForm.lastname && validateEmail(contactForm.email) && !!contactForm.message
 
   return (
-    <SectionBase className="max-tablet:col tablet:row tablet:justify-between w-full gap-8" >
-      <div className="col gap-y-1 tablet:w-2/5 desktop:w-1/2">
-        <span className="textstyle-title-xl text-primary">{translation.contact}</span>
-        <span>{translation.contactDescription}</span>
+    <SectionBase className="flex-col-8 tablet:flex-row-8 tablet:justify-between w-full">
+      <div className="flex-col-1 tablet:w-2/5 desktop:w-1/2">
+        <h2 className="typography-title-lg text-primary">{translation('contact')}</h2>
+        <span>{translation('contactDescription')}</span>
         {contacts.length > 0 && (
-          <div className="col gap-y-6 mt-6">
+          <div className="flex-col-6 mt-6">
             {contacts.map((contact, index) => (
-              <div key={index} className="col gap-y-1">
+              <div key={index} className="flex-col-1">
                 <span className="font-bold">{contact.name}</span>
                 <span>{contact.email}</span>
               </div>
@@ -131,25 +131,25 @@ export const ContactSection = ({
       <div className="col gap-y-2 tablet:w-3/5 desktop:w-1/2">
         <Input
           value={contactForm.firstname}
-          placeholder={translation.firstname}
-          onChange={firstname => setContactForm(prevState => ({ ...prevState, firstname, hasSend: false, hasError: false }))}
+          placeholder={translation('firstname')}
+          onChangeText={firstname => setContactForm(prevState => ({ ...prevState, firstname, hasSend: false, hasError: false }))}
         />
         <Input
           value={contactForm.lastname}
-          placeholder={translation.lastname}
-          onChange={lastname => setContactForm(prevState => ({ ...prevState, lastname, hasSend: false, hasError: false }))}
+          placeholder={translation('lastname')}
+          onChangeText={lastname => setContactForm(prevState => ({ ...prevState, lastname, hasSend: false, hasError: false }))}
         />
         <Input
           value={contactForm.email}
-          placeholder={translation.email}
-          onChange={email => setContactForm(prevState => ({ ...prevState, email, hasSend: false, hasError: false }))}
+          placeholder={translation('email')}
+          onChangeText={email => setContactForm(prevState => ({ ...prevState, email, hasSend: false, hasError: false }))}
         />
         <Textarea
           value={contactForm.message}
-          placeholder={translation.message}
-          onChange={message => setContactForm(prevState => ({ ...prevState, message, hasSend: false, hasError: false }))}
+          placeholder={translation('message')}
+          onChangeText={message => setContactForm(prevState => ({ ...prevState, message, hasSend: false, hasError: false }))}
         />
-        {contactForm.hasError && (<span className="text-negative font-semibold my-1">{translation.error}</span>)}
+        {contactForm.hasError && (<span className="text-negative font-semibold my-1">{translation('error')}</span>)}
         <LoadingButton
           color="primary"
           onClick={() => {
@@ -179,9 +179,9 @@ export const ContactSection = ({
           className="py-4 w-full"
           isLoading={isSending}
         >
-          {translation.send}
+          {translation('send')}
         </LoadingButton>
-        {contactForm.hasSend && (<span className="text-secondary font-bold text-xl text-center">{translation.thankYou}</span>)}
+        {contactForm.hasSend && (<span className="text-secondary font-bold text-xl text-center">{translation('thankYou')}</span>)}
       </div>
     </SectionBase>
   )

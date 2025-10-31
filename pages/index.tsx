@@ -1,24 +1,41 @@
 import type { NextPage } from 'next'
+import { useTranslation } from '@helpwave/hightide'
+import type { PropsForTranslation, Translation } from '@helpwave/hightide'
 import MarketStatsSection from '../components/sections/landing/MarketStatsSection'
-import PartnerSection from '../components/sections/landing/Partners'
+import PartnerSection from '../components/sections/landing/PartnerSection'
 import StartSection from '../components/sections/landing/StartSection'
 import { Page } from '@/components/Page'
 import VisionSection from '@/components/sections/landing/VisionSection'
 import { TasksDemoSection } from '@/components/sections/landing/TasksDemoSection'
 import { StepsToDigitalizationSection } from '@/components/sections/landing/StepsToDigitalizationSection'
 
-const Home: NextPage = () => {
-    return (
-        <Page outerClassName="z-0" className="z-0">
-            <StartSection />
-            <PartnerSection />
-            <VisionSection />
-            <StepsToDigitalizationSection />
-            <TasksDemoSection />
-            <MarketStatsSection />
-            {/* TODO implement when ready <StoriesSliderSection/> */}
-        </Page>
-    )
+type HomeTranslation = {
+  home: string,
+}
+
+const defaultHomeTranslation: Translation<HomeTranslation> = {
+  en: {
+    home: 'home',
+  },
+  de: {
+    home: 'home',
+  }
+}
+
+const Home: NextPage = ({ overwriteTranslation }: PropsForTranslation<HomeTranslation>) => {
+  const translation = useTranslation([defaultHomeTranslation], overwriteTranslation)
+
+  return (
+    <Page outerClassName="z-0" className="z-0" pageTitle={translation('home')}>
+      <StartSection/>
+      <PartnerSection/>
+      <VisionSection/>
+      <StepsToDigitalizationSection/>
+      <TasksDemoSection/>
+      <MarketStatsSection/>
+      {/* TODO implement when ready <StoriesSliderSection/> */}
+    </Page>
+  )
 }
 
 export default Home

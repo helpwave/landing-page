@@ -1,12 +1,11 @@
-import type { Languages } from '@helpwave/hightide'
+import { Dialog } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { TextImageProps } from '@helpwave/hightide'
-import { TextImage } from '@helpwave/hightide'
+import type { TextImageProps , Translation } from '@helpwave/hightide'
 import { Carousel } from '@helpwave/hightide'
 import { useState } from 'react'
-import { Modal } from '@helpwave/hightide'
 import Scrollbars from 'react-custom-scrollbars-2'
 import { SectionBase } from '@/components/sections/SectionBase'
+import { TextImage } from '@/components/TextImage'
 
 type StorySliderSectionTranslation = {
   chip1: string,
@@ -20,7 +19,7 @@ type StorySliderSectionTranslation = {
   description3: string,
 }
 
-const defaultStorySliderSectionTranslation: Record<Languages, StorySliderSectionTranslation> = {
+const defaultStorySliderSectionTranslation: Translation<StorySliderSectionTranslation> = {
   en: {
     chip1: 'Our Approach',
     chip2: 'Collaborative',
@@ -49,69 +48,74 @@ const defaultStorySliderSectionTranslation: Record<Languages, StorySliderSection
  * A Section for showing a slider on the story page
  */
 export const StorySliderSection = () => {
-  const translation = useTranslation(defaultStorySliderSectionTranslation)
+  const translation = useTranslation([defaultStorySliderSectionTranslation])
   const [modalValue, setModalValue] = useState<{ titleText: string, description: string }>()
 
   const items: TextImageProps[] = [
     {
-      badge: translation.chip1,
-      title: translation.title1,
-      description: translation.description1,
+      badge: translation('chip1'),
+      title: translation('title1'),
+      description: translation('description1'),
       // make attribution https://www.freepik.com/free-photo/doctors-looking-laptop-while-sitting_5480800.htm#fromView=search&page=1&position=38&uuid=4c39262c-c1b1-4f11-a15e-7446ad1974d3
       imageUrl: 'https://cdn.helpwave.de/landing_page/doctors_discussing.jpg',
       color: 'primary',
       onShowMoreClicked: () => setModalValue({
-        titleText: translation.title1,
-        description: translation.description1
+        titleText: translation('title1'),
+        description: translation('description1')
       })
     },
     {
-      badge: translation.chip2,
-      title: translation.title2,
-      description: translation.description2,
+      badge: translation('chip2'),
+      title: translation('title2'),
+      description: translation('description2'),
       // make attribution https://www.freepik.com/free-photo/wide-shot-huge-tree-trunk-near-lake-surrounded-by-trees-blue-sky_7841618.htm#fromView=search&page=1&position=0&uuid=0752105f-3120-4f34-b3b7-48dd4a616223
       imageUrl: 'https://cdn.helpwave.de/landing_page/lake.jpg',
       color: 'secondary',
       onShowMoreClicked: () => setModalValue({
-        titleText: translation.title2,
-        description: translation.description2
+        titleText: translation('title2'),
+        description: translation('description2')
       })
     },
     {
-      badge: translation.chip3,
-      title: translation.title3,
-      description: translation.description3,
+      badge: translation('chip3'),
+      title: translation('title3'),
+      description: translation('description3'),
       // make attribution https://www.freepik.com/free-vector/infographic-dashboard-element-set_6209714.htm#fromView=search&page=1&position=45&uuid=12db1ee2-bec5-40ce-a317-5d240ad56f12
       imageUrl: 'https://cdn.helpwave.de/landing_page/dashboard.jpg',
       color: 'dark',
       onShowMoreClicked: () => setModalValue({
-        titleText: translation.title3,
-        description: translation.description3
+        titleText: translation('title3'),
+        description: translation('description3')
       })
     },
   ]
 
+  const [activeIndex, setActiveIndex] = useState<number>(0)
+
   return (
     <SectionBase className="col gap-y-8 w-full !max-w-[1600px]" outerClassName="!px-0">
-      <Carousel hintNext={true} isLooping={true} isAutoLooping={true} autoLoopingTimeOut={15000} blurColor="from-background">
+      <Carousel
+        hintNext={true} isAutoPlaying={true}
+        isLooping={false}
+        autoLoopingTimeOut={15000}
+        onSlideChanged={setActiveIndex}
+      >
         {items.map((value, index) => (
           <div key={index} className="px-[2.5%] h-full">
-            <TextImage {...value} className="h-full overflow-hidden"/>
+            <TextImage {...value} className="h-full overflow-hidden" disableMoreClick={index !== activeIndex}/>
           </div>
         ))}
       </Carousel>
-      <Modal
-        id="storiesSliderModal"
+      <Dialog
         isOpen={modalValue !== undefined}
-        titleText={modalValue?.titleText}
+        titleElement={modalValue?.titleText}
         description={(
           <Scrollbars autoHeightMax={500} autoHeight={true}>
             {modalValue?.description}
           </Scrollbars>
         )}
-        onBackgroundClick={() => setModalValue(undefined)}
-        onCloseClick={() => setModalValue(undefined)}
-        modalClassName="max-w-[600px] max-tablet:max-w-[90%] w-full"
+        onClose={() => setModalValue(undefined)}
+        className="max-w-[600px] max-tablet:max-w-[90%] w-full"
       />
     </SectionBase>
   )

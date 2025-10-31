@@ -1,6 +1,6 @@
 import type { PropsForTranslation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
-import type { Languages } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
@@ -12,7 +12,7 @@ type TasksTemplatesSectionTranslation = {
   taskTemplates: string,
 }
 
-const defaultTasksTemplatesSectionTranslation: Record<Languages, TasksTemplatesSectionTranslation> = {
+const defaultTasksTemplatesSectionTranslation: Translation<TasksTemplatesSectionTranslation> = {
   en: {
     title: 'Quality management and time efficiency',
     description: 'Save recurring tasks as templates. Standardize your workflows and share them with your team.',
@@ -26,7 +26,7 @@ const defaultTasksTemplatesSectionTranslation: Record<Languages, TasksTemplatesS
 }
 
 export const TasksTemplatesSection = ({ overwriteTranslation }: PropsForTranslation<TasksTemplatesSectionTranslation>) => {
-  const translation = useTranslation(defaultTasksTemplatesSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultTasksTemplatesSectionTranslation], overwriteTranslation)
   const imageUrl = 'https://cdn.helpwave.de/products/tasks_template_with_filter.png'
 
   return (
@@ -39,10 +39,10 @@ export const TasksTemplatesSection = ({ overwriteTranslation }: PropsForTranslat
         <div className="col gap-y-2">
           <div className="row gap-x-1 text-primary items-center">
             <TagIcon/>
-            <span className="textstyle-title-normal">{translation.taskTemplates}</span>
+            <span className="typography-title-md">{translation('taskTemplates')}</span>
           </div>
-          <h1 className="textstyle-title-2xl">{translation.title}</h1>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation.description}/></span>
+          <h2 className="typography-title-lg">{translation('title')}</h2>
+          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
         </div>
       </div>
       <div
