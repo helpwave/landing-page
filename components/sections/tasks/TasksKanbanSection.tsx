@@ -26,7 +26,7 @@ const defaultTasksKanbanSectionTranslation: Translation<TasksKanbanSectionTransl
 }
 
 export const TasksKanbanSection = ({ overwriteTranslation }: PropsForTranslation<TasksKanbanSectionTranslation>) => {
-  const translation = useTranslation(defaultTasksKanbanSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultTasksKanbanSectionTranslation], overwriteTranslation)
   const imageUrl = 'https://cdn.helpwave.de/products/tasks_kanban.png'
 
   return (
@@ -34,14 +34,14 @@ export const TasksKanbanSection = ({ overwriteTranslation }: PropsForTranslation
       className="max-tablet:flex max-tablet:flex-wrap-reverse max-tablet:justify-center tablet:row tablet:justify-between w-full !gap-x-16 gap-y-8 items-center"
       backgroundColor="variant"
     >
-      <div className="col gap-y-2 pb-16 max-tablet:pb-0">
-        <div className="col gap-y-2">
-          <div className="row gap-x-1 text-primary items-center">
+      <div className="flex-col-2 pb-16 max-tablet:pb-0">
+        <div className="flex-col-2">
+          <div className="flex-row-1 text-primary items-center">
             <TagIcon/>
-            <span className="typography-title-md">{translation.tasks}</span>
+            <span className="typography-title-md">{translation('tasks')}</span>
           </div>
-          <h1 className="textstyle-title-2xl">{translation.title}</h1>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation.description}/></span>
+          <h2 className="typography-title-lg">{translation('title')}</h2>
+          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
         </div>
       </div>
       <div

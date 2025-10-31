@@ -100,8 +100,7 @@ export const StepsToDigitalizationSection = () => {
         isLooping={true}
         isAutoPlaying={true}
         heightClassName="h-[24rem] tablet:max-desktop:h-[19rem]"
-        widthClassName="w-1/2 max-tablet:w-[75%]"
-        blurColor="from-background"
+        slideClassName="w-1/2 max-tablet:w-[75%]"
         onSlideChanged={setCurrentIndex}
       >
         {items.map((value, index) => (

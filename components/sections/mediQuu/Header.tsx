@@ -31,8 +31,8 @@ export const MediQuuHeaderSection = () => {
     <SectionBase >
       <div className="flex max-tablet:flex-col-reverse max-tablet:items-center tablet:row w-full gap-x-4 gap-y-8">
         <div className="col gap-y-2 desktop:max-w-[50%]">
-          <span className="textstyle-title-3xl">{translation('title')}</span>
-          <span className="text-lg"><MarkdownInterpreter text={translation('subTitle')}/></span>
+          <h1 className="typography-headline-lg">{translation('title')}</h1>
+          <span className="typography-body-lg"><MarkdownInterpreter text={translation('subTitle')}/></span>
         </div>
         <div className="row justify-center items-center grow">
           <div className="col gap-y-4 min-w-[350px] max-w-[350px]">

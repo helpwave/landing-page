@@ -1,5 +1,6 @@
 import type { Translation } from '@helpwave/hightide'
-import { HelpwaveBadge, useTranslation } from '@helpwave/hightide'
+import { HelpwaveLogo } from '@helpwave/hightide'
+import { useTranslation } from '@helpwave/hightide'
 import Link from 'next/link'
 import Image from 'next/image'
 import { SectionBase } from '@/components/sections/SectionBase'
@@ -46,12 +47,15 @@ export const TasksDemoSection = () => {
   const imageURL = 'https://cdn.helpwave.de/products/tasks_preview.png'
   return (
     <SectionBase
-      className="col items-center gap-y-20 w-full"
+      className="flex-col-20 items-center w-full"
       outerClassName="pb-0"
     >
-      <div className="col desktop:flex-row w-full items-end justify-between gap-x-16 gap-y-8">
-        <div className="col gap-y-4 desktop:max-w-[70%]">
-          <HelpwaveBadge className="text-primary bg-purple-100 !w-fit" title={translation('helpwaveTasks')}/>
+      <div className="flex-col-8 desktop:flex-row-16 w-full items-end justify-between">
+        <div className="flex-col-4 desktop:max-w-[70%]">
+          <div className="flex-row-2 items-center justify-center text-primary bg-purple-100 !w-fit px-2 py-1 rounded">
+            <HelpwaveLogo className="w-8 h-8"/>
+            <h2 className="typography-title-md whitespace-nowrap">{translation('helpwaveTasks')}</h2>
+          </div>
           <span className="typography-title-lg">{translation('workflowManagement')}</span>
           <div className="grid grid-cols-1 gap-x-6 gap-y-4 overflow-x-auto mt-2">
             {[translation('feature1'), translation('feature2'), translation('feature3'), translation('feature4')]

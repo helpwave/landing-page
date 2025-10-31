@@ -26,7 +26,7 @@ const defaultPatientSectionTranslation: Translation<PatientSectionTranslation> =
 }
 
 export const PatientSection = ({ overwriteTranslation }: PropsForTranslation<PatientSectionTranslation>) => {
-  const translation = useTranslation(defaultPatientSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultPatientSectionTranslation], overwriteTranslation)
   const imageUrl = 'https://cdn.helpwave.de/products/patient_list.png'
 
   return (
@@ -50,10 +50,10 @@ export const PatientSection = ({ overwriteTranslation }: PropsForTranslation<Pat
         <div className="col gap-y-2">
           <div className="row gap-x-1 text-primary items-center">
             <TagIcon/>
-            <span className="typography-title-md">{translation.patients}</span>
+            <span className="typography-title-md">{translation('patients')}</span>
           </div>
-          <h1 className="textstyle-title-2xl">{translation.title}</h1>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation.description}/></span>
+          <h2 className="typography-title-lg">{translation('title')}</h2>
+          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
         </div>
       </div>
     </SectionBase>

@@ -53,7 +53,7 @@ const Header = () => {
             items: [
               {
                 label: translation('tasks'),
-                link: '/tasks',
+                link: '/product/tasks',
               },
               {
                 label: translation('appzumdoc'),

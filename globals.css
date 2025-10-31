@@ -21,3 +21,9 @@
     --color-section-on-dark: #FFF;
   }
 }
+
+@layer components {
+  a {
+    @apply rounded-md;
+  }
+}

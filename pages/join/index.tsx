@@ -54,7 +54,7 @@ const defaultNewsLetterTranslation: Translation<NewsLetterTranslation> = {
 }
 
 const NewsLetter: NextPage = () => {
-  const translation = useTranslation(defaultNewsLetterTranslation)
+  const translation = useTranslation([defaultNewsLetterTranslation])
   const [{ width, height }, setSize] = useState<{ width: number, height: number }>({ width: 0, height: 0 })
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const NewsLetter: NextPage = () => {
   const waveWidth = (sizeCircle2 - sizeCircle1) / 20
 
   return (
-    <Page className="w-screen h-screen relative z-0" pageTitleAddition={translation.title}>
+    <Page className="w-screen h-screen relative z-0" pageTitleAddition={translation('title')}>
       <SectionBase className="h-screen z-[1] w-full !max-w-full" outerClassName="!p-0">
         <div className="relative h-full overflow-hidden">
           <div className="absolute left-0 top-1/2 z-[-1] -translate-x-1/2 -translate-y-1/2">

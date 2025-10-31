@@ -1,11 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Translation } from '@helpwave/hightide'
-import type { PropsForTranslation } from '@helpwave/hightide'
+import { HelpwaveLogo } from '@helpwave/hightide'
+import type { PropsForTranslation , Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { Chip } from '@helpwave/hightide'
-import { Helpwave } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
 type StartSectionTranslation = {
@@ -25,7 +24,7 @@ const defaultStartSectionTranslation: Translation<StartSectionTranslation> = {
 }
 
 const StartSection = ({ overwriteTranslation }: PropsForTranslation<StartSectionTranslation>) => {
-  const translation = useTranslation(defaultStartSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultStartSectionTranslation], overwriteTranslation)
 
   const demoURL = 'https://tasks.helpwave.de'
   const screenshotURL = 'https://cdn.helpwave.de/products/helpwave_tasks_ui_elements.png'
@@ -43,14 +42,14 @@ const StartSection = ({ overwriteTranslation }: PropsForTranslation<StartSection
         className="object-contain w-full desktop:min-w-[40%] desktop:scale-125 -rotate-12"
       />
       <div className="col gap-y-4">
-        <Link href={demoURL} target="_blank">
+        <Link href={demoURL} target="_blank" className="rounded-md w-min">
           <Chip className="row w-fit items-center" color="default">
-            <Helpwave size={24} className="min-w-[24px] min-h-[24px]" />
-            <span className="font-bold">helpwave tasks</span>
+            <HelpwaveLogo className="min-w-[24px] min-h-[24px]" />
+            <span className="font-bold whitespace-nowrap">helpwave tasks</span>
           </Chip>
         </Link>
-        <h1 className="textstyle-title-2xl">{translation.title}</h1>
-        <MarkdownInterpreter text={translation.text} className="text-xl font-medium" />
+        <h1 className="typography-headline-md">{translation('title')}</h1>
+        <MarkdownInterpreter text={translation('text')} className="text-xl font-medium" />
       </div>
     </SectionBase>
   )

@@ -34,10 +34,10 @@ const FeatureItem = ({
       </div>
 
       <div className="col w-1/3 max-tablet:!w-full">
-        <span className="textstyle-title-2xl">
+        <h2 className="typography-title-lg">
           {title}
-        </span>
-        <span className="text-description text-gray-600">
+        </h2>
+        <span className="text-description">
           {description}
         </span>
       </div>
@@ -74,7 +74,7 @@ const defaultFeatureSectionTranslation: Translation<FeatureSectionTranslation> =
 }
 
 const FeatureSection = ({ overwriteTranslation }: PropsForTranslation<FeatureSectionTranslation>) => {
-  const translation = useTranslation(defaultFeatureSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultFeatureSectionTranslation], overwriteTranslation)
   const screenshotTemplates = 'https://cdn.helpwave.de/screenshots/tasks_2.png'
   const screenshotCollab = 'https://cdn.helpwave.de/screenshots/tasks_3.png'
   const screenshotPatients = 'https://cdn.helpwave.de/screenshots/tasks_4.png'
@@ -85,23 +85,23 @@ const FeatureSection = ({ overwriteTranslation }: PropsForTranslation<FeatureSec
       <FeatureItem
         imageUrl={screenshotTemplates}
         size={size}
-        title={translation.taskTemplatesTitle}
-        description={translation.taskTemplatesText}
+        title={translation('taskTemplatesTitle')}
+        description={translation('taskTemplatesText')}
       />
 
       <FeatureItem
         imageUrl={screenshotCollab}
         size={size}
-        title={translation.collaborateTitle}
-        description={translation.collaborateText}
+        title={translation('collaborateTitle')}
+        description={translation('collaborateText')}
         reverse={true}
       />
 
       <FeatureItem
         imageUrl={screenshotPatients}
         size={size}
-        title={translation.patientsTitle}
-        description={translation.patientsText}
+        title={translation('patientsTitle')}
+        description={translation('patientsText')}
       />
     </SectionBase>
   )

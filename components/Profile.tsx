@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Github, Globe, Linkedin, Mail } from 'lucide-react'
-import { Chip, Helpwave } from '@helpwave/hightide'
+import { Chip, HelpwaveLogo } from '@helpwave/hightide'
 
 type SocialType = 'mail' | 'github' | 'linkedin' | 'website' | 'medium'
 
@@ -37,10 +37,10 @@ const SocialIcon = ({ type, url, size = 24 }: SocialIconProps) => {
             icon = <Globe size={size}/> // TODO find an appropriate medium svg
             break
         default:
-            icon = <Helpwave size={24}/>
+            icon = <HelpwaveLogo className="min-w-6 min-h-6"/>
     }
     return (
-        <Link href={url} target="_blank">
+        <Link href={url} target="_blank" className="rounded-md">
             <Chip color="dark" className="!p-2">
                 {icon}
             </Chip>
@@ -87,7 +87,7 @@ export const Profile = ({
     return (
         <div
             {...divProps}
-            className={clsx(`col items-center text-center rounded-3xl p-3 pb-4 bg-white text-gray-900 w-min shadow-around-lg`, className)}
+            className={clsx(`flex-col-2 items-center text-center rounded-3xl p-3 pb-4 w-min shadow-around-lg bg-surface text-on-surface`, className)}
         >
             <div className="relative mb-6">
                 <div className={clsx('relative rounded-xl row items-center justify-center overflow-hidden', imageClassName)}>
@@ -101,7 +101,7 @@ export const Profile = ({
                 )}
             </div>
             {prefix && <span className="font-semibold">{prefix}</span>}
-            <h2 id={name} className="typography-title-md">{name}</h2>
+            <span id={name} className="typography-title-md">{name}</span>
             {suffix && <span className="text-sm mb-1">{suffix}</span>}
             {role && <span className="font-space font-bold text-sm">{role}</span>}
             {tags && (

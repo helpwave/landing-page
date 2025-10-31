@@ -78,7 +78,7 @@ const PartnerSection = () => {
         <Carousel
           hintNext={true} isLooping={true} isAutoPlaying={true}
           heightClassName="h-[8rem]"
-          widthClassName="w-1/2 tablet:w-3/10"
+          slideClassName="w-1/2 tablet:w-3/10"
         >
           {images.map(partner => (
             <div

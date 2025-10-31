@@ -9,6 +9,7 @@ type MediQuuBrandDescriptionTranslation = {
   aboutHelpwaveTitle: string,
   aboutMediQuuDescription: string,
   aboutHelpwaveDescription: string,
+  brandDescriptions: string,
 }
 
 const defaultMediQuuBrandDescriptionTranslation: Translation<MediQuuBrandDescriptionTranslation> = {
@@ -27,6 +28,7 @@ const defaultMediQuuBrandDescriptionTranslation: Translation<MediQuuBrandDescrip
       helpwave positions itself with a process-oriented development strategy as the leading alternative in the healthcare market,
       ensuring optimal digital healthcare delivery.
     `,
+    brandDescriptions: 'Brand Descriptions',
   },
   de: {
     aboutMediQuuTitle: 'Über mediQuu',
@@ -43,12 +45,14 @@ const defaultMediQuuBrandDescriptionTranslation: Translation<MediQuuBrandDescrip
       mit Auswirkungen im ambulanten Bereich positioniert sich helpwave mit einer prozessorientierten Entwicklungsstrategie als
       führende Alternative im Gesundheitsmarkt, um eine optimale digitale Versorgung zu gewährleisten.
     `,
+    brandDescriptions: 'Marken Beschreibungen',
   }
 }
 export const BrandDescriptionsSection = () => {
   const translation = useTranslation([defaultMediQuuBrandDescriptionTranslation])
   return (
-    <SectionBase className="flex-col-8 justify-center" >
+    <SectionBase className="flex-col-8 justify-center">
+      <h2 className="sr-only">{translation('brandDescriptions')}</h2>
       <div
         className="flex-col-8 tablet:flex-row-8 bg-surface text-on-surface rounded-3xl px-6 max-tablet:py-6 tablet:py-12 desktop:py-16 shadow-md"
       >

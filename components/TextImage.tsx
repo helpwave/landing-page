@@ -1,5 +1,5 @@
 import type { FormTranslationType, PropsForTranslation } from '@helpwave/hightide'
-import { formTranslation, useTranslation } from '@helpwave/hightide'
+import { formTranslation, SolidButton, useTranslation } from '@helpwave/hightide'
 import { clsx } from 'clsx'
 
 type TextImageColor = 'primary' | 'secondary' | 'dark'
@@ -49,7 +49,7 @@ export const TextImage = ({
 
   return (
     <div
-      className={clsx('rounded-2xl w-full', className)}
+      className={clsx('relative rounded-2xl w-full', className)}
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: 'cover',
@@ -70,15 +70,13 @@ export const TextImage = ({
           </div>
         </div>
         {onShowMoreClicked && (
-          <div className="flex-row-2 justify-end">
-            <button
-              onClick={onShowMoreClicked}
-              disabled={disableMoreClick}
-              className="link"
-            >
-              {translation('showMore')}
-            </button>
-          </div>
+          <SolidButton
+            className="absolute bottom-4 right-4"
+            onClick={onShowMoreClicked}
+            disabled={disableMoreClick}
+          >
+            {translation('showMore')}
+          </SolidButton>
         )}
       </div>
     </div>

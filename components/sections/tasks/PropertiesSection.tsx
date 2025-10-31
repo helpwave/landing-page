@@ -26,7 +26,7 @@ const defaultPropertiesSectionTranslation: Translation<PropertiesSectionTranslat
 }
 
 export const PropertiesSection = ({ overwriteTranslation }: PropsForTranslation<PropertiesSectionTranslation>) => {
-  const translation = useTranslation(defaultPropertiesSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultPropertiesSectionTranslation], overwriteTranslation)
   const imageUrl = 'https://cdn.helpwave.de/products/properties.png'
 
   return (
@@ -45,14 +45,14 @@ export const PropertiesSection = ({ overwriteTranslation }: PropsForTranslation<
           className="max-h-[70vh]"
         />
       </div>
-      <div className="col gap-y-2 pb-16 max-tablet:pb-0">
-        <div className="col gap-y-2">
-          <div className="row gap-x-1 text-primary items-center">
+      <div className="flex-col-2 pb-16 max-tablet:pb-0">
+        <div className="flex-col-2">
+          <div className="flex-row-1 text-primary items-center">
             <TagIcon/>
-            <span className="typography-title-md">{translation.properties}</span>
+            <span className="typography-title-md">{translation('properties')}</span>
           </div>
-          <h1 className="textstyle-title-2xl">{translation.title}</h1>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation.description}/></span>
+          <h2 className="typography-title-lg">{translation('title')}</h2>
+          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
         </div>
       </div>
     </SectionBase>

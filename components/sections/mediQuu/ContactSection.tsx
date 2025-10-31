@@ -113,14 +113,14 @@ export const ContactSection = ({
   const isValid = !!contactForm.firstname && !!contactForm.lastname && validateEmail(contactForm.email) && !!contactForm.message
 
   return (
-    <SectionBase className="max-tablet:col tablet:row tablet:justify-between w-full gap-8" >
-      <div className="col gap-y-1 tablet:w-2/5 desktop:w-1/2">
-        <span className="textstyle-title-xl text-primary">{translation('contact')}</span>
+    <SectionBase className="flex-col-8 tablet:flex-row-8 tablet:justify-between w-full">
+      <div className="flex-col-1 tablet:w-2/5 desktop:w-1/2">
+        <h2 className="typography-title-lg text-primary">{translation('contact')}</h2>
         <span>{translation('contactDescription')}</span>
         {contacts.length > 0 && (
-          <div className="col gap-y-6 mt-6">
+          <div className="flex-col-6 mt-6">
             {contacts.map((contact, index) => (
-              <div key={index} className="col gap-y-1">
+              <div key={index} className="flex-col-1">
                 <span className="font-bold">{contact.name}</span>
                 <span>{contact.email}</span>
               </div>

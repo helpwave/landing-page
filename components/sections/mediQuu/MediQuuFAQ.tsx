@@ -105,8 +105,8 @@ export const MediQuuFAQSection = () => {
   const translation = useTranslation([defaultMediQuuFAQTranslation])
   const { language } = useLanguage()
   return (
-    <SectionBase  className="col w-full">
-      <span className="textstyle-title-xl text-primary mb-1">{translation('title')}</span>
+    <SectionBase className="flex-col-2 w-full">
+      <h2 className="typography-title-lg text-primary">{translation('title')}</h2>
       <span>{translation('subTitle')}</span>
       <div className="col gap-y-4 mt-8">
         <FAQSection

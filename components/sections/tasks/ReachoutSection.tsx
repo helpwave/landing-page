@@ -48,24 +48,24 @@ const defaultReachoutSectionTranslation: Translation<ReachoutSectionTranslation>
 }
 
 const ReachoutSection = ({ overwriteTranslation }: PropsForTranslation<ReachoutSectionTranslation>) => {
-  const translation = useTranslation(defaultReachoutSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultReachoutSectionTranslation], overwriteTranslation)
 
   return (
     <SectionBase className="text-xl desktop:text-center">
-      <h2 className="font-space text-4xl font-bold">{translation.medicalHeroTitle}</h2>
+      <h2 className="font-space text-4xl font-bold">{translation('medicalHeroTitle')}</h2>
       <h3 className="font-sans text-xl font-medium mt-2 mb-2 text-"/>
       <h3 className="font-sans text-xl font-medium mt-2 mb-2 text-description">
-        <MarkdownInterpreter text={translation.medicalHeroSubtitle}/>
+        <MarkdownInterpreter text={translation('medicalHeroSubtitle')}/>
       </h3>
       <p className="mb-5">
-        <MarkdownInterpreter text={translation.medicalHeroText}/>
+        <MarkdownInterpreter text={translation('medicalHeroText')}/>
       </p>
-      <h2 className="font-space text-4xl font-bold">{translation.hospitalManagerTitle}</h2>
+      <h2 className="font-space text-4xl font-bold">{translation('hospitalManagerTitle')}</h2>
       <h3 className="font-sans text-xl font-medium mt-2 mb-2 text-description">
-        <MarkdownInterpreter text={translation.hospitalManagerSubtitle}/>
+        <MarkdownInterpreter text={translation('hospitalManagerSubtitle')}/>
       </h3>
       <p>
-        <MarkdownInterpreter text={translation.hospitalManagerText}/>
+        <MarkdownInterpreter text={translation('hospitalManagerText')}/>
       </p>
     </SectionBase>
   )

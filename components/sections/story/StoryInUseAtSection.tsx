@@ -2,7 +2,7 @@ import type { Translation } from '@helpwave/hightide'
 import { useTranslation } from '@helpwave/hightide'
 import Image from 'next/image'
 import { SectionBase } from '@/components/sections/SectionBase'
-import type { Partner } from '@/components/PartnerList'
+import type { Partner } from '@/components/sections/landing/PartnerSection'
 
 type StoryInUseAtSectionTranslation = {
   title: string,
@@ -25,11 +25,11 @@ const images: Partner[] = [
 ]
 
 const StoryInUseAtSection = () => {
-  const translation = useTranslation(defaultStoryInUseAtSectionTranslation)
+  const translation = useTranslation([defaultStoryInUseAtSectionTranslation])
 
   return (
     <SectionBase className="col gap-16 select-none justify-center items-center w-full">
-      <span className="textstyle-title-xl">{translation.title}</span>
+      <span className="typography-title-lg">{translation('title')}</span>
       <div className="row justify-center">
         {images.map(partner => (
           <Image

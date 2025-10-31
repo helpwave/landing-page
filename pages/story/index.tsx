@@ -19,9 +19,9 @@ const defaultStoryTranslation: Translation<StoryTranslation> = {
 }
 
 const Story: NextPage = () => {
-  const translation = useTranslation(defaultStoryTranslation)
+  const translation = useTranslation([defaultStoryTranslation])
   return (
-    <Page pageTitleAddition={translation.title}>
+    <Page pageTitleAddition={translation('title')}>
       <StoryHeader/>
       <StorySliderSection/>
     </Page>

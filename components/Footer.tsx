@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import type { Translation } from '@helpwave/hightide'
-import { HelpwaveLogo } from '@helpwave/hightide'
-import { LanguageDialog, SolidButton, ThemeDialog, useTranslation } from '@helpwave/hightide'
+import { HelpwaveLogo, LanguageDialog, TextButton, ThemeDialog, useTranslation } from '@helpwave/hightide'
 import * as CookieConsent from 'vanilla-cookieconsent'
 import pluginConfig from '../utils/CookieConsentConfig'
 import FooterLinkGroup from './FooterLinkGroup'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
+import { Globe, SunIcon } from 'lucide-react'
 
 type Categories = 'socials' | 'general' | 'products' | 'development'
 type FooterTranslation = { [key in Categories]: string } & {
@@ -43,7 +43,10 @@ const linkGroups: Record<Categories, LinkType[]> = {
     { name: 'Twitch', link: 'https://www.twitch.tv/helpwave' },
     { name: 'Spotify', link: 'https://open.spotify.com/show/6hL5UMytp81gmURnfn3dS9' },
     { name: 'Apple Podcasts', link: 'https://podcasts.apple.com/us/podcast/helpwave-talks/id1695217116' },
-    { name: 'Google Podcasts', link: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9lNTE1NWZhMC9wb2RjYXN0L3Jzcw' },
+    {
+      name: 'Google Podcasts',
+      link: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9lNTE1NWZhMC9wb2RjYXN0L3Jzcw'
+    },
     { name: 'Slack', link: 'https://helpwave.slack.com' },
   ],
   development: [
@@ -103,27 +106,38 @@ const Footer = () => {
         isOpen={isLanguageDialogOpen}
         onClose={() => setIsLanguageDialogOpen(false)}
       />
-      <div className="flex flex-wrap w-full max-w-[900px] max-tablet:px-6 tablet:px-24 desktop:px-24 mx-auto justify-between">
+      <div
+        className="flex flex-wrap w-full max-w-[900px] max-tablet:px-6 tablet:px-24 desktop:px-24 mx-auto justify-between">
         {grouping.map((groups, index) => (
           <div key={index} className="col max-tablet:w-full w-[192px] max-tablet:text-center max-tablet:items-center">
             {groups.map((category) => (
-              <FooterLinkGroup key={category} title={translation(category)} links={linkGroups[category]} />
+              <FooterLinkGroup key={category} title={translation(category)} links={linkGroups[category]}/>
             ))}
             {index === 2 && (
               <>
-                <SolidButton onClick={() => setIsLanguageDialogOpen(true)} size="small">
+                <TextButton
+                  onClick={() => setIsLanguageDialogOpen(true)}
+                  size="small"
+                  className="justify-start w-min light:!text-white light:hover:!bg-white/20"
+                >
+                  <Globe size={18}/>
                   {translation('changeLanguage')}
-                </SolidButton>
-                <SolidButton onClick={() => setIsThemeDialogOpen(true)} size="small">
+                </TextButton>
+                <TextButton
+                  onClick={() => setIsThemeDialogOpen(true)}
+                  size="small"
+                  className="justify-start w-min light:!text-white light:hover:!bg-white/20"
+                >
+                  <SunIcon size={18}/>
                   {translation('changeTheme')}
-                </SolidButton>
+                </TextButton>
               </>
             )}
           </div>
         ))}
       </div>
       <div className="row w-full h-[128px] items-center justify-center mx-auto font-space">
-        <HelpwaveLogo color="white" className="w-32 h-32" />
+        <HelpwaveLogo color="white" className="w-32 h-32"/>
         <span className="typography-title-md">&copy; {year} helpwave</span>
       </div>
     </footer>

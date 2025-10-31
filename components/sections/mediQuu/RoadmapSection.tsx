@@ -98,13 +98,13 @@ export const RoadmapSection = () => {
   const { language } = useLanguage()
   return (
     <SectionBase className="col w-full">
-      <span className="typography-title-lg text-primary mb-1">{translation('title')}</span>
+      <h2 className="typography-title-lg text-primary">{translation('title')}</h2>
       <span className="text-description mb-1">{translation('description')}</span>
       <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 mt-4 w-full justify-start gap-4">
         {roadmapItems.map(value => (
           <div key={value.name} className="w-full bg-surface text-on-surface shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow transition-1000">
-            <span className="typography-title-md block">{value.name}</span>
-            <span className="textstyle-label-sm block text-primary mb-2">{value.translation[language].start}</span>
+            <h3 className="typography-title-md block">{value.name}</h3>
+            <span className="typography-label-lg block text-primary mb-2">{value.translation[language].start}</span>
             <span className="text-description">{value.translation[language].description}</span>
           </div>
         ))}

@@ -28,7 +28,7 @@ export const TasksAppStoreBadge = () => {
   }[language]
 
   return (
-    <Link href={linkURL} target="_blank">
+    <Link href={linkURL} target="_blank" className="rounded-md">
       <Image
         alt={alt} src={imageURL} height={0} width={156}
         className="w-full min-h-[54px] max-h-[54px] min-w-[156px] max-w-[156px]"

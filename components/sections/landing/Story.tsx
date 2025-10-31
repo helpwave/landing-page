@@ -82,23 +82,23 @@ const defaultStoryTranslation: Translation<StoryTranslation> = {
 }
 
 const StorySection = ({ overwriteTranslation }: PropsForTranslation<StoryTranslation>) => {
-  const translation = useTranslation(defaultStoryTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultStoryTranslation], overwriteTranslation)
   return (
     <SectionBase className="flex max-tablet:flex-row tablet:flex-wrap w-full relative gap-16" >
       <StoryBlock
-        pill={translation.innovation}
-        header={translation.innovationHeader}
-        content={translation.innovationDescription}
+        pill={translation('innovation')}
+        header={translation('innovationHeader')}
+        content={translation('innovationDescription')}
       />
       <StoryBlock
-        pill={translation.disruption}
-        header={translation.disruptionHeader}
-        content={translation.disruptionDescription}
+        pill={translation('disruption')}
+        header={translation('disruptionHeader')}
+        content={translation('disruptionDescription')}
       />
       <StoryBlock
-        pill={translation.mission}
-        header={translation.missionHeader}
-        content={translation.missionDescription}
+        pill={translation('mission')}
+        header={translation('missionHeader')}
+        content={translation('missionDescription')}
       />
     </SectionBase>
   )

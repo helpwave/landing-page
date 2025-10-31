@@ -48,17 +48,14 @@ export const MediQuuInformationSection = () => {
                height={150}/>
       </div>
       <div className="col">
-        <span className="typography-title-lg text-primary">{translation('title')}</span>
+        <h2 className="typography-title-lg text-primary">{translation('title')}</h2>
         <span className="text-justify">{translation('subTitle1')}</span>
         <br/>
         <span className="text-justify"><MarkdownInterpreter text={translation('subTitle2')}/></span>
         <br/>
         <span className="text-justify">
-          {translation('subTitle3')}
-          <a
-            className="underline"
-            href="mailto:mediquu@helpwave.de"
-          >
+          {translation('subTitle3') + ' '}
+          <a className="underline" href="mailto:mediquu@helpwave.de">
             mediquu@helpwave.de
           </a>
         </span>

@@ -30,7 +30,7 @@ const defaultMobileFeatureSectionTranslation: Translation<MobileFeatureSectionTr
 }
 
 export const MobileFeatureSection = ({ overwriteTranslation }: PropsForTranslation<MobileFeatureSectionTranslation>) => {
-  const translation = useTranslation(defaultMobileFeatureSectionTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultMobileFeatureSectionTranslation], overwriteTranslation)
   const imageUrl = 'https://cdn.helpwave.de/products/mobile_preview.png'
 
   return (
@@ -39,10 +39,10 @@ export const MobileFeatureSection = ({ overwriteTranslation }: PropsForTranslati
       backgroundColor="secondary"
       outerClassName="!pb-0"
     >
-      <div className="col gap-y-2 pb-16 desktop:w-3/5 justify-center">
-        <div className="col gap-y-2 max-tablet:pb-0">
-          <h1 className="textstyle-title-2xl">{translation.title}</h1>
-          <span className="typography-title-md"><MarkdownInterpreter text={translation.description}/></span>
+      <div className="flex-col-2 pb-16 desktop:w-3/5 justify-center">
+        <div className="flex-col-2 max-tablet:pb-0">
+          <h2 className="typography-title-lg">{translation('title')}</h2>
+          <span className="typography-body-lg"><MarkdownInterpreter text={translation('description')}/></span>
         </div>
         <div
           // DO NOT CHANGE THE GAP. IT IS MANDATORY BY Apple
@@ -52,8 +52,8 @@ export const MobileFeatureSection = ({ overwriteTranslation }: PropsForTranslati
           <TasksAppStoreBadge/>
         </div>
         <div className="col mt-6 gap-y-1">
-          <span className="text-description !text-xs">{translation.tradmarkPlaystore}</span>
-          <span className="text-description !text-xs">{translation.trademarkAppstore}</span>
+          <span className="opacity-70 !text-xs">{translation('tradmarkPlaystore')}</span>
+          <span className="opacity-70 !text-xs">{translation('trademarkAppstore')}</span>
         </div>
       </div>
       <div

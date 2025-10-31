@@ -1,5 +1,6 @@
 import type { Translation } from '@helpwave/hightide'
-import { HelpwaveBadge, useLanguage, useTranslation } from '@helpwave/hightide'
+import { HelpwaveLogo } from '@helpwave/hightide'
+import { useLanguage, useTranslation } from '@helpwave/hightide'
 import clsx from 'clsx'
 import { SectionBase } from '@/components/sections/SectionBase'
 import type { ProfileProps } from '@/components/Profile'
@@ -101,7 +102,7 @@ export const TeamSection = () => {
   const usedLanguage = useLanguage().language
   return (
     <SectionBase className="flex-col-2">
-      <span className="textstyle-title-xl text-primary mb-1">{translation('title')}</span>
+      <h2 className="typography-title-lg text-primary">{translation('title')}</h2>
       <span>{translation('subTitle')}</span>
       <div className="flex flex-wrap justify-around gap-x-8 gap-y-6 mt-8">
         {contactsHelpwave.map(value => {
@@ -111,10 +112,10 @@ export const TeamSection = () => {
               {...profileProps}
               key={value.name}
               badge={(
-                <HelpwaveBadge
-                  size="sm"
-                  className="bg-black text-white !gap-x-1 !w-fit"
-                />
+                <div className="flex-row-1 px-2 py-1 bg-black text-white w-fit rounded-md">
+                  <HelpwaveLogo className="w-6 h-6"/>
+                  {'helpwave'}
+                </div>
               )}
               className={clsx('drop-shadow-lg hover:drop-shadow-3xl', value.className)}
             />

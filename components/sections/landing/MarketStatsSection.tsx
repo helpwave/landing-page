@@ -40,7 +40,7 @@ const defaultExpansionTranslation: Translation<MarketStatsSectionTranslation> = 
     germanyHealthcareSystem: 'Deutsches Gesundheitssystem',
     marketPotential: 'Markt Potential',
     hospitals: 'Krankenhäuser',
-    healthcareWorkers: 'healthcare worker',
+    healthcareWorkers: 'Gesundheitspersonal',
     gdp: 'des BIP'
   }
 }

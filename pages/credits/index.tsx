@@ -12,7 +12,7 @@ type CreditsPageTranslation = {
   title: string,
   text: string,
   flaticon: string,
-  createdBy: (name: string, author: string) => string,
+  createdBy: string,
 }
 
 const defaultCreditsPageTranslation: Translation<CreditsPageTranslation> = {
@@ -20,13 +20,13 @@ const defaultCreditsPageTranslation: Translation<CreditsPageTranslation> = {
     title: 'Credits',
     text: 'To credit our use of stock-footage from other websites, we are pleased to list them on this page.',
     flaticon: 'Icons by Flaticon',
-    createdBy: (name, author) => `${name} created by ${author}`
+    createdBy: `{{name}} created by {{author}}`
   },
   de: {
     title: 'Credits',
     text: 'Um die Verwendung von Stock-Footage von anderen Websites zu würdigen, führen wir sie gerne auf dieser Seite auf.',
     flaticon: 'Icons von Flaticon',
-    createdBy: (name, author) => `${name} erstellt von ${author}`
+    createdBy: `{{name}} erstellt von {{author}}`
   }
 }
 
@@ -76,20 +76,20 @@ const flaticonCredits: { author: string, link: string, name: string }[] = [
 ]
 
 const CreditsPage: NextPage = ({ overwriteTranslation }: PropsForTranslation<CreditsPageTranslation>) => {
-  const translation = useTranslation(defaultCreditsPageTranslation, overwriteTranslation)
+  const translation = useTranslation([defaultCreditsPageTranslation], overwriteTranslation)
   const imageUrl = 'https://cdn.helpwave.de/landing_page/credits.jpg'
 
   return (
-    <Page pageTitleAddition={translation.title}>
+    <Page pageTitleAddition={translation('title')}>
       <SectionBase
         className="row max-tablet:!flex flex-wrap-reverse w-full gap-x-16 gap-y-8 justify-between max-tablet:justify-center items-center"
         backgroundColor="variant"
       >
         <div className="col gap-y-2 pb-16 max-tablet:pb-0">
           <div className="col gap-y-2">
-            <h1 className="textstyle-title-2xl">{translation.title}</h1>
+            <h1 className="typography-headline-md">{translation('title')}</h1>
             <span className="font-space font-semibold"><MarkdownInterpreter
-              text={translation.text}/></span>
+              text={translation('text')}/></span>
           </div>
         </div>
         <div
@@ -107,7 +107,7 @@ const CreditsPage: NextPage = ({ overwriteTranslation }: PropsForTranslation<Cre
 
       <SectionBase  className="w-full">
         <h2 className="typography-title-md">Freepik</h2>
-        <div className="grow col items-center min-w-50 items-center gap-y-4">
+        <div className="grow col items-center min-w-50 gap-y-4">
           {
             freepikCredits.map((credit) => (
               <div className="w-full" key={credit.link}>
@@ -121,10 +121,10 @@ const CreditsPage: NextPage = ({ overwriteTranslation }: PropsForTranslation<Cre
       </SectionBase>
 
       <SectionBase backgroundColor="variant" className="col gap-y-2 w-full">
-        <h2 className="typography-title-md">{translation.flaticon}</h2>
+        <h2 className="typography-title-md">{translation('flaticon')}</h2>
         {flaticonCredits.map(({ name, author, link }) => (
           <Link key={name + author} href={link} title={name} className="underline" target="_blank">
-            {translation.createdBy(name, author)}
+            {translation('createdBy', { replacements:{ name, author } })}
           </Link>
         ))}
       </SectionBase>
