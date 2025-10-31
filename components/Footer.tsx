@@ -38,9 +38,11 @@ const linkGroups: Record<Categories, LinkType[]> = {
     { name: 'GitHub', link: 'https://github.com/helpwave/' },
     { name: 'LinkedIn', link: 'https://linkedin.com/company/helpwave/' },
     { name: 'Instagram', link: 'https://instagram.com/helpwave_de/' },
-    { name: 'Twitter', link: 'https://twitter.com/helpwave_org' },
+    { name: 'Chrunchbase', link: 'https://www.crunchbase.com/organization/helpwave' },
+    {name: 'Twitter', link: 'https://twitter.com/helpwave_org' },
     { name: 'YouTube', link: 'https://www.youtube.com/@helpwave' },
     { name: 'Twitch', link: 'https://www.twitch.tv/helpwave' },
+    /*
     { name: 'Spotify', link: 'https://open.spotify.com/show/6hL5UMytp81gmURnfn3dS9' },
     { name: 'Apple Podcasts', link: 'https://podcasts.apple.com/us/podcast/helpwave-talks/id1695217116' },
     {
@@ -48,6 +50,7 @@ const linkGroups: Record<Categories, LinkType[]> = {
       link: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9lNTE1NWZhMC9wb2RjYXN0L3Jzcw'
     },
     { name: 'Slack', link: 'https://helpwave.slack.com' },
+    */
   ],
   development: [
     { name: 'Status', link: 'https://helpwave.betteruptime.com/' },
@@ -62,10 +65,12 @@ const linkGroups: Record<Categories, LinkType[]> = {
     { name: 'Privacy', link: 'https://cdn.helpwave.de/privacy.html' },
     { name: 'Cookies', link: '', onClick: () => CookieConsent.showPreferences() },
     { name: 'Contact', link: 'mailto:contact@helpwave.de' },
+    { name: 'Media Kit', link: 'https://assets.helpwave.de' },
+    { name: 'Invest', link: 'https://invest.helpwave.de' },
     { name: 'Pitchdeck', link: 'https://cdn.helpwave.de/helpwave_pitchdeck.pdf' },
     { name: 'Onepager', link: 'https://cdn.helpwave.de/helpwave_onepager.pdf' },
     { name: 'LOI', link: 'https://cdn.helpwave.de/helpwave_letter_of_intent.pdf' },
-    { name: 'Tech-Radar', link: '/tech-radar', openInCurrentTab: true },
+    // { name: 'Tech-Radar', link: '/tech-radar', openInCurrentTab: true },
     { name: 'Credits', link: '/credits', openInCurrentTab: true },
   ],
   products: [

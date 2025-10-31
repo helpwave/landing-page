@@ -1,5 +1,5 @@
 const defaultTitle = 'helpwave'
 
-const titleWrapper = (title?: string) => title ? `${title} ~ ${defaultTitle}` : defaultTitle
+const titleWrapper = (title?: string) => title ? `${title}` : defaultTitle
 
 export default titleWrapper

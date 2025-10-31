@@ -11,7 +11,7 @@ export type PageProps = HTMLAttributes<HTMLDivElement> & {
   /**
    * An addition to the page title used to differentiate subpages
    */
-  pageTitleAddition: string | undefined,
+  pageTitle?: string | undefined,
   outerClassName?: string,
 }
 
@@ -19,14 +19,14 @@ export type PageProps = HTMLAttributes<HTMLDivElement> & {
  * The template for any page component
  */
 export const Page = ({
-                       children,
-                       header = (<Header/>),
-                       footer = (<Footer/>),
-                       pageTitleAddition,
-                       className,
-                       outerClassName,
-                       ...restProps
-                     }: PageProps) => {
+  children,
+  header = (<Header/>),
+  footer = (<Footer/>),
+  pageTitle,
+  className,
+  outerClassName,
+  ...restProps
+}: PageProps) => {
   return (
     <div
       {...restProps}
@@ -34,7 +34,7 @@ export const Page = ({
     >
       {header}
       <Head>
-        <title>{titleWrapper(pageTitleAddition)}</title>
+        <title>{titleWrapper(pageTitle)}</title>
       </Head>
       <main className={clsx('w-full pt-16', className)}>
         {children}

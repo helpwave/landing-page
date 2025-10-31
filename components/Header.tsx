@@ -3,37 +3,36 @@ import type { Translation } from '@helpwave/hightide'
 import { HelpwaveLogo, MarkdownInterpreter, Navigation, useTranslation } from '@helpwave/hightide'
 
 const homeURL = '/'
-type LinkNames = 'products' | 'mediquu' | 'story' | 'support' | 'team' | 'talks' | 'tasks' | 'appzumdoc' | 'netzmanager'
+
+type LinkNames = 'products' | 'mediquu' | 'support' | 'team' | 'invest' | 'tasks' | 'appzumdoc' | 'netzmanager'
 
 type HeaderTranslation = {
-  contact: string,
+    contact: string,
 } & { [key in LinkNames]: string }
 
-const defaultHeaderTranslation: Translation<HeaderTranslation> = {
-  en: {
-    products: 'Products',
-    mediquu: 'mediQuu',
-    story: 'Story',
-    team: 'Team',
-    contact: 'Contact us',
-    tasks: 'tasks',
-    support: 'Support',
-    talks: 'Podcast',
-    appzumdoc: 'App Zum Doc',
-    netzmanager: 'mediQuu Netzmanager',
-  },
-  de: {
-    products: 'Produkte',
-    mediquu: 'mediQuu',
-    story: 'Geschichte',
-    team: 'Team',
-    contact: 'Kontakt',
-    tasks: 'tasks',
-    support: 'Hilfe',
-    talks: 'Podcast',
-    appzumdoc: 'App Zum Doc',
-    netzmanager: 'mediQuu Netzmanager',
-  }
+const defaultHeaderTranslation: Record<Languages, HeaderTranslation> = {
+    en: {
+        products: 'Products',
+        mediquu: 'mediQuu',
+        team: 'Team',
+        contact: 'Contact us',
+        tasks: 'tasks',
+        support: 'Support',
+        invest: 'Invest',
+        appzumdoc: 'App Zum Doc',
+        netzmanager: 'mediQuu Netzmanager',
+    },
+    de: {
+        products: 'Produkte',
+        mediquu: 'mediQuu',
+        team: 'Team',
+        contact: 'Kontakt',
+        tasks: 'tasks',
+        support: 'Hilfe',
+        invest: 'Investieren',
+        appzumdoc: 'App Zum Doc',
+        netzmanager: 'mediQuu Netzmanager',
+    }
 }
 
 const Header = () => {
@@ -72,12 +71,9 @@ const Header = () => {
             link: '/mediquu'
           },
           {
-            label: translation('story'),
-            link: '/story'
-          },
-          {
-            label: translation('talks'),
-            link: '/talks'
+            label: 'invest',
+            link: 'https://invest.helpwave.de',
+            external: true
           },
           {
             label: translation('support'),

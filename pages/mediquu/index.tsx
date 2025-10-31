@@ -9,17 +9,17 @@ import { ContactSection } from '@/components/sections/mediQuu/ContactSection'
 import { Page } from '@/components/Page'
 
 const MediQuuPage: NextPage = () => {
-  return (
-    <Page pageTitleAddition="mediQuu">
-      <MediQuuHeaderSection/>
-      <MediQuuInformationSection/>
-      <BrandDescriptionsSection/>
-      <TeamSection/>
-      <RoadmapSection/>
-      <MediQuuFAQSection/>
-      <ContactSection/>
-    </Page>
-  )
+    return (
+        <Page pageTitle="mediQuu => helpwave">
+            <MediQuuHeaderSection />
+            <MediQuuInformationSection />
+            <BrandDescriptionsSection />
+            <TeamSection />
+            <RoadmapSection />
+            <MediQuuFAQSection />
+            <ContactSection />
+        </Page>
+    )
 }
 
 export default MediQuuPage

@@ -3,11 +3,11 @@ import TeamSection from '@/components/sections/team/TeamSection'
 import { Page } from '@/components/Page'
 
 const Team: NextPage = () => {
-  return (
-    <Page pageTitleAddition="team">
-      <TeamSection/>
-    </Page>
-  )
+    return (
+        <Page pageTitle="Team">
+            <TeamSection />
+        </Page>
+    )
 }
 
 export default Team
