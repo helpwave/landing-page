@@ -26,7 +26,7 @@ const Home: NextPage = ({ overwriteTranslation }: PropsForTranslation<HomeTransl
   const translation = useTranslation([defaultHomeTranslation], overwriteTranslation)
 
   return (
-    <Page outerClassName="z-0" className="z-0" pageTitleAddition={translation('home')}>
+    <Page outerClassName="z-0" className="z-0" pageTitle={translation('home')}>
       <StartSection/>
       <PartnerSection/>
       <VisionSection/>

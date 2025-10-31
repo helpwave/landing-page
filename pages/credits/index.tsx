@@ -80,7 +80,7 @@ const CreditsPage: NextPage = ({ overwriteTranslation }: PropsForTranslation<Cre
   const imageUrl = 'https://cdn.helpwave.de/landing_page/credits.jpg'
 
   return (
-    <Page pageTitleAddition={translation('title')}>
+    <Page pageTitle={translation('title')}>
       <SectionBase
         className="row max-tablet:!flex flex-wrap-reverse w-full gap-x-16 gap-y-8 justify-between max-tablet:justify-center items-center"
         backgroundColor="variant"

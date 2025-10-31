@@ -6,11 +6,11 @@ const homeURL = '/'
 
 type LinkNames = 'products' | 'mediquu' | 'support' | 'team' | 'invest' | 'tasks' | 'appzumdoc' | 'netzmanager'
 
-type HeaderTranslation = {
+type HeaderTranslationType = {
     contact: string,
 } & { [key in LinkNames]: string }
 
-const defaultHeaderTranslation: Record<Languages, HeaderTranslation> = {
+const defaultHeaderTranslation: Translation<HeaderTranslationType> = {
     en: {
         products: 'Products',
         mediquu: 'mediQuu',
@@ -36,7 +36,7 @@ const defaultHeaderTranslation: Record<Languages, HeaderTranslation> = {
 }
 
 const Header = () => {
-  const translation = useTranslation([defaultHeaderTranslation], {})
+  const translation = useTranslation([defaultHeaderTranslation])
 
   return (
     <div className="absolute top-0 z-[50] row items-center justify-between w-screen section-padding-x h-16 pt-2">
