@@ -1,36 +1,13 @@
 import { useEffect, useState } from 'react'
-import type { Translation } from '@helpwave/hightide'
-import { HelpwaveLogo, LanguageDialog, TextButton, ThemeDialog, useTranslation } from '@helpwave/hightide'
+import { HelpwaveLogo, LanguageDialog, TextButton, ThemeDialog } from '@helpwave/hightide'
 import * as CookieConsent from 'vanilla-cookieconsent'
 import pluginConfig from '../utils/CookieConsentConfig'
 import FooterLinkGroup from './FooterLinkGroup'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 import { Globe, SunIcon } from 'lucide-react'
+import { useTranslation } from '@/i18n/useTranslation'
 
 type Categories = 'socials' | 'general' | 'products' | 'development'
-type FooterTranslation = { [key in Categories]: string } & {
-  changeTheme: string,
-  changeLanguage: string,
-}
-
-const defaultFooterTranslation: Translation<FooterTranslation> = {
-  en: {
-    socials: 'socials',
-    general: 'general',
-    products: 'products',
-    development: 'development',
-    changeLanguage: 'Change Language',
-    changeTheme: 'Change Theme',
-  },
-  de: {
-    socials: 'social',
-    general: 'allgemein',
-    products: 'produkte',
-    development: 'entwicklung',
-    changeLanguage: 'Sprache ändern',
-    changeTheme: 'Farbschema ändern',
-  }
-}
 
 type LinkType = { name: string, link: string, openInCurrentTab?: boolean, onClick?: () => void }
 const linkGroups: Record<Categories, LinkType[]> = {
@@ -93,7 +70,7 @@ const grouping: (Categories[])[] = [
 
 const Footer = () => {
   const year = new Date().getFullYear()
-  const translation = useTranslation([defaultFooterTranslation], {})
+  const translation = useTranslation()
   const [isThemeDialogOpen, setIsThemeDialogOpen] = useState<boolean>(false)
   const [isLanguageDialogOpen, setIsLanguageDialogOpen] = useState<boolean>(false)
 

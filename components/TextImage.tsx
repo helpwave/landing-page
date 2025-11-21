@@ -1,10 +1,7 @@
-import type { FormTranslationType, PropsForTranslation } from '@helpwave/hightide'
-import { formTranslation, SolidButton, useTranslation } from '@helpwave/hightide'
+import { SolidButton, useTranslation } from '@helpwave/hightide'
 import { clsx } from 'clsx'
 
 type TextImageColor = 'primary' | 'secondary' | 'dark'
-
-type TextImageTranslation = FormTranslationType
 
 export type TextImageProps = {
   title: string,
@@ -22,7 +19,6 @@ export type TextImageProps = {
  * A Component for layering a Text upon an image
  */
 export const TextImage = ({
-                            overwriteTranslation,
                             title,
                             description,
                             imageUrl,
@@ -32,8 +28,8 @@ export const TextImage = ({
                             contentClassName = '',
                             className = '',
                             disableMoreClick = true,
-                          }: PropsForTranslation<TextImageTranslation, TextImageProps>) => {
-  const translation = useTranslation([formTranslation], overwriteTranslation)
+                          }: TextImageProps) => {
+  const translation = useTranslation()
 
   const chipColorMapping: Record<TextImageColor, string> = {
     primary: 'text-text-image-primary-background bg-text-image-primary-text',

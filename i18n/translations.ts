@@ -1,0 +1,106 @@
+// AUTO-GENERATED. DO NOT EDIT.
+import type { Translation } from '@helpwave/internationalization'
+import { TranslationGen } from '@helpwave/internationalization'
+
+/* eslint-disable @stylistic/quote-props */
+export const supportedLocales = ['de-DE', 'en-US'] as const
+
+export type SupportedLocale = typeof supportedLocales[number]
+
+export type GeneratedTranslationEntries = {
+  'appzumdoc': string,
+  'callToAction': string,
+  'changeLanguage': string,
+  'changeTheme': string,
+  'company': string,
+  'contact': string,
+  'development': string,
+  'email': string,
+  'firstname': string,
+  'general': string,
+  'hospital': string,
+  'industry': string,
+  'invest': string,
+  'investment': string,
+  'lastname': string,
+  'mediquu': string,
+  'netzmanager': string,
+  'patientCare': string,
+  'press': string,
+  'products': string,
+  'research': string,
+  'select': string,
+  'socials': string,
+  'subtitleNewsLetterForm': string,
+  'support': string,
+  'tasks': string,
+  'team': string,
+  'thankYou': string,
+  'titleNewsLetterForm': string,
+}
+
+export const generatedTranslations: Translation<SupportedLocale, Partial<GeneratedTranslationEntries>> = {
+  'de-DE': {
+    'appzumdoc': `App Zum Doc`,
+    'callToAction': `Bleib informiert`,
+    'changeLanguage': `Sprache ändern`,
+    'changeTheme': `Farbschema ändern`,
+    'company': `Firma`,
+    'contact': `Kontakt`,
+    'development': `Entwicklung`,
+    'email': `Email`,
+    'firstname': `Vorname`,
+    'general': `Allgemein`,
+    'hospital': `Krankenhaus`,
+    'industry': `Industry`,
+    'invest': `Investieren`,
+    'investment': `Investment`,
+    'lastname': `Nachname`,
+    'mediquu': `mediQuu`,
+    'netzmanager': `mediQuu Netzmanager`,
+    'patientCare': `Patientenversorgung`,
+    'press': `Presse`,
+    'products': `Produkte`,
+    'research': `Wissenschaft`,
+    'select': `Auswählen`,
+    'socials': `Social`,
+    'subtitleNewsLetterForm': `Werde Teil unserer Vision and verpasse keine Updates oder Veröffentlichungen`,
+    'support': `Hilfe`,
+    'tasks': `tasks`,
+    'team': `Team`,
+    'thankYou': `Danke. Wir werden dich auf dem Laufenden halten!`,
+    'titleNewsLetterForm': `Bleib Informiert`
+  },
+  'en-US': {
+    'appzumdoc': `App Zum Doc`,
+    'callToAction': `Stay In the Loop`,
+    'changeLanguage': `Change Language`,
+    'changeTheme': `Change Theme`,
+    'company': `Company`,
+    'contact': `Contact us`,
+    'development': `Development`,
+    'email': `Email`,
+    'firstname': `Firstname`,
+    'general': `General`,
+    'hospital': `Hospital`,
+    'industry': `Industry`,
+    'invest': `Invest`,
+    'investment': `Investment`,
+    'lastname': `Lastname`,
+    'mediquu': `mediQuu`,
+    'netzmanager': `mediQuu Netzmanager`,
+    'patientCare': `Patient Care`,
+    'press': `Press`,
+    'products': `Products`,
+    'research': `Research`,
+    'select': `Select`,
+    'socials': `Socials`,
+    'subtitleNewsLetterForm': `Become part of our vision and never miss updates or releases`,
+    'support': `Support`,
+    'tasks': `tasks`,
+    'team': `Team`,
+    'thankYou': `Thank you. We will keep you up to date!`,
+    'titleNewsLetterForm': `Stay Connected`
+  }
+}
+
