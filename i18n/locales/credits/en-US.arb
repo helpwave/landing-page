@@ -1,0 +1,11 @@
+{
+  "text": "To credit our use of stock-footage from other websites, we are pleased to list them on this page.",
+  "flaticon": "Icons by Flaticon",
+  "createdBy": "{name} created by {author}",
+  "@createdBy": {
+    "placeholders": {
+      "name": {},
+      "author": {}
+    }
+  }
+}

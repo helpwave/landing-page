@@ -1,5 +1,6 @@
-import { SolidButton, useTranslation } from '@helpwave/hightide'
+import { SolidButton } from '@helpwave/hightide'
 import { clsx } from 'clsx'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
 type TextImageColor = 'primary' | 'secondary' | 'dark'
 
@@ -29,7 +30,7 @@ export const TextImage = ({
                             className = '',
                             disableMoreClick = true,
                           }: TextImageProps) => {
-  const translation = useTranslation()
+  const translation = useLandingPageTranslation()
 
   const chipColorMapping: Record<TextImageColor, string> = {
     primary: 'text-text-image-primary-background bg-text-image-primary-text',

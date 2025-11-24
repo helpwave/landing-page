@@ -1,32 +1,11 @@
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import type { Translation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
-type TasksTemplatesSectionTranslation = {
-  title: string,
-  description: string,
-  taskTemplates: string,
-}
-
-const defaultTasksTemplatesSectionTranslation: Translation<TasksTemplatesSectionTranslation> = {
-  en: {
-    title: 'Quality management and time efficiency',
-    description: 'Save recurring tasks as templates. Standardize your workflows and share them with your team.',
-    taskTemplates: 'Task Templates'
-  },
-  de: {
-    title: 'Qualitätsmanagement und Zeiteffizienz',
-    description: 'Speichern Sie wiederkehrende Aufgaben als Vorlagen. Standardisieren Sie Ihre Arbeitsabläufe und teilen Sie diese mit Ihrem Team.',
-    taskTemplates: 'Task Templates'
-  }
-}
-
-export const TasksTemplatesSection = ({ overwriteTranslation }: PropsForTranslation<TasksTemplatesSectionTranslation>) => {
-  const translation = useTranslation([defaultTasksTemplatesSectionTranslation], overwriteTranslation)
+export const TasksTemplatesSection = () => {
+  const translation = useLandingPageTranslation()
   const imageUrl = 'https://cdn.helpwave.de/products/tasks_template_with_filter.png'
 
   return (
@@ -39,10 +18,12 @@ export const TasksTemplatesSection = ({ overwriteTranslation }: PropsForTranslat
         <div className="col gap-y-2">
           <div className="row gap-x-1 text-primary items-center">
             <TagIcon/>
-            <span className="typography-title-md">{translation('taskTemplates')}</span>
+            <span className="typography-title-md">{translation('tasks.taskTemplates.taskTemplates')}</span>
           </div>
-          <h2 className="typography-title-lg">{translation('title')}</h2>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
+          <h2 className="typography-title-lg">{translation('tasks.taskTemplates.title')}</h2>
+          <span className="font-space font-semibold">
+            <MarkdownInterpreter text={translation('tasks.taskTemplates.description')}/>
+          </span>
         </div>
       </div>
       <div

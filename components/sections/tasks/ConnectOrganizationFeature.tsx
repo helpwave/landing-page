@@ -1,51 +1,21 @@
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import type { Translation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 import { Check } from 'lucide-react'
 
-type ConnectOrganizationFeatureSectionTranslation = {
-  title: string,
-  description: string,
-  feature1: string,
-  feature2: string,
-  feature3: string,
-  feature4: string,
-  feature5: string,
-  feature6: string,
-}
-
-const defaultConnectOrganizationFeatureSectionTranslation: Translation<ConnectOrganizationFeatureSectionTranslation> = {
-  en: {
-    title: 'Connect your organization in one tool',
-    description: 'Use \\b{helpwave tasks} to experience a user-centered management tool, designed to simplify workflows and ensure high quality patient care.',
-    feature1: 'Patient lists',
-    feature2: 'Care unit overview',
-    feature3: 'Tasks',
-    feature4: 'Task templates',
-    feature5: 'Patient properties',
-    feature6: 'Ward properties',
-  },
-  de: {
-    title: 'Verbinden Sie Ihre Organisation mit einem einzigen Tool',
-    description: 'Nutzen Sie \\b{helpwave tasks}, um ein benutzerzentriertes Management-Tool zu erleben, welches Arbeitsabläufe vereinfacht und eine qualitativ hochwertige Patientenversorgung gewährleistet.',
-    feature1: 'Patienten-Listen',
-    feature2: 'Stationsübersicht',
-    feature3: 'Tasks',
-    feature4: 'Task Vorlagen',
-    feature5: 'Patienten-Properties',
-    feature6: 'Stations-Properties',
-  }
-}
-
-export const ConnectOrganizationFeatureSection = ({ overwriteTranslation }: PropsForTranslation<ConnectOrganizationFeatureSectionTranslation>) => {
-  const translation = useTranslation([defaultConnectOrganizationFeatureSectionTranslation], overwriteTranslation)
+export const ConnectOrganizationFeatureSection = () => {
+  const translation = useLandingPageTranslation()
   const imageUrl = 'https://cdn.helpwave.de/products/tasks_ward_overview.png'
 
-  const features = [translation('feature1'), translation('feature2'), translation('feature3'),
-    translation('feature4'), translation('feature5'), translation('feature6')]
+  const features = [
+    translation('tasks.connectOrganization.feature1'),
+    translation('tasks.connectOrganization.feature2'),
+    translation('tasks.connectOrganization.feature3'),
+    translation('tasks.connectOrganization.feature4'),
+    translation('tasks.connectOrganization.feature5'),
+    translation('tasks.connectOrganization.feature6')
+  ]
   const featureStyle = 'font-semibold'
 
   return (
@@ -56,8 +26,10 @@ export const ConnectOrganizationFeatureSection = ({ overwriteTranslation }: Prop
     >
       <div className="flex-col-2 items-start tablet:items-center pr-6 tablet:pr-0">
         <div className="flex-col-2 max-w-[500px] max-tablet:max-w-full">
-          <h2 className="typography-title-lg">{translation('title')}</h2>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
+          <h2 className="typography-title-lg">{translation('tasks.connectOrganization.title')}</h2>
+          <span className="font-space font-semibold">
+            <MarkdownInterpreter text={translation('tasks.connectOrganization.description')}/>
+          </span>
           <div className="grid grid-cols-2 gap-x-6 gap-y-4 overflow-x-auto mt-2">
             {features.map((feature, index) => (
               <div key={index}  className="row items-center">

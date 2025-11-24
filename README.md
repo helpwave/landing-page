@@ -14,3 +14,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```bash
 npm run lint
 ```
+
+### Translation
+```
+npm run build-intl
+```

@@ -1,6 +1,4 @@
-import type { Translation } from '@helpwave/hightide'
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import { useState } from 'react'
 import { validateEmail } from '@helpwave/hightide'
 import { Input } from '@helpwave/hightide'
@@ -8,43 +6,6 @@ import { Textarea } from '@helpwave/hightide'
 import { LoadingButton } from '@helpwave/hightide'
 import { submitHubSpotForm } from '@/utils/hubspot'
 import { SectionBase } from '@/components/sections/SectionBase'
-
-type ContactSectionTranslation = {
-  contact: string,
-  contactDescription: string,
-  firstname: string,
-  lastname: string,
-  email: string,
-  message: string,
-  send: string,
-  thankYou: string,
-  error: string,
-}
-
-const defaultContactSectionTranslation: Translation<ContactSectionTranslation> = {
-  en: {
-    contact: 'Contact',
-    contactDescription: 'We are available to answer any questions you may have at short notice.',
-    firstname: 'First Name',
-    lastname: 'Last Name',
-    email: 'E-Mail',
-    message: 'Your Message',
-    send: 'Send Message',
-    thankYou: 'Thanks for your message!',
-    error: 'There was an error sending the message, try again'
-  },
-  de: {
-    contact: 'Kontakt',
-    contactDescription: 'Wir stehen Ihnen bei jeglichen Fragen kurzfristig zur Verfügung.',
-    firstname: 'Vorname',
-    lastname: 'Nachname',
-    email: 'E-Mail',
-    message: 'Ihre Nachricht',
-    send: 'Nachricht senden',
-    thankYou: 'Danke für deine Nachricht!',
-    error: 'Ein Fehler ist aufgetreten, versuchen sie es erneut die nachricht zu senden'
-  }
-}
 
 type Contact = {
   name: string,
@@ -96,10 +57,8 @@ const contacts: Contact[] = [
 /**
  * The section on the mediquu page for contacting helpwave
  */
-export const ContactSection = ({
-  overwriteTranslation,
-}: PropsForTranslation<ContactSectionTranslation>) => {
-  const translation = useTranslation([defaultContactSectionTranslation], overwriteTranslation)
+export const ContactSection = () => {
+  const translation = useLandingPageTranslation()
   const [contactForm, setContactForm] = useState<ContactForm>({
     firstname: '',
     lastname: '',
@@ -116,7 +75,7 @@ export const ContactSection = ({
     <SectionBase className="flex-col-8 tablet:flex-row-8 tablet:justify-between w-full">
       <div className="flex-col-1 tablet:w-2/5 desktop:w-1/2">
         <h2 className="typography-title-lg text-primary">{translation('contact')}</h2>
-        <span>{translation('contactDescription')}</span>
+        <span>{translation('mediquu.messageForm.contactDescription')}</span>
         {contacts.length > 0 && (
           <div className="flex-col-6 mt-6">
             {contacts.map((contact, index) => (
@@ -146,7 +105,7 @@ export const ContactSection = ({
         />
         <Textarea
           value={contactForm.message}
-          placeholder={translation('message')}
+          placeholder={translation('mediquu.messageForm.message')}
           onChangeText={message => setContactForm(prevState => ({ ...prevState, message, hasSend: false, hasError: false }))}
         />
         {contactForm.hasError && (<span className="text-negative font-semibold my-1">{translation('error')}</span>)}
@@ -179,7 +138,7 @@ export const ContactSection = ({
           className="py-4 w-full"
           isLoading={isSending}
         >
-          {translation('send')}
+          {translation('mediquu.messageForm.send')}
         </LoadingButton>
         {contactForm.hasSend && (<span className="text-secondary font-bold text-xl text-center">{translation('thankYou')}</span>)}
       </div>

@@ -1,38 +1,19 @@
-import type { Translation } from '@helpwave/hightide'
 import { HelpwaveLogo } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
-type MediQuuHeaderTranslation = {
-  title: string,
-  subTitle: string,
-}
-
-const defaultMediQuuPageTranslation: Translation<MediQuuHeaderTranslation> = {
-  en: {
-    title: 'mediQuu becomes helpwave',
-    subTitle: 'helpwave becomes the new operator of the mediQuu platform and will continue to develop the digital ' +
-      'applications with a strong team in the future. \\b{There will be no changes for mediQuu customers}, ' +
-      'a smooth transition is anticipated.',
-  },
-  de: {
-    title: 'Aus mediQuu wird helpwave',
-    subTitle: 'helpwave wird neuer Betreiber der mediQuu-Plattform und zukünftig mit einem starken Team die digitalen ' +
-      'Anwendungen weiterentwickeln. \\b{Für mediQuu-Kunden wird es keine Veränderungen geben}, ' +
-      'ein reibungsloser Übergang ist avisiert.',
-  }
-}
-
 export const MediQuuHeaderSection = () => {
-  const translation = useTranslation([defaultMediQuuPageTranslation])
+  const translation = useLandingPageTranslation()
   return (
     <SectionBase >
       <div className="flex max-tablet:flex-col-reverse max-tablet:items-center tablet:row w-full gap-x-4 gap-y-8">
         <div className="col gap-y-2 desktop:max-w-[50%]">
-          <h1 className="typography-headline-lg">{translation('title')}</h1>
-          <span className="typography-body-lg"><MarkdownInterpreter text={translation('subTitle')}/></span>
+          <h1 className="typography-headline-lg">{translation('mediquu.header.title')}</h1>
+          <span className="typography-body-lg">
+            <MarkdownInterpreter text={translation('mediquu.header.subTitle')}/>
+          </span>
         </div>
         <div className="row justify-center items-center grow">
           <div className="col gap-y-4 min-w-[350px] max-w-[350px]">

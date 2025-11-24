@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { HelpwaveLogo, MarkdownInterpreter, Navigation } from '@helpwave/hightide'
-import { useTranslation } from '@/i18n/useTranslation'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
 const homeURL = '/'
 
 const Header = () => {
-  const translation = useTranslation()
+  const translation = useLandingPageTranslation()
 
   return (
     <div className="absolute top-0 z-[50] row items-center justify-between w-screen section-padding-x h-16 pt-2">

@@ -5,7 +5,7 @@ import pluginConfig from '../utils/CookieConsentConfig'
 import FooterLinkGroup from './FooterLinkGroup'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 import { Globe, SunIcon } from 'lucide-react'
-import { useTranslation } from '@/i18n/useTranslation'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
 type Categories = 'socials' | 'general' | 'products' | 'development'
 
@@ -70,7 +70,7 @@ const grouping: (Categories[])[] = [
 
 const Footer = () => {
   const year = new Date().getFullYear()
-  const translation = useTranslation()
+  const translation = useLandingPageTranslation()
   const [isThemeDialogOpen, setIsThemeDialogOpen] = useState<boolean>(false)
   const [isLanguageDialogOpen, setIsLanguageDialogOpen] = useState<boolean>(false)
 

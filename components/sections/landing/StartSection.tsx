@@ -1,28 +1,10 @@
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import type { Translation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
-type LandingPageTranslation = {
-    title: string,
-    description: string,
-}
-
-const defaultLandingPageTranslation: Translation<LandingPageTranslation> = {
-    en: {
-        title: 'helpwave - the Operating System for Hospitals',
-        description: 'empowering \\primary{medical heroes}, united in \\positive{technology}'
-    },
-    de: {
-        title: 'helpwave - das Betriebssystem für Krankenhäuser',
-        description: 'Stärkung \\primary{medizinischer Helden}, vereint in \\positive{Technologie}'
-    }
-}
-
-const StartSection = ({ overwriteTranslation }: PropsForTranslation<LandingPageTranslation>) => {
-    const translation = useTranslation([defaultLandingPageTranslation], overwriteTranslation)
+const StartSection = () => {
+    const translation = useLandingPageTranslation()
     return (
         <SectionBase
             className="flex row flex-wrap-reverse w-full max-w-full gap-8 justify-between max-tablet:justify-center items-center"
@@ -30,8 +12,8 @@ const StartSection = ({ overwriteTranslation }: PropsForTranslation<LandingPageT
         >
             <div className="col items-center flex-1">
                 <div className="col gap-y-2 max-w-[600px]">
-                    <h1 className="typography-headline-lg">{translation('title')}</h1>
-                    <span className="typography-headline-md"><MarkdownInterpreter text={translation('description')}/></span>
+                    <h1 className="typography-headline-lg">{translation('titleLandingPage')}</h1>
+                    <span className="typography-headline-md"><MarkdownInterpreter text={translation('descriptionLandingPage')}/></span>
                 </div>
             </div>
             <Image

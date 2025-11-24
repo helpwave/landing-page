@@ -3,9 +3,11 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { usePathname } from 'next/navigation'
 import { Toaster } from 'react-hot-toast'
-import { LanguageProvider, ThemeProvider } from '@helpwave/hightide'
-import '../globals.css'
+import type { HightideTranslationLocales } from '@helpwave/hightide'
+import { LocaleProvider, ThemeProvider } from '@helpwave/hightide'
 import { Inter, Space_Grotesk } from 'next/font/google'
+import { useEffect, useState } from 'react'
+import '../globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -19,7 +21,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   const pathname = usePathname()
 
   // All mediQuu customers are from germany, therefore /mediquu overrides the defaultLanguage
-  const defaultLanguage = pathname === '/mediquu' ? 'de' : undefined
+  const [defaultLocaleOverride, setDefaultLocaleOverride] = useState<HightideTranslationLocales>()
+  const [usedPath, setUsedPath] = useState<boolean>(false)
+
+  useEffect(() => {
+    if(!usedPath) {
+      setDefaultLocaleOverride(pathname === '/mediquu' ? 'de-DE': undefined)
+      setUsedPath(true)
+    }
+  }, [pathname, usedPath])
 
   return (
     <>
@@ -31,13 +41,14 @@ function MyApp({ Component, pageProps }: AppProps) {
             --font-space: ${spaceGrotesk.style.fontFamily};
           }
         `}</style>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
       </Head>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
-          <LanguageProvider language={defaultLanguage}>
+          <LocaleProvider locale={defaultLocaleOverride}>
             <Component {...pageProps}/>
             <Toaster/>
-          </LanguageProvider>
+          </LocaleProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </>

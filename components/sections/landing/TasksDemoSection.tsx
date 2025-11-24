@@ -1,47 +1,15 @@
-import type { Translation } from '@helpwave/hightide'
 import { HelpwaveLogo } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { SectionBase } from '@/components/sections/SectionBase'
 import { Check } from 'lucide-react'
 
-type TasksDemoSectionTranslation = {
-  helpwaveTasks: string,
-  workflowManagement: string,
-  tryDemo: string,
-  feature1: string,
-  feature2: string,
-  feature3: string,
-  feature4: string,
-}
-
-const defaultTasksDemoSectionTranslation: Translation<TasksDemoSectionTranslation> = {
-  en: {
-    helpwaveTasks: 'helpwave tasks',
-    workflowManagement: 'The user-centered management tool, designed to simplify workflows and ensure high quality patient care.',
-    tryDemo: 'Try demo',
-    feature1: 'Patient lists: it’s time to move from papert to digital',
-    feature2: 'Care unit overview and tasks: keep track of what’s going on',
-    feature3: 'Task templates: standardize recurring tasks and workflows',
-    feature4: 'Properties: all relevant facts at a glance',
-  },
-  de: {
-    helpwaveTasks: 'helpwave tasks',
-    workflowManagement: 'Das benutzerorientierte Management-Tool zur Vereinfachung von Arbeitsabläufen und zur Gewährleistung einer qualitativ hochwertigen Patientenversorgung.',
-    tryDemo: 'Demo testen',
-    feature1: 'Patientenlisten: Es ist an der Zeit, von Papier auf digital umzusteigen',
-    feature2: 'Stationsübersicht und tasks: Behalten Sie den Überblick',
-    feature3: 'Task Vorlagen: Standardisieren Sie wiederkehrende Aufgaben und Arbeitsabläufe',
-    feature4: 'Properties: alle relevanten Fakten auf einen Blick',
-  }
-}
-
 /**
  * A Section for showing helpwave tasks features and information about the demo
  */
 export const TasksDemoSection = () => {
-  const translation = useTranslation([defaultTasksDemoSectionTranslation])
+  const translation = useLandingPageTranslation()
 
   const demoURL = 'https://tasks.helpwave.de'
   const imageURL = 'https://cdn.helpwave.de/products/tasks_preview.png'
@@ -56,9 +24,12 @@ export const TasksDemoSection = () => {
             <HelpwaveLogo className="w-8 h-8"/>
             <h2 className="typography-title-md whitespace-nowrap">{translation('helpwaveTasks')}</h2>
           </div>
-          <span className="typography-title-lg">{translation('workflowManagement')}</span>
+          <span className="typography-title-lg">{translation('section.demo.workflowManagement')}</span>
           <div className="grid grid-cols-1 gap-x-6 gap-y-4 overflow-x-auto mt-2">
-            {[translation('feature1'), translation('feature2'), translation('feature3'), translation('feature4')]
+            {[translation('section.demo.feature1'),
+              translation('section.demo.feature2'),
+              translation('section.demo.feature3'),
+              translation('section.demo.feature4')]
               .map((feature, index) => (
                 <div key={index} className="row items-center">
                   <div
@@ -74,7 +45,7 @@ export const TasksDemoSection = () => {
           href={demoURL}
           className="btn-md hover:brightness-[98%] bg-on-primary text-primary font-bold text-lg whitespace-nowrap"
         >
-          {translation('tryDemo')}
+          {translation('section.demo.tryDemo')}
         </Link>
       </div>
       <Image

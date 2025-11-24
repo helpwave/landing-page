@@ -1,32 +1,11 @@
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import type { Translation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
-type PatientSectionTranslation = {
-  title: string,
-  description: string,
-  patients: string,
-}
-
-const defaultPatientSectionTranslation: Translation<PatientSectionTranslation> = {
-  en: {
-    title: 'Ditch the printed patient list',
-    description: 'Use the patient list to keep track of what’s going on in your ward and never have an outdated version again.',
-    patients: 'Patients'
-  },
-  de: {
-    title: 'Weg mit der gedruckten Patientenliste',
-    description: 'Nutzen Sie die Patientenliste, um den Überblick über die Vorgänge auf Ihrer Station zu behalten und nie wieder eine veraltete Version zu benutzen.',
-    patients: 'Patienten'
-  }
-}
-
-export const PatientSection = ({ overwriteTranslation }: PropsForTranslation<PatientSectionTranslation>) => {
-  const translation = useTranslation([defaultPatientSectionTranslation], overwriteTranslation)
+export const PatientSection = () => {
+  const translation = useLandingPageTranslation()
   const imageUrl = 'https://cdn.helpwave.de/products/patient_list.png'
 
   return (
@@ -50,10 +29,12 @@ export const PatientSection = ({ overwriteTranslation }: PropsForTranslation<Pat
         <div className="col gap-y-2">
           <div className="row gap-x-1 text-primary items-center">
             <TagIcon/>
-            <span className="typography-title-md">{translation('patients')}</span>
+            <span className="typography-title-md">{translation('tasks.patients.patients')}</span>
           </div>
-          <h2 className="typography-title-lg">{translation('title')}</h2>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
+          <h2 className="typography-title-lg">{translation('tasks.patients.title')}</h2>
+          <span className="font-space font-semibold">
+            <MarkdownInterpreter text={translation('tasks.patients.description')}/>
+          </span>
         </div>
       </div>
     </SectionBase>

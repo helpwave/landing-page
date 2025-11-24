@@ -1,6 +1,6 @@
 import { Input, LoadingButton, Select, SelectOption } from '@helpwave/hightide'
 import { useState } from 'react'
-import { useTranslation } from '@/i18n/useTranslation'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
 const industryList = ['investment', 'hospital', 'patientCare', 'research', 'development', 'press'] as const
 export type Industry = typeof industryList[number]
@@ -25,7 +25,7 @@ export const NewsLetterForm = ({
                                  industry,
                                  onSubmit = () => Promise.resolve(),
                                }: NewsLetterFormProps) => {
-  const translation = useTranslation()
+  const translation = useLandingPageTranslation()
   const [isLoading, setLoading] = useState(false)
   const [showThankYouMessage, setShowThankYouMessage] = useState(false)
   const [formState, setFormState] = useState<NewsLetterFormType>({
