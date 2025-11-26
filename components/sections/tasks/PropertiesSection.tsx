@@ -1,32 +1,11 @@
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import type { Translation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
-type PropertiesSectionTranslation = {
-  title: string,
-  description: string,
-  properties: string,
-}
-
-const defaultPropertiesSectionTranslation: Translation<PropertiesSectionTranslation> = {
-  en: {
-    title: 'Everything you need at a glance',
-    description: 'Tired of searching for allergy records? Keep track of the facts.',
-    properties: 'Properties'
-  },
-  de: {
-    title: 'Alles, was Sie brauchen, auf einen Blick',
-    description: 'Müde von der Suche nach Allergiedaten? Behalten Sie den Überblick über die Fakten.',
-    properties: 'Properties'
-  }
-}
-
-export const PropertiesSection = ({ overwriteTranslation }: PropsForTranslation<PropertiesSectionTranslation>) => {
-  const translation = useTranslation([defaultPropertiesSectionTranslation], overwriteTranslation)
+export const PropertiesSection = () => {
+  const translation = useLandingPageTranslation()
   const imageUrl = 'https://cdn.helpwave.de/products/properties.png'
 
   return (
@@ -49,10 +28,10 @@ export const PropertiesSection = ({ overwriteTranslation }: PropsForTranslation<
         <div className="flex-col-2">
           <div className="flex-row-1 text-primary items-center">
             <TagIcon/>
-            <span className="typography-title-md">{translation('properties')}</span>
+            <span className="typography-title-md">{translation('tasks.properties.properties')}</span>
           </div>
-          <h2 className="typography-title-lg">{translation('title')}</h2>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
+          <h2 className="typography-title-lg">{translation('tasks.properties.title')}</h2>
+          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('tasks.properties.description')}/></span>
         </div>
       </div>
     </SectionBase>

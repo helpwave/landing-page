@@ -1,21 +1,7 @@
-import type { Translation } from '@helpwave/hightide'
 import { Carousel } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import { SectionBase } from '@/components/sections/SectionBase'
 import Image from 'next/image'
-
-type PartnerSectionTranslation = {
-  title: string,
-}
-
-const defaultPartnerSectionTranslation: Translation<PartnerSectionTranslation> = {
-  en: {
-    title: 'Our partners'
-  },
-  de: {
-    title: 'Unsere Partner'
-  }
-}
 
 export type Partner = {
   name: string,
@@ -70,7 +56,7 @@ const images: Partner[] = [
 ]
 
 const PartnerSection = () => {
-  const translation = useTranslation([defaultPartnerSectionTranslation])
+  const translation = useLandingPageTranslation()
 
   return (
     <SectionBase
@@ -78,7 +64,7 @@ const PartnerSection = () => {
       outerClassName="px-0"
     >
       <div className="flex-col-4 items-center w-full">
-        <h2 className="typography-title-lg">{translation('title')}</h2>
+        <h2 className="typography-title-lg">{translation('titlePartnerSection')}</h2>
         <Carousel
           hintNext={true} isLooping={true} isAutoPlaying={true}
           heightClassName="h-[8rem]"

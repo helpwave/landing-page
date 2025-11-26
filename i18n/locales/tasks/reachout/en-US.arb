@@ -1,0 +1,8 @@
+{
+  "medicalHeroTitle": "You''re a medical hero?",
+  "medicalHeroSubtitle": "How '\\helpwave' '\\primary{tasks}' aims to aid you in your daily work!",
+  "medicalHeroText": "'\\helpwave' '\\primary{tasks}' is a modern kanban interface that helps you to coordinate your work and the work of your team. Note down your tasks for your patient for yourself and for your team. Standardize workflows by saving them as a template and share them with your new coworker for easy onboarding. Receive notifications about upcoming tasks and use our various dashboards for keeping track of patients and courses of treatment. '\\helpwave' '\\primary{tasks}' is the first open-source team management platform for healthcare workers.",
+  "hospitalManagerTitle": "You''re a hospital administrator?",
+  "hospitalManagerSubtitle": "How '\\helpwave' '\\primary{tasks}' can solve your issues!",
+  "hospitalManagerText": "'\\helpwave' '\\primary{tasks}' has been inspired by modern industry work flows and best practices from lean project management and applies them to the clinical environment. Keeping track of tasks and workflows in a clinical environment leads to better patient care and a more efficient use of resources. '\\helpwave' '\\primary{tasks}' can increase worker satisfaction and patient safety. Use it as a secure basis for your billing processes."
+}

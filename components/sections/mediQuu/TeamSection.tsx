@@ -1,11 +1,13 @@
-import type { Translation } from '@helpwave/hightide'
+import type { HightideTranslationLocales } from '@helpwave/hightide'
+import { useLocale } from '@helpwave/hightide'
 import { HelpwaveLogo } from '@helpwave/hightide'
-import { useLanguage, useTranslation } from '@helpwave/hightide'
 import clsx from 'clsx'
 import { SectionBase } from '@/components/sections/SectionBase'
 import type { ProfileProps } from '@/components/Profile'
 import { Profile } from '@/components/Profile'
 import { MediQuuBadge } from '@/components/sections/mediQuu/MediQuuBadge'
+import type { Translation } from '@helpwave/internationalization'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
 const imageUrl = (key: string) => `https://cdn.helpwave.de/profile/${key}.png`
 
@@ -51,7 +53,7 @@ const contactsHelpwave: ProfileProps[] = [
   },
 ]
 
-const contactsMediquu: (ProfileProps & { translatedInfo?: Translation<{ info: string }> })[] = [
+const contactsMediquu: (ProfileProps & { translatedInfo?: Translation<HightideTranslationLocales, { info: string }> })[] = [
   {
     name: 'Christian Remfert',
     roleBadge: 'Advisor',
@@ -61,8 +63,8 @@ const contactsMediquu: (ProfileProps & { translatedInfo?: Translation<{ info: st
     ],
     imageClassName: '!w-[230px] !h-[200px]',
     translatedInfo: {
-      de: { info: 'Zuständig für die konzeptionelle und technische Umsetzung der mediQuu-Plattform, zukünftig beratend tätig.' },
-      en: { info: 'Responsible for the conceptual and technical implementation of the mediQuu platform, providing advisory services in the future.' }
+      'de-DE': { info: 'Zuständig für die konzeptionelle und technische Umsetzung der mediQuu-Plattform, zukünftig beratend tätig.' },
+      'en-US': { info: 'Responsible for the conceptual and technical implementation of the mediQuu platform, providing advisory services in the future.' }
     },
     className: 'w-500px'
   },
@@ -75,35 +77,19 @@ const contactsMediquu: (ProfileProps & { translatedInfo?: Translation<{ info: st
     ],
     imageClassName: '!w-[230px] !h-[200px]',
     translatedInfo: {
-      de: { info: 'Zuständig für die konzeptionelle und visuelle Umsetzung der mediQuu-Plattform, zukünftig beratend tätig.' },
-      en: { info: 'Responsible for the conceptual and visual implementation of the mediQuu platform, providing advisory services in the future.' }
+      'de-DE': { info: 'Zuständig für die konzeptionelle und visuelle Umsetzung der mediQuu-Plattform, zukünftig beratend tätig.' },
+      'en-US': { info: 'Responsible for the conceptual and visual implementation of the mediQuu platform, providing advisory services in the future.' }
     }
   },
 ]
 
-type TeamSectionTranslation = {
-  title: string,
-  subTitle: string,
-}
-
-const defaultTeamSectionTranslation: Translation<TeamSectionTranslation> = {
-  en: {
-    title: 'Contacts',
-    subTitle: 'We are available to answer any questions you may have at short notice.',
-  },
-  de: {
-    title: 'Ansprechpartner',
-    subTitle: 'Wir stehen Ihnen bei jeglichen Fragen kurzfristig zur Verfügung.',
-  }
-}
-
 export const TeamSection = () => {
-  const translation = useTranslation([defaultTeamSectionTranslation])
-  const usedLanguage = useLanguage().language
+  const translation = useLandingPageTranslation()
+  const locale = useLocale().locale
   return (
     <SectionBase className="flex-col-2">
-      <h2 className="typography-title-lg text-primary">{translation('title')}</h2>
-      <span>{translation('subTitle')}</span>
+      <h2 className="typography-title-lg text-primary">{translation('contactPersons')}</h2>
+      <span>{translation('contactDescription')}</span>
       <div className="flex flex-wrap justify-around gap-x-8 gap-y-6 mt-8">
         {contactsHelpwave.map(value => {
           const profileProps = { ...value }
@@ -130,7 +116,7 @@ export const TeamSection = () => {
             <Profile
               {...profileProps}
               key={value.name}
-              info={value.translatedInfo ? value.translatedInfo[usedLanguage].info : undefined}
+              info={value.translatedInfo ? value.translatedInfo[locale].info : undefined}
               badge={<MediQuuBadge/>}
               className={clsx('drop-shadow-lg hover:drop-shadow-3xl', value.className)}
             />

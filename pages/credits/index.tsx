@@ -1,34 +1,10 @@
 import type { NextPage } from 'next'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import Image from 'next/image'
-import type { Translation } from '@helpwave/hightide'
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Link from 'next/link'
 import { SectionBase } from '@/components/sections/SectionBase'
 import { Page } from '@/components/Page'
-
-type CreditsPageTranslation = {
-  title: string,
-  text: string,
-  flaticon: string,
-  createdBy: string,
-}
-
-const defaultCreditsPageTranslation: Translation<CreditsPageTranslation> = {
-  en: {
-    title: 'Credits',
-    text: 'To credit our use of stock-footage from other websites, we are pleased to list them on this page.',
-    flaticon: 'Icons by Flaticon',
-    createdBy: `{{name}} created by {{author}}`
-  },
-  de: {
-    title: 'Credits',
-    text: 'Um die Verwendung von Stock-Footage von anderen Websites zu würdigen, führen wir sie gerne auf dieser Seite auf.',
-    flaticon: 'Icons von Flaticon',
-    createdBy: `{{name}} erstellt von {{author}}`
-  }
-}
 
 const freepikCredits: { text: string, link: string }[] = [
   {
@@ -75,21 +51,21 @@ const flaticonCredits: { author: string, link: string, name: string }[] = [
   },
 ]
 
-const CreditsPage: NextPage = ({ overwriteTranslation }: PropsForTranslation<CreditsPageTranslation>) => {
-  const translation = useTranslation([defaultCreditsPageTranslation], overwriteTranslation)
+const CreditsPage: NextPage = () => {
+  const translation = useLandingPageTranslation()
   const imageUrl = 'https://cdn.helpwave.de/landing_page/credits.jpg'
 
   return (
-    <Page pageTitle={translation('title')}>
+    <Page pageTitle={translation('credits')}>
       <SectionBase
         className="row max-tablet:!flex flex-wrap-reverse w-full gap-x-16 gap-y-8 justify-between max-tablet:justify-center items-center"
         backgroundColor="variant"
       >
         <div className="col gap-y-2 pb-16 max-tablet:pb-0">
           <div className="col gap-y-2">
-            <h1 className="typography-headline-md">{translation('title')}</h1>
+            <h1 className="typography-headline-md">{translation('credits')}</h1>
             <span className="font-space font-semibold"><MarkdownInterpreter
-              text={translation('text')}/></span>
+              text={translation('credits.text')}/></span>
           </div>
         </div>
         <div
@@ -121,10 +97,10 @@ const CreditsPage: NextPage = ({ overwriteTranslation }: PropsForTranslation<Cre
       </SectionBase>
 
       <SectionBase backgroundColor="variant" className="col gap-y-2 w-full">
-        <h2 className="typography-title-md">{translation('flaticon')}</h2>
+        <h2 className="typography-title-md">{translation('credits.flaticon')}</h2>
         {flaticonCredits.map(({ name, author, link }) => (
           <Link key={name + author} href={link} title={name} className="underline" target="_blank">
-            {translation('createdBy', { replacements:{ name, author } })}
+            {translation('credits.createdBy', { name, author })}
           </Link>
         ))}
       </SectionBase>

@@ -1,36 +1,12 @@
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import type { Translation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 import { TasksPlaystoreBadge } from '@/components/TasksPlaystoreBadge'
 import { TasksAppStoreBadge } from '@/components/TasksAppStoreBadge'
 
-type MobileFeatureSectionTranslation = {
-  title: string,
-  description: string,
-  tradmarkPlaystore: string,
-  trademarkAppstore: string,
-}
-
-const defaultMobileFeatureSectionTranslation: Translation<MobileFeatureSectionTranslation> = {
-  en: {
-    title: 'Seamless mobile experience',
-    description: 'You don\'t have time to log in to a desk workspace to complete or assign tasks? Use the mobile app and never forget a task again.',
-    tradmarkPlaystore: 'Google Play and the Google Play logo are trademarks of Google LLC.',
-    trademarkAppstore: 'App Store℠ and the Apple logo® are trademarks of Apple Inc.'
-  },
-  de: {
-    title: 'Nahtloses mobiles Erlebnis',
-    description: 'Sie haben keine Zeit, sich an einem Schreibtisch anzumelden, um Aufgaben zu erledigen oder zuzuweisen? Verwenden Sie die mobile App und vergessen Sie nie wieder eine Aufgabe.',
-    tradmarkPlaystore: 'Google Play und das Google Play-Logo sind Marken von Google LLC.',
-    trademarkAppstore: 'App Store℠ und das Apple logo® sind Marken von Apple Inc.'
-  }
-}
-
-export const MobileFeatureSection = ({ overwriteTranslation }: PropsForTranslation<MobileFeatureSectionTranslation>) => {
-  const translation = useTranslation([defaultMobileFeatureSectionTranslation], overwriteTranslation)
+export const MobileFeatureSection = () => {
+  const translation = useLandingPageTranslation()
   const imageUrl = 'https://cdn.helpwave.de/products/mobile_preview.png'
 
   return (
@@ -41,8 +17,8 @@ export const MobileFeatureSection = ({ overwriteTranslation }: PropsForTranslati
     >
       <div className="flex-col-2 pb-16 desktop:w-3/5 justify-center">
         <div className="flex-col-2 max-tablet:pb-0">
-          <h2 className="typography-title-lg">{translation('title')}</h2>
-          <span className="typography-body-lg"><MarkdownInterpreter text={translation('description')}/></span>
+          <h2 className="typography-title-lg">{translation('tasks.mobile.title')}</h2>
+          <span className="typography-body-lg"><MarkdownInterpreter text={translation('tasks.mobile.description')}/></span>
         </div>
         <div
           // DO NOT CHANGE THE GAP. IT IS MANDATORY BY Apple
@@ -52,8 +28,8 @@ export const MobileFeatureSection = ({ overwriteTranslation }: PropsForTranslati
           <TasksAppStoreBadge/>
         </div>
         <div className="col mt-6 gap-y-1">
-          <span className="opacity-70 !text-xs">{translation('tradmarkPlaystore')}</span>
-          <span className="opacity-70 !text-xs">{translation('trademarkAppstore')}</span>
+          <span className="opacity-70 !text-xs">{translation('tasks.mobile.tradmarkPlaystore')}</span>
+          <span className="opacity-70 !text-xs">{translation('tasks.mobile.trademarkAppstore')}</span>
         </div>
       </div>
       <div

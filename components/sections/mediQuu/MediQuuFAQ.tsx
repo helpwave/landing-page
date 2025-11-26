@@ -1,7 +1,8 @@
-import type { Translation } from '@helpwave/hightide'
-import { useLanguage } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import type { Translation } from '@helpwave/internationalization'
+import type { HightideTranslationLocales } from '@helpwave/hightide'
+import { useLocale } from '@helpwave/hightide'
 import { FAQSection } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import { SectionBase } from '@/components/sections/SectionBase'
 
 type FAQItemTranslationType = {
@@ -9,9 +10,9 @@ type FAQItemTranslationType = {
   answer: string,
 }
 
-const faqItems: Translation<FAQItemTranslationType>[] = [
+const faqItems: Translation<HightideTranslationLocales, FAQItemTranslationType>[] = [
   {
-    de: {
+    'de-DE': {
       question: 'Ich will einfach nur die mediQuu Produkte weiter nutzen, was muss ich tun?',
       answer: `
           Das freut uns! Wir machen Ihnen den Übergang so einfach wie möglich.
@@ -24,7 +25,7 @@ const faqItems: Translation<FAQItemTranslationType>[] = [
           Sie sehen also, hier handelt es sich um rein administrative Schritte, die wir Ihnen so einfach wie möglich machen wollen. Der Schutz Ihrer Daten und Ihr Komfort sind uns wichtig.
         `
     },
-    en: {
+    'en-US': {
       question: 'I just want to continue using mediQuu products, what do I need to do?',
       answer: `
           We're glad to hear that! We'll make the transition as easy as possible for you.
@@ -37,7 +38,7 @@ const faqItems: Translation<FAQItemTranslationType>[] = [
     }
   },
   {
-    de: {
+    'de-DE': {
       question: 'Warum übernimmt helpwave die Produkte der mediQuu?',
       answer: `
           Die bestehenden Produkte der mediQuu werden nahtlos weiter unterstützt.
@@ -48,7 +49,7 @@ const faqItems: Translation<FAQItemTranslationType>[] = [
           nun mit der Vereinigung mit der mediQuu den Sprung in den ambulanten Sektor wagen.
         `
     },
-    en: {
+    'en-US': {
       question: `Why is helpwave taking over mediQuu's products?`,
       answer: `
           The existing products of mediQuu will continue to be supported seamlessly.
@@ -61,7 +62,7 @@ const faqItems: Translation<FAQItemTranslationType>[] = [
     }
   },
   {
-    de: {
+    'de-DE': {
       question: 'Ändern sich jetzt die Preise für meine Produkte?',
       answer: `
           \\b{Nein}. Für Bestandskunden werden sich keine Preise für bereits abgeschlossene Verträge ändern.
@@ -70,7 +71,7 @@ const faqItems: Translation<FAQItemTranslationType>[] = [
           der Kernideologien des Open Source Unternehmens helpwave.
         `
     },
-    en: {
+    'en-US': {
       question: 'Will the prices for my products change now?',
       answer: `
           \\b{No}. Prices for existing contracts will not change for existing customers.
@@ -82,40 +83,22 @@ const faqItems: Translation<FAQItemTranslationType>[] = [
   }
 ]
 
-
-
-type MediQuuFAQTranslation = {
-  title: string,
-  subTitle: string,
-
-}
-
-const defaultMediQuuFAQTranslation: Translation<MediQuuFAQTranslation> = {
-  en: {
-    title: 'FAQ',
-    subTitle: 'We are available to answer any questions you may have at short notice.',
-  },
-  de: {
-    title: 'Häufige Fragen',
-    subTitle: 'Wir stehen Ihnen bei jeglichen Fragen kurzfristig zur Verfügung.',
-  }
-}
-
 export const MediQuuFAQSection = () => {
-  const translation = useTranslation([defaultMediQuuFAQTranslation])
-  const { language } = useLanguage()
+  const translation = useLandingPageTranslation()
+  const { locale } = useLocale()
+
   return (
     <SectionBase className="flex-col-2 w-full">
-      <h2 className="typography-title-lg text-primary">{translation('title')}</h2>
-      <span>{translation('subTitle')}</span>
+      <h2 className="typography-title-lg text-primary">{translation('faq')}</h2>
+      <span>{translation('availableForQuestions')}</span>
       <div className="col gap-y-4 mt-8">
         <FAQSection
           entries={faqItems.map((faq, index) => ({
             id: `faq${index}`,
-            title: faq[language].question,
+            title: faq[locale].question,
             content: {
               type: 'markdown',
-              value: faq[language].answer
+              value: faq[locale].answer
             }
           }))}
         />

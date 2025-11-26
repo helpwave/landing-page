@@ -1,8 +1,7 @@
 import { SectionBase } from '@/components/sections/SectionBase'
 import type { ProfileProps } from '@/components/Profile'
 import { Profile } from '@/components/Profile'
-import type { Translation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
 type TeamGroupProps = {
   name: string,
@@ -125,21 +124,8 @@ const teamData: Record<string, ProfileProps[]> = {
     ],
 }
 
-type TeamSectionTranslationType = {
-  team: string,
-}
-
-const defaultTeamSectionTranslation: Translation<TeamSectionTranslationType> = {
-  de: {
-    team: 'Team',
-  },
-  en: {
-    team: 'Team',
-  }
-}
-
 const TeamSection = () => {
-  const translation = useTranslation([defaultTeamSectionTranslation])
+  const translation = useLandingPageTranslation()
 
   return (
     <SectionBase>

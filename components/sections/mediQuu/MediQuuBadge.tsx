@@ -1,23 +1,8 @@
-import type { Translation } from '@helpwave/hightide'
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 
-type MediQuuBadgeTranslation = {
-  previously: string,
-}
-
-const defaultMediQuuBadgeTranslation: Translation<MediQuuBadgeTranslation> = {
-  en: {
-    previously: 'previously'
-  },
-  de: {
-    previously: 'ehemals'
-  }
-}
-
-export const MediQuuBadge = ({ overwriteTranslation }: PropsForTranslation<MediQuuBadgeTranslation>) => {
-  const translation = useTranslation([defaultMediQuuBadgeTranslation], overwriteTranslation)
+export const MediQuuBadge = () => {
+  const translation = useLandingPageTranslation()
 
   return (
     <div className="row bg-white rounded-md px-2 py-1 !gap-x-1 !w-fit text-sm font-semibold text-gray-800 items-center">

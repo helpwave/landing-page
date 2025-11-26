@@ -1,61 +1,9 @@
-import type { PropsForTranslation, Translation } from '@helpwave/hightide'
-import { Input, LoadingButton, Select, SelectOption, useTranslation } from '@helpwave/hightide'
+import { Input, LoadingButton, Select, SelectOption } from '@helpwave/hightide'
 import { useState } from 'react'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
 const industryList = ['investment', 'hospital', 'patientCare', 'research', 'development', 'press'] as const
 export type Industry = typeof industryList[number]
-
-type NewsLetterFormTranslation = {
-  title: string,
-  subtitle: string,
-  firstname: string,
-  lastname: string,
-  email: string,
-  company: string,
-  industry: string,
-  callToAction: string,
-  select: string,
-  thankYou: string,
-} & Record<Industry, string>
-
-const defaultNewsLetterFormTranslation: Translation<NewsLetterFormTranslation> = {
-  en: {
-    title: 'Stay Connected',
-    subtitle: 'Become part of our vision and never miss updates or releases',
-    firstname: 'Firstname',
-    lastname: 'Lastname',
-    email: 'Email',
-    company: 'Company',
-    industry: 'Industry',
-    callToAction: 'Stay In the Loop',
-    investment: 'Investment',
-    hospital: 'Hospital',
-    patientCare: 'Patient Care',
-    research: 'Research',
-    development: 'Development',
-    press: 'Press',
-    select: 'Select',
-    thankYou: 'Thank you. We will keep you up to date!'
-  },
-  de: {
-    title: 'Bleib Informiert',
-    subtitle: 'Werde Teil unserer Vision and verpasse keine Updates oder Veröffentlichungen',
-    firstname: 'Vorname',
-    lastname: 'Nachname',
-    email: 'Email',
-    company: 'Firma',
-    industry: 'Industry',
-    callToAction: 'Bleib informiert',
-    investment: 'Investment',
-    hospital: 'Krankenhaus',
-    patientCare: 'Patientenversorgung',
-    research: 'Wissenschaft',
-    development: 'Entwicklung',
-    press: 'Presse',
-    select: 'Auswählen',
-    thankYou: 'Danke. Wir werden dich auf dem Laufenden halten!'
-  }
-}
 
 export type NewsLetterFormType = {
   firstname: string,
@@ -70,15 +18,14 @@ export type NewsLetterFormProps = Partial<NewsLetterFormType> & {
 }
 
 export const NewsLetterForm = ({
-                                 overwriteTranslation,
                                  firstname = '',
                                  lastname = '',
                                  email = '',
                                  company = '',
                                  industry,
                                  onSubmit = () => Promise.resolve(),
-                               }: PropsForTranslation<NewsLetterFormTranslation, NewsLetterFormProps>) => {
-  const translation = useTranslation([defaultNewsLetterFormTranslation], overwriteTranslation)
+                               }: NewsLetterFormProps) => {
+  const translation = useLandingPageTranslation()
   const [isLoading, setLoading] = useState(false)
   const [showThankYouMessage, setShowThankYouMessage] = useState(false)
   const [formState, setFormState] = useState<NewsLetterFormType>({
@@ -92,8 +39,8 @@ export const NewsLetterForm = ({
   return (
     <div className="rounded-lg py-2 px-4 w-full bg-[#FFFFFFEE] border-2">
       <div className="col">
-        <span className="typography-title-md">{translation('title')}</span>
-        <span className="text-description">{translation('subtitle')}</span>
+        <span className="typography-title-md">{translation('titleNewsLetterForm')}</span>
+        <span className="text-description">{translation('subtitleNewsLetterForm')}</span>
         <div className="col my-2 gap-y-1">
           <form>
             <Input

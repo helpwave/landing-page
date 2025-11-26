@@ -1,32 +1,11 @@
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import type { Translation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { Chip } from '@helpwave/hightide'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
-type VisionSectionTranslation = {
-  ourVision: string,
-  title: string,
-  description: string,
-}
-
-const defaultVisionSectionTranslation: Translation<VisionSectionTranslation> = {
-  en: {
-    ourVision: 'Our Vision',
-    title: 'Support health care workers with data',
-    description: 'We are developing innovative software that enables healthcare professionals to provide the best possible medical care to their patients.',
-  },
-  de: {
-    ourVision: 'Unsere Vision',
-    title: 'Datenbasierte Unterstützung im Gesundheitswesen',
-    description: 'Wir entwickeln innovative Software, die es Fachleuten im Gesundheitswesen ermöglicht, ihren Patienten die bestmögliche medizinische Versorgung zu bieten.',
-  }
-}
-
-const StartSection = ({ overwriteTranslation }: PropsForTranslation<VisionSectionTranslation>) => {
-  const translation = useTranslation([defaultVisionSectionTranslation], overwriteTranslation)
+const StartSection = () => {
+  const translation = useLandingPageTranslation()
   const imageURL = 'https://cdn.helpwave.de/landing_page/process.png'
   return (
     <SectionBase
@@ -35,9 +14,9 @@ const StartSection = ({ overwriteTranslation }: PropsForTranslation<VisionSectio
       backgroundColor="variant"
     >
       <div className="flex-col-2 w-1/2 max-tablet:w-full">
-        <Chip color="blue" className="font-semibold px-4"><h2>{translation('ourVision')}</h2></Chip>
-        <span className="typography-title-lg">{translation('title')}</span>
-        <span className="font-inter font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
+        <Chip color="blue" className="font-semibold px-4"><h2>{translation('section.vision.ourVision')}</h2></Chip>
+        <span className="typography-title-lg">{translation('section.vision.title')}</span>
+        <span className="font-inter font-semibold"><MarkdownInterpreter text={translation('section.vision.description')}/></span>
       </div>
       <Image src={imageURL} alt="" width={0} height={0} className="max-tablet:w-full max-tablet:max-w-[500px] w-1/2 py-4 px-8 rounded-2xl dark:bg-white"/>
     </SectionBase>

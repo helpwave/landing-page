@@ -1,0 +1,11 @@
+{
+  "text": "Um die Verwendung von Stock-Footage von anderen Websites zu würdigen, führen wir sie gerne auf dieser Seite auf.",
+  "flaticon": "Icons von Flaticon",
+  "createdBy": "{name} erstellt von {author}",
+  "@createdBy": {
+    "placeholders": {
+      "name": {},
+      "author": {}
+    }
+  }
+}

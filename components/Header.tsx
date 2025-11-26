@@ -1,42 +1,11 @@
 import Link from 'next/link'
-import type { Translation } from '@helpwave/hightide'
-import { HelpwaveLogo, MarkdownInterpreter, Navigation, useTranslation } from '@helpwave/hightide'
+import { HelpwaveLogo, MarkdownInterpreter, Navigation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
 const homeURL = '/'
 
-type LinkNames = 'products' | 'mediquu' | 'support' | 'team' | 'invest' | 'tasks' | 'appzumdoc' | 'netzmanager'
-
-type HeaderTranslationType = {
-    contact: string,
-} & { [key in LinkNames]: string }
-
-const defaultHeaderTranslation: Translation<HeaderTranslationType> = {
-    en: {
-        products: 'Products',
-        mediquu: 'mediQuu',
-        team: 'Team',
-        contact: 'Contact us',
-        tasks: 'tasks',
-        support: 'Support',
-        invest: 'Invest',
-        appzumdoc: 'App Zum Doc',
-        netzmanager: 'mediQuu Netzmanager',
-    },
-    de: {
-        products: 'Produkte',
-        mediquu: 'mediQuu',
-        team: 'Team',
-        contact: 'Kontakt',
-        tasks: 'tasks',
-        support: 'Hilfe',
-        invest: 'Investieren',
-        appzumdoc: 'App Zum Doc',
-        netzmanager: 'mediQuu Netzmanager',
-    }
-}
-
 const Header = () => {
-  const translation = useTranslation([defaultHeaderTranslation])
+  const translation = useLandingPageTranslation()
 
   return (
     <div className="absolute top-0 z-[50] row items-center justify-between w-screen section-padding-x h-16 pt-2">

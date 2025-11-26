@@ -1,32 +1,11 @@
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
-import type { Translation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import Image from 'next/image'
 import { MarkdownInterpreter } from '@helpwave/hightide'
 import { TagIcon } from '@helpwave/hightide'
 import { SectionBase } from '@/components/sections/SectionBase'
 
-type TasksKanbanSectionTranslation = {
-  title: string,
-  description: string,
-  tasks: string,
-}
-
-const defaultTasksKanbanSectionTranslation: Translation<TasksKanbanSectionTranslation> = {
-  en: {
-    title: 'Effective teamwork',
-    description: 'Are you part of the treatment team? See the progress without having to ask.',
-    tasks: 'Collaborate'
-  },
-  de: {
-    title: 'Effektive Teamarbeit',
-    description: 'Sind Sie Teil des Behandlungsteams? Sehen Sie Behandlungsfortschritte, ohne fragen zu müssen.',
-    tasks: 'Zusammenarbeiten'
-  }
-}
-
-export const TasksKanbanSection = ({ overwriteTranslation }: PropsForTranslation<TasksKanbanSectionTranslation>) => {
-  const translation = useTranslation([defaultTasksKanbanSectionTranslation], overwriteTranslation)
+export const TasksKanbanSection = () => {
+  const translation = useLandingPageTranslation()
   const imageUrl = 'https://cdn.helpwave.de/products/tasks_kanban.png'
 
   return (
@@ -38,10 +17,12 @@ export const TasksKanbanSection = ({ overwriteTranslation }: PropsForTranslation
         <div className="flex-col-2">
           <div className="flex-row-1 text-primary items-center">
             <TagIcon/>
-            <span className="typography-title-md">{translation('tasks')}</span>
+            <span className="typography-title-md">{translation('tasks.kanban.tasks')}</span>
           </div>
-          <h2 className="typography-title-lg">{translation('title')}</h2>
-          <span className="font-space font-semibold"><MarkdownInterpreter text={translation('description')}/></span>
+          <h2 className="typography-title-lg">{translation('tasks.kanban.title')}</h2>
+          <span className="font-space font-semibold">
+            <MarkdownInterpreter text={translation('tasks.kanban.description')}/>
+          </span>
         </div>
       </div>
       <div

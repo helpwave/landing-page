@@ -1,8 +1,6 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-import type { Translation } from '@helpwave/hightide'
-import type { PropsForTranslation } from '@helpwave/hightide'
-import { useTranslation } from '@helpwave/hightide'
+import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 import { SectionBase } from '@/components/sections/SectionBase'
 
 type FeatureItemProps = {
@@ -45,36 +43,8 @@ const FeatureItem = ({
   )
 }
 
-type FeatureSectionTranslation = {
-  taskTemplatesTitle: string,
-  taskTemplatesText: string,
-  collaborateTitle: string,
-  collaborateText: string,
-  patientsTitle: string,
-  patientsText: string,
-}
-
-const defaultFeatureSectionTranslation: Translation<FeatureSectionTranslation> = {
-  en: {
-    taskTemplatesTitle: 'Task Templates',
-    taskTemplatesText: 'Save repetitive tasks as templates. Standardize your workflows, share them with your team.',
-    collaborateTitle: 'Collaborate',
-    collaborateText: 'You and your team synchronized on the same heartbeat.',
-    patientsTitle: 'Patients',
-    patientsText: 'Modern dashboards for your patients. Keep track of their progress and tasks.'
-  },
-  de: {
-    taskTemplatesTitle: 'Aufgabenvorlagen',
-    taskTemplatesText: 'Speichere sich wiederholende Aufgaben als Vorlagen. Standardisiere deine Arbeitsabläufe und teile sie mit deinem Team.',
-    collaborateTitle: 'Zusammenarbeiten',
-    collaborateText: 'Du und dein Team arbeiten auf den Herzschlag synchronisiert zusammen.',
-    patientsTitle: 'Patienten',
-    patientsText: 'Moderne Dashboards für deine Patienten. Behalte den Überblick über den Fortschritt und deine Aufgaben.'
-  }
-}
-
-const FeatureSection = ({ overwriteTranslation }: PropsForTranslation<FeatureSectionTranslation>) => {
-  const translation = useTranslation([defaultFeatureSectionTranslation], overwriteTranslation)
+const FeatureSection = () => {
+  const translation = useLandingPageTranslation()
   const screenshotTemplates = 'https://cdn.helpwave.de/screenshots/tasks_2.png'
   const screenshotCollab = 'https://cdn.helpwave.de/screenshots/tasks_3.png'
   const screenshotPatients = 'https://cdn.helpwave.de/screenshots/tasks_4.png'
@@ -85,23 +55,21 @@ const FeatureSection = ({ overwriteTranslation }: PropsForTranslation<FeatureSec
       <FeatureItem
         imageUrl={screenshotTemplates}
         size={size}
-        title={translation('taskTemplatesTitle')}
-        description={translation('taskTemplatesText')}
+        title={translation('tasks.features.taskTemplatesTitle')}
+        description={translation('tasks.features.taskTemplatesText')}
       />
-
       <FeatureItem
         imageUrl={screenshotCollab}
         size={size}
-        title={translation('collaborateTitle')}
-        description={translation('collaborateText')}
+        title={translation('tasks.features.collaborateTitle')}
+        description={translation('tasks.features.collaborateText')}
         reverse={true}
       />
-
       <FeatureItem
         imageUrl={screenshotPatients}
         size={size}
-        title={translation('patientsTitle')}
-        description={translation('patientsText')}
+        title={translation('tasks.features.patientsTitle')}
+        description={translation('tasks.features.patientsText')}
       />
     </SectionBase>
   )
