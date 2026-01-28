@@ -1,4 +1,4 @@
-import { SolidButton } from '@helpwave/hightide'
+import { Button } from '@helpwave/hightide'
 import { clsx } from 'clsx'
 import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
@@ -67,13 +67,17 @@ export const TextImage = ({
           </div>
         </div>
         {onShowMoreClicked && (
-          <SolidButton
+          <Button
+            color="primary"
+            coloringStyle="solid"
+            layout="default"
             className="absolute bottom-4 right-4"
             onClick={onShowMoreClicked}
             disabled={disableMoreClick}
+            size="md"
           >
             {translation('showMore')}
-          </SolidButton>
+          </Button>
         )}
       </div>
     </div>

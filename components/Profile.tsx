@@ -41,7 +41,7 @@ const SocialIcon = ({ type, url, size = 24 }: SocialIconProps) => {
     }
     return (
         <Link href={url} target="_blank" className="rounded-md">
-            <Chip color="dark" className="!p-2">
+            <Chip color="neutral" className="!p-2">
                 {icon}
             </Chip>
         </Link>
@@ -96,7 +96,7 @@ export const Profile = ({
                 <div className="absolute top-[6px] left-[6px] z-[3]">{badge}</div>
                 {roleBadge && (
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2/3 z-[4] rounded-md">
-                        <Chip color="dark" className="font-bold px-3">{roleBadge}</Chip>
+                        <Chip color="neutral" className="font-bold px-3">{roleBadge}</Chip>
                     </div>
                 )}
             </div>

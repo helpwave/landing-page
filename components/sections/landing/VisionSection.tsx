@@ -14,7 +14,7 @@ const StartSection = () => {
       backgroundColor="variant"
     >
       <div className="flex-col-2 w-1/2 max-tablet:w-full">
-        <Chip color="blue" className="font-semibold px-4"><h2>{translation('section.vision.ourVision')}</h2></Chip>
+        <Chip color="primary" className="font-semibold px-4"><h2>{translation('section.vision.ourVision')}</h2></Chip>
         <span className="typography-title-lg">{translation('section.vision.title')}</span>
         <span className="font-inter font-semibold"><MarkdownInterpreter text={translation('section.vision.description')}/></span>
       </div>

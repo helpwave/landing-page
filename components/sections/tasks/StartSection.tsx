@@ -26,7 +26,7 @@ const StartSection = () => {
       />
       <div className="col gap-y-4">
         <Link href={demoURL} target="_blank" className="rounded-md w-min">
-          <Chip className="row w-fit items-center" color="default">
+          <Chip className="row w-fit items-center" color="neutral">
             <HelpwaveLogo className="min-w-[24px] min-h-[24px]" />
             <span className="font-bold whitespace-nowrap">helpwave tasks</span>
           </Chip>

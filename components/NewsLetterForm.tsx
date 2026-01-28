@@ -1,4 +1,4 @@
-import { Input, LoadingButton, Select, SelectOption } from '@helpwave/hightide'
+import { Button, Input, Select, SelectOption } from '@helpwave/hightide'
 import { useState } from 'react'
 import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
 
@@ -46,14 +46,9 @@ export const NewsLetterForm = ({
             <Input
               id="email"
               value={formState.email}
-              // label={{ name: `${translation('email')}*` }}
-              onChangeText={text => setFormState(prevState => ({
+              onChange={(e) => setFormState(prevState => ({
                 ...prevState,
-                email: text
-              }))}
-              onEditCompleted={text => setFormState(prevState => ({
-                ...prevState,
-                email: text
+                email: e.target.value
               }))}
               maxLength={255}
               required={true}
@@ -63,28 +58,18 @@ export const NewsLetterForm = ({
               <Input
                 id="firstname"
                 value={formState.firstname}
-                // label={{ name: translation('firstname') }}
-                onChangeText={text => setFormState(prevState => ({
+                onChange={(e) => setFormState(prevState => ({
                   ...prevState,
-                  firstname: text
-                }))}
-                onEditCompleted={text => setFormState(prevState => ({
-                  ...prevState,
-                  firstname: text
+                  firstname: e.target.value
                 }))}
                 maxLength={255}
               />
               <Input
                 id="lastname"
                 value={formState.lastname}
-                // label={{ name: `${translation('lastname')}*` }}
-                onChangeText={text => setFormState(prevState => ({
+                onChange={(e) => setFormState(prevState => ({
                   ...prevState,
-                  lastname: text
-                }))}
-                onEditCompleted={text => setFormState(prevState => ({
-                  ...prevState,
-                  lastname: text
+                  lastname: e.target.value
                 }))}
                 maxLength={255}
                 required={true}
@@ -94,22 +79,16 @@ export const NewsLetterForm = ({
               <Input
                 id="company"
                 value={formState.company}
-                // label={{ name: translation('company') }}
-                onChangeText={text => setFormState(prevState => ({
+                onChange={(e) => setFormState(prevState => ({
                   ...prevState,
-                  company: text
-                }))}
-                onEditCompleted={text => setFormState(prevState => ({
-                  ...prevState,
-                  company: text
+                  company: e.target.value
                 }))}
                 maxLength={255}
                 className="!max-w-[300px]"
               />
               <Select
-                // label={{ name: translation('industry'), labelType: 'labelSmall' }}
                 value={formState.industry}
-                onValueChanged={industry => setFormState(prevState => ({
+                onValueChange={(industry) => setFormState(prevState => ({
                   ...prevState,
                   industry: industry as Industry
                 }))}
@@ -127,17 +106,26 @@ export const NewsLetterForm = ({
                 showThankYouMessage ? (
                   <p>{translation('thankYou')}</p>
                 ) : (
-                  <LoadingButton type="submit" isLoading={isLoading} onClick={() => {
-                    if (!formState.email || !formState.lastname) return
+                  <Button
+                    type="submit"
+                    color="primary"
+                    coloringStyle="solid"
+                    layout="default"
+                    disabled={isLoading}
+                    onClick={() => {
+                      if (!formState.email || !formState.lastname) return
 
-                    setLoading(true)
-                    onSubmit(formState).finally(() => {
-                      setLoading(false)
-                      setShowThankYouMessage(true)
-                    })
-                  }} size="medium" className="min-w-[120px] w-fit">
-                    {translation('callToAction')}
-                  </LoadingButton>
+                      setLoading(true)
+                      onSubmit(formState).finally(() => {
+                        setLoading(false)
+                        setShowThankYouMessage(true)
+                      })
+                    }}
+                    size="md"
+                    className="min-w-[120px] w-fit"
+                  >
+                    {isLoading ? translation('loading') || 'Loading...' : translation('callToAction')}
+                  </Button>
                 )
               }
             </div>
