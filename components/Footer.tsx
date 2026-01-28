@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { HelpwaveLogo, LanguageDialog, TextButton, ThemeDialog } from '@helpwave/hightide'
+import { Button, HelpwaveLogo, LanguageDialog, ThemeDialog } from '@helpwave/hightide'
 import * as CookieConsent from 'vanilla-cookieconsent'
 import pluginConfig from '../utils/CookieConsentConfig'
 import FooterLinkGroup from './FooterLinkGroup'
@@ -19,15 +19,6 @@ const linkGroups: Record<Categories, LinkType[]> = {
     { name: 'Twitter', link: 'https://twitter.com/helpwave_org' },
     { name: 'YouTube', link: 'https://www.youtube.com/@helpwave' },
     { name: 'Twitch', link: 'https://www.twitch.tv/helpwave' },
-    /*
-    { name: 'Spotify', link: 'https://open.spotify.com/show/6hL5UMytp81gmURnfn3dS9' },
-    { name: 'Apple Podcasts', link: 'https://podcasts.apple.com/us/podcast/helpwave-talks/id1695217116' },
-    {
-      name: 'Google Podcasts',
-      link: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9lNTE1NWZhMC9wb2RjYXN0L3Jzcw'
-    },
-    { name: 'Slack', link: 'https://helpwave.slack.com' },
-    */
   ],
   development: [
     { name: 'Status', link: 'https://helpwave.betteruptime.com/' },
@@ -47,18 +38,12 @@ const linkGroups: Record<Categories, LinkType[]> = {
     { name: 'Pitchdeck', link: 'https://cdn.helpwave.de/helpwave_pitchdeck.pdf' },
     { name: 'Onepager', link: 'https://cdn.helpwave.de/helpwave_onepager.pdf' },
     { name: 'LOI', link: 'https://cdn.helpwave.de/helpwave_letter_of_intent.pdf' },
-    // { name: 'Tech-Radar', link: '/tech-radar', openInCurrentTab: true },
     { name: 'Credits', link: '/credits', openInCurrentTab: true },
   ],
   products: [
     { name: 'helpwave tasks', link: '/product/tasks' },
     { name: 'App Zum Doc', link: 'https://app-zum-doc.de/' },
     { name: 'mediQuu Netzmanager', link: 'https://mediquu.de/mediquu_netzmanager.html' },
-    /* { name: 'scaffold', link: '/product/scaffold' },
-      { name: 'cloud', link: '/product/cloud' },
-      { name: 'impulse', link: '/product/impulse' },
-      { name: 'analytics', link: '/product/analytics' },
-      { name: 'core', link: '/product/core' }, */
   ]
 }
 
@@ -93,33 +78,39 @@ const Footer = () => {
         {grouping.map((groups, index) => (
           <div key={index} className="col max-tablet:w-full w-[192px] max-tablet:text-center max-tablet:items-center">
             {groups.map((category) => (
-              <FooterLinkGroup key={category} title={translation(category)} links={linkGroups[category]}/>
+              <FooterLinkGroup key={category} title={translation(category)} links={linkGroups[category]} />
             ))}
             {index === 2 && (
               <>
-                <TextButton
+                <Button
+                  color="primary"
+                  coloringStyle="solid"
+                  layout="icon"
                   onClick={() => setIsLanguageDialogOpen(true)}
-                  size="small"
+                  size="sm"
                   className="justify-start w-min light:!text-white light:hover:!bg-white/20"
                 >
-                  <Globe size={18}/>
+                  <Globe size={18} />
                   {translation('changeLanguage')}
-                </TextButton>
-                <TextButton
+                </Button>
+                <Button
+                  color="primary"
+                  coloringStyle="solid"
+                  layout="icon"
                   onClick={() => setIsThemeDialogOpen(true)}
-                  size="small"
+                  size="sm"
                   className="justify-start w-min light:!text-white light:hover:!bg-white/20"
                 >
-                  <SunIcon size={18}/>
+                  <SunIcon size={18} />
                   {translation('changeTheme')}
-                </TextButton>
+                </Button>
               </>
             )}
           </div>
         ))}
       </div>
       <div className="row w-full h-[128px] items-center justify-center mx-auto font-space">
-        <HelpwaveLogo color="white" className="w-32 h-32"/>
+        <HelpwaveLogo color="white" className="w-32 h-32" />
         <span className="typography-title-md">&copy; {year} helpwave</span>
       </div>
     </footer>
