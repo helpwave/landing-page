@@ -23,11 +23,5 @@
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
-<url>
-  <loc>https://helpwave.de/mediquu</loc>
-  <lastmod>2025-10-19T14:20:00+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.70</priority>
-</url>
 
 </urlset>
