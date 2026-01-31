@@ -45,5 +45,13 @@
   "contactDescription": "Wir stehen Ihnen bei jeglichen Fragen kurzfristig zur Verfügung.",
   "trustedBy": "Unterstüzt von",
   "credits": "Credits",
-  "home": "Startseite"
+  "home": "Startseite",
+  "blog": "Blog",
+  "publishedOn": "Veröffentlicht am {date}",
+  "@publishedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "backToBlog": "Zurück zum Blog"
 }

@@ -45,5 +45,13 @@
   "contactDescription": "We are available to answer any questions you may have at short notice.",
   "trustedBy": "Trusted by",
   "credits": "Credits",
-  "home": "home"
+  "home": "home",
+  "blog": "Blog",
+  "publishedOn": "Published on {date}",
+  "@publishedOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "backToBlog": "Back to blog"
 }

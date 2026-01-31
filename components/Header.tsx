@@ -46,6 +46,10 @@ const Header = () => {
             external: true
           },
           {
+            label: translation('blog'),
+            link: '/blog'
+          },
+          {
             label: translation('team'),
             link: '/team'
           },

@@ -38,6 +38,7 @@ const linkGroups: Record<Categories, LinkType[]> = {
   ],
   general: [
     { name: 'Support', link: 'https://support.helpwave.de' },
+    { name: 'Blog', link: '/blog', openInCurrentTab: true },
     { name: 'Imprint', link: 'https://cdn.helpwave.de/imprint.html' },
     { name: 'Privacy', link: 'https://cdn.helpwave.de/privacy.html' },
     { name: 'Cookies', link: '', onClick: () => CookieConsent.showPreferences() },
