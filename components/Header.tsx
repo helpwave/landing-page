@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="absolute top-0 z-[50] row items-center justify-between w-screen section-padding-x h-16 pt-2">
       <Link href={homeURL} className="row gap-x-1 items-center text-2xl">
-        <HelpwaveLogo className="w-10 h-10"/>
+        <HelpwaveLogo className="w-10 h-10" />
         <MarkdownInterpreter text={'\\helpwave'} />
       </Link>
       <Navigation
@@ -34,10 +34,6 @@ const Header = () => {
                 external: true
               }
             ]
-          },
-          {
-            label: translation('mediquu'),
-            link: '/mediquu'
           },
           {
             label: 'invest',

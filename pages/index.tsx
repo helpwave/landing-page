@@ -1,25 +1,18 @@
 import type { NextPage } from 'next'
 import { useLandingPageTranslation } from '@/i18n/useLandingPageTranslation'
-import MarketStatsSection from '../components/sections/landing/MarketStatsSection'
 import PartnerSection from '../components/sections/landing/PartnerSection'
 import StartSection from '../components/sections/landing/StartSection'
 import { Page } from '@/components/Page'
-import VisionSection from '@/components/sections/landing/VisionSection'
 import { TasksDemoSection } from '@/components/sections/landing/TasksDemoSection'
-import { StepsToDigitalizationSection } from '@/components/sections/landing/StepsToDigitalizationSection'
 
 const Home: NextPage = () => {
   const translation = useLandingPageTranslation()
 
   return (
     <Page outerClassName="z-0" className="z-0" pageTitle={translation('home')}>
-      <StartSection/>
-      <PartnerSection/>
-      <VisionSection/>
-      <StepsToDigitalizationSection/>
-      <TasksDemoSection/>
-      <MarketStatsSection/>
-      {/* TODO implement when ready <StoriesSliderSection/> */}
+      <StartSection />
+      <PartnerSection />
+      <TasksDemoSection />
     </Page>
   )
 }
